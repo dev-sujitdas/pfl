@@ -8,8 +8,10 @@ import monitor from "/Icons/monitor.png";
 import presentation from "/Icons/presentation.png";
 import relationship from "/Icons/relationship.png";
 import implement from "/Icons/implement.png";
+// import ScrollAnimation from "../hooks/useScrollAnimation";
 
 const ClientProp = () => {
+  // ScrollAnimation();
   const clientData = [
     {
       num: "01",
@@ -90,17 +92,17 @@ const ClientProp = () => {
             </div>
           </div>
         </div>  
-
-        <h3 className="mt-6 text-2xl poppins-regular-italic w-[30%] text-zinc-500">
+        <div className="client-subtitle">
+        <h3 className="subtitle mt-6 text-2xl poppins-regular-italic w-[30%] text-zinc-500">
           A personalized, step-by-step approach to securing your financial
           future with expert guidance at every stage
         </h3>
-
+          </div>
         <div  className=" w-full mx-auto flex justify-center items-center flex-wrap mt-10">
 
           <div className="w-full mx-auto flex flex-wrap justify-center items-center gap-10">
             {clientData.map(({num, icon, title, description}, index)=>(
-              <div key={index} className="">
+              <div key={index} className="client-list">
               <h2 id="num2" className="text-5xl poppins-semibold">{num}</h2>
               <div className="p-5 w-[25rem] bg-[#FDFDFD] mt-3 rounded-2xl shadow-md hover:scale-105 transition select-none">
                 <div className=" flex flex-col justify-center items-center gap-3">

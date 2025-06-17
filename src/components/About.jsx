@@ -8,13 +8,12 @@ import { RiDoubleQuotesL } from "react-icons/ri";
 import { FaCaretRight } from "react-icons/fa";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import useScrollAnimation from "../hooks/useScrollAnimation";
+// import useScrollAnimation from "../hooks/useScrollAnimation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  useScrollAnimation();
-
+// useScrollAnimation();
   const cardData = [
     {
       icon: trust,
@@ -143,7 +142,7 @@ const About = () => {
             {testimonial.map(({ quote, name }, i) => (
               <div
                 key={i}
-                className="testimonial-card  z-999"
+                className="testimonial-card  z-50"
               >
                 <div className="max-w-72 bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
                 <p className="poppins-semibold text-left text-lg">

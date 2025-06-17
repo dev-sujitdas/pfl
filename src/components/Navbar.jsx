@@ -7,7 +7,7 @@ const Navbar = ({ lenis }) => {
     { name: "Our Services", link: "#services" },
     { name: "Financial Timeline", link: "#timeline" },
     { name: "Client Proposition", link: "#proposition" },
-    { name: "Our Advisors", link: "#advisor" },
+    { name: "Our Advisors", link: "#advisors" },
     { name: "Contact Us", link: "#contact" },
   ];
 

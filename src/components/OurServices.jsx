@@ -132,11 +132,12 @@ const OurServices = () => {
           </div>
         </div>
 
+
         <div className="mt-10">
           {serviceData.map(({ num, title, description, image }, index) => (
             <div
               key={index}
-              className="flex border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] select-none"
+              className="service-list flex border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] select-none"
             >
               <div className="w-[30%] py-[2rem] flex justify-center gap-12 items-center ">
                 <h2

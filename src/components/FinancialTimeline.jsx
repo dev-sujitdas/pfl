@@ -108,11 +108,12 @@ useEffect(() => {
             </div>
           </div>
         </div>    
-
-        <h3 className="mt-6 text-2xl poppins-regular-italic w-[30%] text-zinc-400">
+        <div className="timeline-subtitle">
+        <h3 className="subtitle mt-6 text-2xl poppins-regular-italic w-[30%] text-zinc-400">
           Tailored financial strategies for every chapter of your life, backed
           by trusted expertise.
         </h3>
+        </div>
         <div className="flex justify-center items-center  mt-6">
           {/* Left: Video */}
           <div className="w-1/2 h-full rounded-2xl">
