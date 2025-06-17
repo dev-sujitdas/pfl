@@ -32,7 +32,7 @@ const useScrollAnimation = () => {
     subtitleSelectors.forEach((selector) => {
       animateSubtitle(selector);
     });
-    // Sapling
+    
     gsap.from(".sapling", {
       scrollTrigger: {
         trigger: ".about-top",
@@ -44,7 +44,7 @@ const useScrollAnimation = () => {
       ease: "power2.out",
     });
 
-    // Our Roots
+    
     gsap.from(".our-roots", {
       scrollTrigger: {
         trigger: ".our-roots",
@@ -58,7 +58,7 @@ const useScrollAnimation = () => {
       ease: "power2.out",
     });
 
-    // Core Value Cards
+    
     gsap.from(".core-value-card-wrapper", {
       scrollTrigger: {
         trigger: ".core-value-card-wrapper",
@@ -89,7 +89,7 @@ const useScrollAnimation = () => {
       });
     });
 
-    //Clients cards
+    
     gsap.utils.toArray(".client-list").forEach((item, i) => {
       gsap.from(item, {
         scrollTrigger: {
@@ -107,7 +107,7 @@ const useScrollAnimation = () => {
       });
     });
 
-    // Testimonials
+    
     gsap.from(".testimonial-card", {
       scrollTrigger: {
         trigger: ".testimonial-card",
@@ -127,7 +127,7 @@ const useScrollAnimation = () => {
   return null;
 };
 
-// Reusable animation helpers
+
 const animateHeading = (triggerSelector) => {
   gsap.from(`${triggerSelector} h2, ${triggerSelector} h3`, {
     scrollTrigger: {
