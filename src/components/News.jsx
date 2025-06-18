@@ -44,7 +44,7 @@ const News = () => {
             {showArticles.map((article, index) => (
               <div
                 key={index}
-                className="w-96 bg-[#FDFDFD] shadow-lg p-4 rounded-lg hover:shadow-xl transition flex flex-col justify-between"
+                className="w-96 bg-[#FDFDFD] shadow-lg p-4 rounded-2xl hover:scale-105 transition flex flex-col justify-between"
               >
                 <img
                   src={article.image}

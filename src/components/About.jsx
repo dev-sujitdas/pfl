@@ -57,7 +57,7 @@ const About = () => {
 
   return (
     <section id="about" className="w-full bg-[#FDFDFD] relative">
-      <div className="w-full max-w-[150rem] mx-auto p-[7rem] rounded-t-[5rem] bg-[#EEF4EA]">
+      <div className="w-full max-w-[150rem] mx-auto p-[7rem] rounded-t-[5rem] bg-[#EEF4EA] relative">
         
         <div className="about-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden">
@@ -78,7 +78,7 @@ const About = () => {
         </div>
 
         
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-16 mt-16">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-16 mt-16 relative">
           <div className="md:w-[40%] relative our-roots">
             <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
               Our Roots
@@ -106,7 +106,7 @@ const About = () => {
           
           <img src={sapling} alt="Growing Sapling" className="sapling md:w-[40%] h-[25rem]" />
           
-          <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] top-1/2 right-1/3 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
+          <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] top-[70%] right-1/3 -translate-x-1/2 -translate-y-[70%] z-10 rounded-full"></div>
         </div>
 
         

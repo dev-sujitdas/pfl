@@ -104,7 +104,7 @@ const ClientProp = () => {
             {clientData.map(({num, icon, title, description}, index)=>(
               <div key={index} className="client-list">
               <h2 id="num2" className="text-5xl poppins-semibold">{num}</h2>
-              <div className="p-5 w-[25rem] bg-[#FDFDFD] mt-3 rounded-2xl shadow-md hover:scale-105 transition select-none">
+              <div className="p-5 w-[25rem] bg-[#FDFDFD] mt-3 rounded-2xl shadow-md hover:scale-105 transition-all select-none">
                 <div className=" flex flex-col justify-center items-center gap-3">
                   <h2 className="h-16 w-16">
                     <img className="h-full w-full object-cover" src={icon} alt="" />

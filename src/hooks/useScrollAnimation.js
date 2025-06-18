@@ -12,7 +12,7 @@ const useScrollAnimation = () => {
     ".client-top",
     ".advisor-top",
     ".news-top",
-    // ".contact-top",
+    ".contact-top",
   ];
 
   const subtitleSelectors = [
@@ -20,7 +20,7 @@ const useScrollAnimation = () => {
     ".client-subtitle",
     ".news-subtitle",
     ".advisor-subtitle",
-    // ".contact-subtitle",
+    ".contact-subtitle",
   ];
 
   useGSAP(() => {
@@ -84,7 +84,7 @@ const useScrollAnimation = () => {
         scale: 0.9,
         y: 40,
         opacity: 0,
-        ease: "back.out(1.7)",
+        ease: "back.out(1.5)",
         delay: i * 0.1,
       });
     });

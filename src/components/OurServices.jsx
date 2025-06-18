@@ -137,7 +137,7 @@ const OurServices = () => {
           {serviceData.map(({ num, title, description, image }, index) => (
             <div
               key={index}
-              className="service-list flex border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] select-none"
+              className="service-list flex border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] -z-10 select-none"
             >
               <div className="w-[30%] py-[2rem] flex justify-center gap-12 items-center ">
                 <h2
@@ -157,7 +157,7 @@ const OurServices = () => {
               >
                 <img
                   ref={(el) => (imgRefs.current[index] = el)}
-                  className="absolute w-64 h-48 -top-5 rounded-2xl object-cover z-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute w-64 h-48 -top-5 rounded-2xl object-cover z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   src={image}
                   alt=""
                 />

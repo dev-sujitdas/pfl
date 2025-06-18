@@ -122,7 +122,7 @@
   
 }
 
-#client-proposition, #f-timeline{  
+#client-proposition, #f-timeline, #advisor{  
   position: relative;
   z-index: 1;
 }
@@ -138,7 +138,7 @@
   opacity: 0.05;
   z-index: -1; 
 }
-#f-timeline::before {
+#f-timeline::before, #advisor::before {
   content: "";
   position: absolute;
   inset: 0;

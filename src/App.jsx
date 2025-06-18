@@ -6,10 +6,14 @@ import OurServices from './components/OurServices'
 import ClientProp from './components/ClientProp'
 import News from './components/News'
 import OurAdvisor from './components/OurAdvisor'
+import ContactUs from './components/ContactUs'
+import Footer from './components/Footer'
+import FinCalc from './components/FinCalc'
 import './custom.css'
 import FinancialTimeline from './components/FinancialTimeline'
 import Lenis from '@studio-freight/lenis' 
 import useScrollAnimation from './hooks/useScrollAnimation'
+
 
 
 const App = () => {
@@ -38,6 +42,7 @@ const App = () => {
 
   return (
     <>
+    <div className='relative'>
       <Navbar lenis={lenisRef}/>
       <Home />
       <About />
@@ -46,6 +51,10 @@ const App = () => {
       <ClientProp />
       <News/>
       <OurAdvisor/>
+      <ContactUs/>
+      <Footer/>
+      <FinCalc/>
+    </div>
     </>
   );
 };
