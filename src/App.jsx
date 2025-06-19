@@ -52,7 +52,7 @@ const App = () => {
       <News/>
       <OurAdvisor/>
       <ContactUs/>
-      <Footer/>
+      {*/<Footer/>*/}
       <FinCalc/>
     </div>
     </>
