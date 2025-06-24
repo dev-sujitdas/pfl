@@ -13,6 +13,7 @@ import './custom.css'
 import FinancialTimeline from './components/FinancialTimeline'
 import Lenis from '@studio-freight/lenis' 
 import useScrollAnimation from './hooks/useScrollAnimation'
+import OurApp from './components/OurApp'
 
 
 
@@ -48,12 +49,13 @@ const App = () => {
       <About />
       <OurServices />
       <FinancialTimeline />
-      <ClientProp />
+      <ClientProp /> 
       <News/>
       <OurAdvisor/>
+      <OurApp/>
       <ContactUs/>
       <Footer/>
-      <FinCalc/>
+      {/* <FinCalc/> */}
     </div>
     </>
   );

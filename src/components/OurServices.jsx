@@ -9,7 +9,7 @@ import insurance from "/Images/insurance.jpg";
 import { FaChevronUp } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import gsap from "gsap";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
   const serviceData = [
     {
@@ -71,12 +71,24 @@ import { useRef, useState } from "react";
   ];
 
 const OurServices = () => {
-
+  const [isMobile, setIsMobile] = useState(false)
   const [openStates, setOpenStates] = useState(
     new Array(serviceData.length).fill(true)
   );
 
   const imgRefs = useRef([]);
+
+  const mobileView = 768;
+  useEffect(()=>{
+    const checkResize = ()=>{
+      setIsMobile(window.innerWidth < mobileView)
+    };
+
+    checkResize();
+    window.addEventListener("resize", checkResize);
+
+    return ()=> window.removeEventListener("resize", checkResize);
+  },[])
 
   const handleMouseMove = (e, index) => {
     const img = imgRefs.current[index];
@@ -112,20 +124,20 @@ const OurServices = () => {
 
   return (
     <section id="services" className="w-full  bg-[#EEF4EA]">
-      <div className="w-full max-w-[150rem] mx-auto p-[7rem] bg-[#2D2D2C] rounded-t-[5rem]">
+      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#2D2D2C]">    
 
-         <div className="service-top flex justify-between items-center">
-          <div className="h-[3.75rem] overflow-hidden">
-            <h2 className="text-6xl poppins-semibold text-[#fdfdfd]">
+        <div className="service-top flex justify-between items-center">
+          <div className="h-[3.75rem] overflow-hidden flex items-center">
+            <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#fdfdfd]">
               Our Services
             </h2>
           </div>
-          <div className="flex w-[20rem] gap-6 items-center justify-between">
-            <div className="w-28">
-              <div className="line w-28 h-1 bg-[#d4d4d8]"></div>
+          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+            <div className="hidden lg:w-28 md:block">
+              <div className="line w-5 lg:w-28 h-1 bg-[#d4d4d8]"></div>
             </div>
-            <div className="h-[5.3rem] w-[10rem] overflow-hidden">
-              <h3 className="text-xl poppins-medium w-[10rem] text-zinc-300">
+            <div className="h-[4rem] md:h-[5.3rem] w-[7rem] md:w-[10rem] overflow-hidden">
+              <h3 className="text-sm md:text-lg 2xl:text-xl poppins-medium w-[7rem] md:w-[10rem] text-zinc-300">
                 Reliable Services for a Secure Tomorrow
               </h3>
             </div>
@@ -137,23 +149,23 @@ const OurServices = () => {
           {serviceData.map(({ num, title, description, image }, index) => (
             <div
               key={index}
-              className="service-list flex border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] -z-10 select-none"
+              className={`service-list flex lg:flex-row flex-col border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] -z-10 select-none`}
             >
-              <div className="w-[30%] py-[2rem] flex justify-center gap-12 items-center ">
+              <div className={`xl:w-[30%] w-full py-[2rem] flex justify-center gap-12 items-center`}>
                 <h2
                   id="num"
-                  className="text-6xl poppins-semibold text-transparent "
+                  className="text-4xl md:text-6xl poppins-semibold text-transparent "
                 >
                   {num}
                 </h2>
-                <h2 className="w-[10rem] text-3xl poppins-medium text-[#FDFDFD]">
+                <h2 className="xl:w-[10rem] w-full text-xl poppins-medium text-[#FDFDFD]">
                   {title}
                 </h2>
               </div>
               <div
                 onMouseMove={(e) => handleMouseMove(e, index)}
                 onMouseLeave={() => handleMouseLeave(index)}
-                className="w-[25%] relative group"
+                className={isMobile ? "hidden" :"w-[25%] relative group"}
               >
                 <img
                   ref={(el) => (imgRefs.current[index] = el)}
@@ -162,9 +174,9 @@ const OurServices = () => {
                   alt=""
                 />
               </div>
-              <div className="w-[45%] flex items-center px-5 py-3 relative">
+              <div className="xl:w-[45%] w-full flex items-center lg:px-5 lg:py-3 relative">
                 <button
-                  className="absolute top-2 right-3 text-zinc-300"
+                  className="absolute -top-5 lg:top-1 right-3 text-zinc-300"
                   onClick={() => {
                     const updatedStates = [...openStates];
                     updatedStates[index] = !updatedStates[index];
@@ -174,7 +186,7 @@ const OurServices = () => {
                   {openStates[index] ? <FaChevronDown /> : <FaChevronUp /> }
                 </button>
                 {openStates[index] && (
-                  <p className="text-medium poppins-regular text-zinc-300 leading-7">
+                  <p className="lg:text-medium text-sm text-justify poppins-regular text-zinc-300 leading-7">
                     {description}
                   </p>
                 )}

@@ -73,34 +73,35 @@ const ClientProp = () => {
 
   return (
     <section id="proposition" className=" w-full  bg-[#fdfdfd] relative">
-      <div id="client-proposition" className="w-full max-w-[150rem] mx-auto p-[7rem] bg-[#EEF4EA] rounded-t-[5rem]">
+      <div id="client-proposition" className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA]">       
 
-           <div className="client-top flex justify-between items-center">
-          <div className="h-[3.75rem] overflow-hidden">
-            <h2 className="text-6xl poppins-semibold text-[#2C2B2B]">
+          <div className="client-top flex justify-between items-center">
+          <div className="lg:h-[3.5rem] h-[4.5rem] overflow-hidden flex items-center">
+            <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#2C2B2B]">
               Client Value Proposition
             </h2>
           </div>
-          <div className="flex w-[20rem] gap-6 items-center justify-between">
-            <div className="w-28">
-              <div className="line w-28 h-1 bg-[#52525c]"></div>
+          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+            <div className="hidden lg:w-28 md:block">
+              <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
-            <div className="h-[5.3rem] w-[10rem] overflow-hidden">
-              <h3 className="text-xl poppins-medium w-[10rem] text-zinc-600">
+            <div className="h-[4rem] md:h-[5.3rem] w-[7rem] md:w-[10rem] overflow-hidden">
+              <h3 className="text-sm md:text-lg 2xl:text-xl poppins-medium w-[7rem] md:w-[10rem] text-zinc-600">
                 Steps to your financial freedom
               </h3>
             </div>
           </div>
-        </div>  
+        </div>
+
         <div className="client-subtitle">
-        <h3 className="subtitle mt-6 text-2xl poppins-regular-italic w-[30%] text-zinc-500">
+        <h3 className="subtitle mt-6 text-lg lg:text-2xl poppins-regular-italic w-full xl:w-[30%] text-zinc-500">
           A personalized, step-by-step approach to securing your financial
           future with expert guidance at every stage
         </h3>
           </div>
-        <div  className=" w-full mx-auto flex justify-center items-center flex-wrap mt-10">
+        <div  className="w-full mx-auto flex justify-center items-center flex-wrap mt-10">
 
-          <div className="w-full mx-auto flex flex-wrap justify-center items-center gap-10">
+          <div className="w-full mx-auto flex flex-wrap justify-center items-center lg:gap-10 gap-5">
             {clientData.map(({num, icon, title, description}, index)=>(
               <div key={index} className="client-list">
               <h2 id="num2" className="text-5xl poppins-semibold">{num}</h2>

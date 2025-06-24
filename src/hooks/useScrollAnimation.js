@@ -12,6 +12,7 @@ const useScrollAnimation = () => {
     ".client-top",
     ".advisor-top",
     ".news-top",
+    ".app-top",
     ".contact-top",
   ];
 
@@ -21,6 +22,7 @@ const useScrollAnimation = () => {
     ".news-subtitle",
     ".advisor-subtitle",
     ".contact-subtitle",
+    ".app-subtitle",
   ];
 
   useGSAP(() => {
@@ -32,7 +34,7 @@ const useScrollAnimation = () => {
     subtitleSelectors.forEach((selector) => {
       animateSubtitle(selector);
     });
-    
+
     gsap.from(".sapling", {
       scrollTrigger: {
         trigger: ".about-top",
@@ -44,7 +46,6 @@ const useScrollAnimation = () => {
       ease: "power2.out",
     });
 
-    
     gsap.from(".our-roots", {
       scrollTrigger: {
         trigger: ".our-roots",
@@ -58,7 +59,6 @@ const useScrollAnimation = () => {
       ease: "power2.out",
     });
 
-    
     gsap.from(".core-value-card-wrapper", {
       scrollTrigger: {
         trigger: ".core-value-card-wrapper",
@@ -89,7 +89,6 @@ const useScrollAnimation = () => {
       });
     });
 
-    
     gsap.utils.toArray(".client-list").forEach((item, i) => {
       gsap.from(item, {
         scrollTrigger: {
@@ -107,7 +106,6 @@ const useScrollAnimation = () => {
       });
     });
 
-    
     gsap.from(".testimonial-card", {
       scrollTrigger: {
         trigger: ".testimonial-card",
@@ -121,12 +119,92 @@ const useScrollAnimation = () => {
       ease: "power3.out",
     });
 
+    gsap.from([".timeline-video", ".timeline-item"], {
+      scrollTrigger: {
+        trigger: ".timeline-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
+    gsap.from(".news-card", {
+      scrollTrigger: {
+        trigger: ".news-card-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      y: 60,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
+    gsap.from(".newsletter", {
+      scrollTrigger: {
+        trigger: ".newsletter",
+        start: "top 90%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      y: 60,
+      opacity: 0,
+      ease: "power3.out",
+    });
+
+    gsap.from(".advisor-card", {
+      scrollTrigger: {
+        trigger: ".advisor-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power3.out",
+    });
+
+    gsap.from([".app-subtitle", ".app-para", ".app-img"], {
+      scrollTrigger: {
+        trigger: ".app-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
+    gsap.from([".app-subtitle", ".contact-form", ".contact-img"], {
+      scrollTrigger: {
+        trigger: ".contact-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
     ScrollTrigger.refresh();
   }, []);
 
   return null;
 };
-
 
 const animateHeading = (triggerSelector) => {
   gsap.from(`${triggerSelector} h2, ${triggerSelector} h3`, {

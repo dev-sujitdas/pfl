@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import sapling from "/Images/saplings.png";
 import leaf from "/Icons/leaf.png";
 import growth from "/Icons/growth.png";
@@ -8,12 +8,33 @@ import { RiDoubleQuotesL } from "react-icons/ri";
 import { FaCaretRight } from "react-icons/fa";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-// import useScrollAnimation from "../hooks/useScrollAnimation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-// useScrollAnimation();
+  const [isMobile, setIsMobile] = useState(false);
+  // const testimonialRef = useRef(null);
+  const mobileView = 768;
+
+  useEffect(() => {
+    const checkResize = () => {
+      setIsMobile(window.innerWidth < mobileView);
+    };
+    checkResize();
+    window.addEventListener("resize", checkResize);
+
+    return () => window.removeEventListener("resize", checkResize);
+  }, []);
+
+  // useEffect(() => {
+  //   if (isMobile && testimonialRef.current) {
+  //     testimonialRef.current.scrollTo({
+  //       left: 0,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // }, [isMobile]);
+
   const cardData = [
     {
       icon: trust,
@@ -57,33 +78,31 @@ const About = () => {
 
   return (
     <section id="about" className="w-full bg-[#FDFDFD] relative">
-      <div className="w-full max-w-[150rem] mx-auto p-[7rem] rounded-t-[5rem] bg-[#EEF4EA] relative">
-        
+      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative">
         <div className="about-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden">
-            <h2 className="text-6xl poppins-semibold text-[#2C2B2B]">
+            <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#2C2B2B]">
               About Us
             </h2>
           </div>
-          <div className="flex w-[20rem] gap-6 items-center justify-between">
-            <div className="w-28">
-              <div className="line w-28 h-1 bg-[#52525c]"></div>
+          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+            <div className="hidden lg:w-28 md:block">
+              <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
-            <div className="h-[5.3rem] w-[10rem] overflow-hidden">
-              <h3 className="text-xl poppins-medium w-[10rem] text-zinc-600">
+            <div className="h-[4rem] md:h-[5.3rem] w-[7rem] md:w-[10rem] overflow-hidden">
+              <h3 className="text-sm md:text-lg 2xl:text-xl poppins-medium w-[7rem] md:w-[10rem] text-zinc-600">
                 Plan Your Financial Future with PFL
               </h3>
             </div>
           </div>
         </div>
 
-        
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-16 mt-16 relative">
-          <div className="md:w-[40%] relative our-roots">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-10 mb-5 md:mb-16 mt-5 md:mt-16 relative">
+          <div className="w-full lg:w-[40%] relative our-roots">
             <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
               Our Roots
             </h3>
-            <p className="text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
+            <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
               Plan For Life is a financial service provider that has been
               operating since 1998. We are primarily focused on the creation and
               management of wealth assets for our clients. We are passionate
@@ -103,18 +122,21 @@ const About = () => {
             </h4>
             <div className="absolute w-30 h-30 blur-[150px] bg-[#50aa35] top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
           </div>
-          
-          <img src={sapling} alt="Growing Sapling" className="sapling md:w-[40%] h-[25rem]" />
-          
+
+          <img
+            src={sapling}
+            alt="Growing Sapling"
+            className="sapling w-full lg:w-[40%] h-[25rem]"
+          />
+
           <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] top-[70%] right-1/3 -translate-x-1/2 -translate-y-[70%] z-10 rounded-full"></div>
         </div>
 
-        
-        <div className="w-[80%] mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-8 mb-16 text-center">
+        <div className="w-full  mx-auto flex flex-wrap justify-center items-center gap-6 mb-16 text-center">
           {cardData.map(({ icon, title, para }, index) => (
             <div
               key={index}
-              className="core-value-card-wrapper p-0 z-50" 
+              className="core-value-card-wrapper p-0 z-50 max-w-[20rem]"
             >
               <div className="core-value-card p-5 shadow-md rounded-xl bg-[#FDFDFD] flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300 select-none z-50">
                 <div className="mb-3 h-14 w-14">
@@ -133,23 +155,25 @@ const About = () => {
           ))}
         </div>
 
-        
         <div>
           <h3 className="text-2xl poppins-semibold text-center mb-10 text-[#2C2B2B]">
             What Our Clients Say
           </h3>
-          <div className="flex justify-center flex-wrap gap-6 ">
+          <div            
+            className={`flex gap-6 ${
+              isMobile
+                ? "flex-nowrap overflow-x-auto overflow-y-hidden hide-scrollbar h-[18rem] snap-x snap-mandatory"
+                : "flex-wrap justify-center"
+            }`}
+          >
             {testimonial.map(({ quote, name }, i) => (
-              <div
-                key={i}
-                className="testimonial-card  z-50"
-              >
-                <div className="max-w-72 bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
-                <p className="poppins-semibold text-left text-lg">
-                  <RiDoubleQuotesL />
-                </p>
-                <p className="poppins-light-italic mb-4">{quote}</p>
-                <p className="font-semibold text-right">— {name}</p>
+              <div key={i} className={`testimonial-card snap-start shrink-0 z-50 ${isMobile && i === 0 ? "pl-4" : ""}`}>
+                <div className="max-w-72 h-fit  bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
+                  <p className="poppins-semibold text-left text-lg">
+                    <RiDoubleQuotesL />
+                  </p>
+                  <p className="poppins-light-italic mb-4">{quote}</p>
+                  <p className="font-semibold text-right">— {name}</p>
                 </div>
               </div>
             ))}

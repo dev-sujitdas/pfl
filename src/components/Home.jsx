@@ -46,34 +46,34 @@ const Home = () => {
       id="home"
       className="h-screen w-full bg-[#FDFDFD] relative overflow-hidden"
     >
-      <div className="p-[7rem] max-w-[150rem] mx-auto relative h-full flex justify-center items-center">
+      <div id="home-container" className="lg:p-[7rem] max-w-[150rem] h-full mx-auto relative flex justify-center items-center">
         <div
           id="left"
-          className="w-1/2 h-full flex flex-col justify-center relative z-50 lg:pl-5"
+          className="w-full lg:w-1/2 h-full flex flex-col justify-center relative z-50 2xl:pl-5"
         >
           <div id="title">
-            <h1 className="text-[5rem] leading-20 pr-5 poppins-semibold h-[6rem] overflow-hidden">
+            <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
               <span className="inline-block">Your Partner in</span>
             </h1>
-            <h1 className="text-[5rem] leading-20 pr-5 poppins-semibold h-[6rem] overflow-hidden">
+            <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
               <span className="inline-block">Lifelong Financial</span>
             </h1>
-            <h1 className="text-[5rem] leading-20 pr-5 poppins-semibold h-[6rem] overflow-hidden">
+            <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
               <span className="inline-block">Growth</span>
             </h1>
           </div>
 
-          <div className="w-1/2 mt-5 z-50">
-            <p ref={paraRef} className="text-[1.2rem] text-zinc-600">
+          <div className="para w-full 2xl:w-1/2 mt-2 2xl:mt-5 z-50">
+            <p ref={paraRef} className="xl:text-[1.2rem] text-[1rem] text-zinc-600">
               Offering personalized financial strategies to help you grow,
               protect, and enjoy your wealth — with clarity, integrity, and
               expert guidance every step of the way.
             </p>
           </div>
-          <a href="">
+          <a href="#contact">
             <button
               ref={buttonRef}
-              className="px-5 py-2 mt-5 rounded-full poppins-regular bg-[#2c2b2b] border-2 border-amber-50 hover:bg-[#BA8748] text-amber-50 font-medium cursor-pointer"
+              className="px-5 py-2 mt-2 2xl:mt-5 rounded-full poppins-regular bg-[#2c2b2b] border-2 border-amber-50 hover:bg-[#BA8748] text-amber-50 font-medium text-[0.8rem] xl:text-[1rem] cursor-pointer"
             >
               Get in touch
             </button>
@@ -92,9 +92,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-full h-16 absolute bottom-3 z-30 flex justify-center items-center">
+      <div id="anchor-container" className="w-full h-16 absolute bottom-3 z-30 flex justify-center items-center">
         <a id="acnchor" href="#about">
-          <h2 className="font-bold text-5xl text-[#2C2B2B] ">
+          <h2 className="font-bold text-4xl 2xl:text-5xl text-[#2C2B2B] ">
             <RiArrowDownDoubleFill />
           </h2>
         </a>

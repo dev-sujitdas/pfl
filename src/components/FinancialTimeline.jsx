@@ -62,7 +62,8 @@ const ageGroups = {
 };
 
 const FinancialTimeline = () => {
-  
+  const [isMobile, setIsMobile]= useState(false);
+  const [isDesktop, setIsDesktop]= useState(false);
   const [selectedAge, setSelectedAge] = useState("20-40");
   const videoRef = useRef(null);
   const contentRef = useRef(null);  
@@ -71,6 +72,29 @@ const FinancialTimeline = () => {
     if (age === selectedAge) return;
     setSelectedAge(age);    
   };
+
+  const mobileView = 768;
+  useEffect(()=>{
+    const checkResize = ()=>{
+      setIsMobile(window.innerWidth < mobileView)
+    };
+
+    checkResize();
+    window.addEventListener("resize", checkResize);
+
+    return ()=> window.removeEventListener("resize", checkResize);
+  },[])
+
+  const screen = 820;
+  useEffect(()=>{
+   const checkResize = ()=>{
+      setIsDesktop(window.innerWidth > screen)
+    };
+    checkResize();
+    window.addEventListener("resize", checkResize);
+
+    return ()=> window.removeEventListener("resize", checkResize);
+  },[])
 
 useEffect(() => {
   gsap.fromTo(
@@ -89,34 +113,35 @@ useEffect(() => {
 
   return (
     <section id="timeline" className="w-full bg-[#2D2D2C] relative">
-      <div id="f-timeline" className="w-full max-w-[150rem] mx-auto p-[7rem] bg-[#fdfdfd] rounded-t-[5rem]">
+      <div id="f-timeline" className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd]">      
 
-         <div className="timeline-top flex justify-between items-center">
-          <div className="h-[3.75rem] overflow-hidden">
-            <h2 className="text-6xl poppins-semibold text-[#2C2B2B]">
+           <div className="timeline-top flex justify-between items-center">
+          <div className="h-[3.75rem] overflow-hidden flex items-center">
+            <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#2C2B2B]">
               Financial Timeline
             </h2>
           </div>
-          <div className="flex w-[20rem] gap-6 items-center justify-between">
-            <div className="w-28">
-              <div className="line w-28 h-1 bg-[#52525c]"></div>
+          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+            <div className="hidden lg:w-28 md:block">
+              <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
-            <div className="h-[5.3rem] w-[10rem] overflow-hidden">
-              <h3 className="text-xl poppins-medium w-[10rem] text-zinc-600">
+            <div className="h-[4rem] md:h-[5.3rem] w-[7rem] md:w-[10rem] overflow-hidden">
+              <h3 className="text-sm md:text-lg 2xl:text-xl poppins-medium w-[7rem] md:w-[10rem] text-zinc-600">
                 Reliable Services for a Secure Tomorrow
               </h3>
             </div>
           </div>
-        </div>    
+        </div>
+
         <div className="timeline-subtitle">
-        <h3 className="subtitle mt-6 text-2xl poppins-regular-italic w-[30%] text-zinc-400">
+        <h3 className="subtitle mt-6 text-lg lg:text-2xl poppins-regular-italic w-full xl:w-[30%] text-zinc-400">
           Tailored financial strategies for every chapter of your life, backed
           by trusted expertise.
         </h3>
         </div>
-        <div className="flex justify-center items-center  mt-6">
-          {/* Left: Video */}
-          <div className="w-1/2 h-full rounded-2xl">
+
+        <div className={`timeline-wrapper flex ${isMobile && "flex-col"} justify-center items-center  mt-6 mb-10`}>          
+          <div className={`timeline-video w-1/2 ${isMobile && "w-full"} h-full rounded-2xl`}>
             <video
               key={selectedAge}
               ref={videoRef}
@@ -127,46 +152,42 @@ useEffect(() => {
               className="w-full h-full object-cover z-50 rounded-2xl"
             />
           </div>          
-          <div className="w-1/2 h-full  flex items-center justify-center ">                        
-            <div ref={contentRef} className="max-w-lg p-6 space-y-4 flex flex-col justify-center items-center">
+          <div className={`w-1/2 h-full  flex items-center justify-center` }>                        
+            <div ref={contentRef} className="max-w-lg p-3 space-y-4 flex flex-col justify-center items-center">
               {ageGroups[selectedAge].content.map((item, index) => (
                 <div key={index}>
                   <div className="timeline-item flex justify-center items-center gap-5">
                     <h2
                       id="num2" 
-                      className={`h-16 w-16 text-4xl poppins-semibold rounded-full flex justify-center items-center shadow-md`}
+                      className={`lg:h-16 lg:w-16 h-10 w-10 lg:text-4xl text-xl poppins-semibold rounded-full flex justify-center items-center shadow-md`}
                       style={{ backgroundColor: item.numColor }}
                     >
                       {item.num}
                     </h2>
                     <h3 
-                    className="w-64 text-xl font-bold text-white px-5 py-3 bg-red-400 rounded-r-full shadow-md"
+                    className="w-52 lg:w-64 text-lg lg:text-xl font-bold text-white lg:px-6 px-3 py-2 bg-red-400 rounded-r-full shadow-md"
                     style={{ backgroundColor: item.titleColor }}
                     >
                       {item.title}
                     </h3>
                   </div>
                 </div>
-              ))}
-              {/* <div className="px-4 py-2 rounded-xl bg-[#EEF4EA] shadow-md">
-                <p className="text-gray-600 text-lg poppins-regular-italic">
-                {ageGroups[selectedAge].desc.description}
-              </p>
-              </div> */}              
+              ))}                          
             </div>
           </div>          
-          <div className="absolute bottom-5 w-fit flex justify-center gap-4 z-50">
+          <div className="absolute bottom-5 w-full flex justify-center gap-4 z-50">
             {Object.keys(ageGroups).map((range) => (
               <button
                 key={range}
                 onClick={() => handleAgeClick(range)}
-                className={`px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-300 shadow-md ${
-                  selectedAge === range
+                className={`px-2 md:px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-300 shadow-md 
+                  ${
+                    selectedAge === range
                     ? "bg-[#2C2B2B] text-white"
                     : "bg-gray-200"
-                }`}
+                  }`}
               >
-                <div><h2>{ageGroups[range].sub.subtitle}</h2></div>
+                <div><h2>{isDesktop ? (ageGroups[range].sub.subtitle) : "" }</h2></div>
                 Age {range}
               </button>
             ))}
