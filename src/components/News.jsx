@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import { getFinancialNews } from "../api/news";
-// import useScrollAnimation from '../hooks/useScrollAnimation'
+import { getFinancialNews } from "../api/news";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const News = () => {
-  // useScrollAnimation();
   const [showArticles, setShowArticles] = useState([]);
   const [emailData, setEmailData] = useState({ email: "" });
 
@@ -31,6 +33,78 @@ const News = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    const titleAnimation = gsap.from(".news-top h2, .news-top h3", {
+      scrollTrigger: {
+        trigger: ".news-top",
+        start: "top 90%",
+        end: "top 50%",
+      },
+      y: 80,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const lineAnimationation = gsap.fromTo(
+      ".news-top .line",
+      { width: "0", x: "7rem" },
+      {
+        scrollTrigger: {
+          trigger: ".news-top",
+          start: "top 90%",
+          end: "top 50%",
+        },
+        width: "7rem",
+        x: "0",
+        opacity: 1,
+        ease: "power2.out",
+      }
+    );
+
+    const subtitleAnimation = gsap.from(".news-subtitle .subtitle", {
+      scrollTrigger: {
+        trigger: ".news-subtitle",
+        start: "top 85%",
+        end: "top 40%",
+      },
+      y: 80,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const cardAnimation = gsap.from(".news-card-wrapper", {
+      scrollTrigger: {
+        trigger: ".news-card-wrapper",
+        start: "top 90%",
+        end: "top 50%",
+      },
+      y: 60,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
+    const newsAnimation = gsap.from(".newsletter", {
+      scrollTrigger: {
+        trigger: ".newsletter",
+        start: "top 90%",
+        end: "top 50%",
+      },
+      y: 60,
+      opacity: 0,
+      ease: "power3.out",
+    });
+
+    return () => {
+      titleAnimation.scrollTrigger?.kill();
+      lineAnimationation.scrollTrigger?.kill();
+      subtitleAnimation.scrollTrigger?.kill();
+      cardAnimation.scrollTrigger?.kill();
+      newsAnimation.scrollTrigger?.kill();
+    };
+  }, []);
 
   return (
     <section id="news" className="w-full  bg-[#EEF4EA]">

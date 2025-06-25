@@ -1,9 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import finance from "/Images/finance-app.png";
-// import useScrollAnimation from '../hooks/useScrollAnimation'
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const OurApp = () => {
-  // useScrollAnimation();
+  useEffect(() => {
+    const titleAnimation = gsap.from(".app-top h2, .app-top h3", {
+      scrollTrigger: {
+        trigger: ".app-top",
+        start: "top 90%",
+        end: "top 50%",
+      },
+      y: 80,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const lineAnimationation = gsap.fromTo(".app-top .line",
+      { width: "0", x: "7rem" },
+      {
+        scrollTrigger: {
+          trigger: ".app-top",
+          start: "top 90%",
+          end: "top 50%",
+        },
+        width: "7rem",
+        x: "0",
+        opacity: 1,
+        ease: "power2.out",
+      }
+    );
+
+    const subtitleAnimation = gsap.from(".app-subtitle .subtitle", {
+      scrollTrigger: {
+        trigger: ".app-subtitle",
+        start: "top 85%",
+        end: "top 40%",
+      },
+      y: 80,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    gsap.from([".app-subtitle", ".app-para", ".app-img"], {
+      scrollTrigger: {
+        trigger: ".app-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
+    return () => {
+      titleAnimation.scrollTrigger?.kill();
+      lineAnimationation.scrollTrigger?.kill();
+      subtitleAnimation.scrollTrigger?.kill();
+    };
+  }, []);
+
   return (
     <section id="app" className="w-full  bg-[#EEF4EA]">
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd] relative">
@@ -45,8 +106,8 @@ const OurApp = () => {
                 meet your unique financial needs, making everyday financial
                 tasks effortless.
               </p>
-                <h3 className="poppins-semibold mt-4"> Want to learn more? </h3>
-                <p>Don't hesitate to get in touch—we're here to help.</p>
+              <h3 className="poppins-semibold mt-4"> Want to learn more? </h3>
+              <p>Don't hesitate to get in touch—we're here to help.</p>
             </div>
           </div>
           <div className="absolute w-30 h-30 blur-[120px] bg-[#3d742b] top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
@@ -54,7 +115,7 @@ const OurApp = () => {
             <div className="app-img h-[20rem] lg:h-[35rem] w-full flex justify-center items-center">
               <img className="h-full" src={finance} alt="" />
             </div>
-          </div>          
+          </div>
         </div>
       </div>
     </section>

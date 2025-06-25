@@ -2,10 +2,33 @@ import React, { useState, useEffect } from "react";
 import face1 from "/Images/face1.jpg";
 import face2 from "/Images/face2.jpg";
 import face3 from "/Images/face3.jpg";
-// import useScrollAnimation from '../hooks/useScrollAnimation'
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const advisorData = [
+  {
+    image: face1,
+    name: "Gerrit Bezuidenhout",
+    description:
+      "Gerrit joined Sanlam in 1989 as a Legal Adviser and moved into management roles at Sanlam and Momentum from 1992 to 1998. In 1998, he co-founded PFL with Craig Shillaw. He holds an LLB from UNISA, a Postgraduate Diploma in Financial Planning from UFS, and is a CFP® professional.",
+  },
+  {
+    image: face2,
+    name: "Tihan Bezuidenhout",
+    description:
+      "Tihan began his career in 2012 as a Paraplanner at PFL, gaining broad experience in financial planning with a focus on personal finance and investment management. He holds a BCom and a Postgraduate Diploma in Financial Planning from the University of Stellenbosch, and is a CFP® professional.",
+  },
+  {
+    image: face3,
+    name: "Micky Alborough",
+    description:
+      "Micky began her career in financial services in 1976 with NBS Bank and achieved Executive Financial Planner status in 1984. She joined Plan for Life in 2000 and specializes in personal financial planning, serving a well-established client base in Durban.",
+  },
+];
 
 const OurAdvisor = () => {
-  // useScrollAnimation();
   const [isMobile, setIsMobile] = useState(false);
   const mobileView = 1280;
   useEffect(() => {
@@ -19,26 +42,66 @@ const OurAdvisor = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-  const advisorData = [
-    {
-      image: face1,
-      name: "Gerrit Bezuidenhout",
-      description:
-        "Gerrit joined Sanlam in 1989 as a Legal Adviser and moved into management roles at Sanlam and Momentum from 1992 to 1998. In 1998, he co-founded PFL with Craig Shillaw. He holds an LLB from UNISA, a Postgraduate Diploma in Financial Planning from UFS, and is a CFP® professional.",
-    },
-    {
-      image: face2,
-      name: "Tihan Bezuidenhout",
-      description:
-        "Tihan began his career in 2012 as a Paraplanner at PFL, gaining broad experience in financial planning with a focus on personal finance and investment management. He holds a BCom and a Postgraduate Diploma in Financial Planning from the University of Stellenbosch, and is a CFP® professional.",
-    },
-    {
-      image: face3,
-      name: "Micky Alborough",
-      description:
-        "Micky began her career in financial services in 1976 with NBS Bank and achieved Executive Financial Planner status in 1984. She joined Plan for Life in 2000 and specializes in personal financial planning, serving a well-established client base in Durban.",
-    },
-  ];
+  useEffect(() => {
+    const titleAnimation = gsap.from(".advisor-top h2, .advisor-top h3", {
+      scrollTrigger: {
+        trigger: ".advisor-top",
+        start: "top 90%",
+        end: "top 50%",
+      },
+      y: 80,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const lineAnimationation = gsap.fromTo(
+      ".advisor-top .line",
+      { width: "0", x: "7rem" },
+      {
+        scrollTrigger: {
+          trigger: ".advisor-top",
+          start: "top 90%",
+          end: "top 50%",
+        },
+        width: "7rem",
+        x: "0",
+        opacity: 1,
+        ease: "power2.out",
+      }
+    );
+
+    const subtitleAnimation = gsap.from(".advisor-subtitle .subtitle", {
+      scrollTrigger: {
+        trigger: ".advisor-subtitle",
+        start: "top 85%",
+        end: "top 40%",
+      },
+      y: 80,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const advisorAnimation = gsap.from(".advisor-card", {
+      scrollTrigger: {
+        trigger: ".advisor-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power3.out",
+    });
+
+    return () => {
+      titleAnimation.scrollTrigger?.kill();
+      lineAnimationation.scrollTrigger?.kill();
+      subtitleAnimation.scrollTrigger?.kill();
+      advisorAnimation.scrollTrigger?.kill();
+    };
+  }, []);
 
   return (
     <section id="advisors" className="w-full  bg-[#2D2D2C]">
@@ -70,7 +133,11 @@ const OurAdvisor = () => {
           </h3>
         </div>
         <div className="w-full mx-auto mt-10 flex justify-center items-center">
-          <div className={`advisor-wrapper flex flex-wrap ${isMobile && "justify-center items-center"} gap-10 relative`}>
+          <div
+            className={`advisor-wrapper flex flex-wrap ${
+              isMobile && "justify-center items-center"
+            } gap-10 relative`}
+          >
             {advisorData.map((item, index) => (
               <div
                 key={index}

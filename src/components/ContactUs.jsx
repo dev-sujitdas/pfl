@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import customer from "/Images/customer-support.png";
-// import useScrollAnimation from '../hooks/useScrollAnimation'
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactUs = () => {
-  // useScrollAnimation();
-  const findoutmore = ["Our App", "Our Services", "Schedule an appointment"];
+  const findoutmore = [
+    "Our contact",
+    "Our Services",
+    "Schedule an contactointment",
+  ];
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,6 +30,66 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    const titleAnimation = gsap.from(".contact-top h2, .contact-top h3", {
+      scrollTrigger: {
+        trigger: ".contact-top",
+        start: "top 90%",
+        end: "top 50%",
+      },
+      y: 80,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const lineAnimationation = gsap.fromTo(
+      ".contact-top .line",
+      { width: "0", x: "7rem" },
+      {
+        scrollTrigger: {
+          trigger: ".contact-top",
+          start: "top 90%",
+          end: "top 50%",
+        },
+        width: "7rem",
+        x: "0",
+        opacity: 1,
+        ease: "power2.out",
+      }
+    );
+
+    const subtitleAnimation = gsap.from(".contact-subtitle .subtitle", {
+      scrollTrigger: {
+        trigger: ".contact-subtitle",
+        start: "top 85%",
+        end: "top 40%",
+      },
+      y: 80,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    gsap.from([".contact-form", ".contact-img"], {
+      scrollTrigger: {
+        trigger: ".contact-wrapper",
+        start: "top 90%",
+        end: "top 55%",
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
+    return () => {
+      titleAnimation.scrollTrigger?.kill();
+      lineAnimationation.scrollTrigger?.kill();
+      subtitleAnimation.scrollTrigger?.kill();
+    };
+  }, []);
 
   return (
     <section id="contact" className="w-full  bg-[#fdfdfd]">
@@ -57,7 +123,10 @@ const ContactUs = () => {
           </div>
 
           <div className="right lg:w-1/2 w-full">
-            <form onSubmit={handleSubmit} className="contact-form max-w-[600px] mx-auto p-4">
+            <form
+              onSubmit={handleSubmit}
+              className="contact-form max-w-[600px] mx-auto p-4"
+            >
               <h4 className="text-zinc-300 text-lg md:text-xl poppins-regular-italic">
                 Find out more about:
               </h4>

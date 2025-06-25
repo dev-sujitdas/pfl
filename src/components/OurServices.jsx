@@ -9,7 +9,10 @@ import insurance from "/Images/insurance.jpg";
 import { FaChevronUp } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
   const serviceData = [
     {
@@ -124,57 +127,60 @@ const OurServices = () => {
   };
 
   useEffect(() => {
-    const titleAnimation = gsap.from(".service-top h2, .service-top h3", {
+  const titleAnimation = gsap.from(".service-top h2, .service-top h3", {
+    scrollTrigger: {
+      trigger: ".service-top",
+      start: "top 90%",
+      end: "top 50%",
+      
+    },
+    y: 80,
+    stagger: 0.2,
+    ease: "power2.out",
+  });
+
+  const lineAnimationation = gsap.fromTo(
+    ".service-top .line",
+    { width: "0", x: "7rem" },
+    {
       scrollTrigger: {
         trigger: ".service-top",
-        start: "top 60%",
-        end: "top 0",
-        scrub: 1,
+        start: "top 85%",
+        end: "top 40%",
+        
       },
-      y: 80,
-      stagger: 0.2,
+      width: "7rem",
+      x: "0",
+      opacity: 1,
       ease: "power2.out",
+    }
+  );
+
+  const serviceAnimation = gsap.utils.toArray(".service-list").forEach((item, i) => {
+    gsap.from(item, {
+      scrollTrigger: {
+        trigger: item,
+        start: "top 95%",
+        end: "top 60%",
+        
+        // markers: true
+      },
+      scale: 0.9,
+      y: 40,
+      opacity: 0,
+      ease: "back.out(1.5)",
+      delay: i * 0.1,
     });
+  });
 
-    const lineAnimationation = gsap.fromTo(
-      ".service-top .line",
-      { width: "0", x: "7rem" },
-      {
-        scrollTrigger: {
-          trigger: ".service-top",
-          start: "top 60%",
-          end: "top 0",
-          scrub: 1,
-        },
-        width: "7rem",
-        x: "0",
-        opacity: 1,
-        ease: "power2.out",
-      }
-    );
 
-    const serviceAnimation =  gsap.utils.toArray(".service-list").forEach((item, i) => {
-      gsap.from(item, {
-        scrollTrigger: {
-          trigger: item,
-          start: "top 70%",
-          end: "top 30%",
-          scrub: 1,
-        },
-        scale: 0.9,
-        y: 40,
-        opacity: 0,
-        ease: "back.out(1.5)",
-        delay: i * 0.1,
-      });
-    });
+  return () => {
+    titleAnimation.scrollTrigger?.kill();
+    lineAnimationation.scrollTrigger?.kill();
+    serviceAnimation.scrollTrigger?.kill();
+  };
+}, []);
 
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-      serviceAnimation.scrollTrigger?.kill();
-    };
-  }, []);
 
 
 

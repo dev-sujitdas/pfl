@@ -32,7 +32,7 @@ const About = () => {
         trigger: ".about-top",
         start: "top 60%",
         end: "top 0",
-        scrub: 1,
+        
       },
       y: 80,
       stagger: 0.2,
@@ -47,7 +47,7 @@ const About = () => {
           trigger: ".about-top",
           start: "top 60%",
           end: "top 0",
-          scrub: 1,
+          
         },
         width: "7rem",
         x: "0",
@@ -68,7 +68,7 @@ const About = () => {
         trigger: ".about-top",
         start: "top 60%",
         end: "top 30%",
-        scrub: 1,
+        
       },
       opacity: 0,
       ease: "power2.out",
@@ -79,7 +79,7 @@ const About = () => {
         trigger: ".our-roots",
         start: "top 70%",
         end: "top 30%",
-        scrub: 1,
+        
       },
       y: 80,
       opacity: 0,
@@ -92,7 +92,7 @@ const About = () => {
         trigger: ".core-value-card-wrapper",
         start: "top 90%",
         end: "top 50%",
-        scrub: 1,
+        
       },
       scale: 0.9,
       y: 40,
@@ -106,7 +106,7 @@ const About = () => {
         trigger: ".testimonial-card",
         start: "top 90%",
         end: "top 50%",
-        scrub: 1,
+        
       },
       y: 60,
       opacity: 0,
