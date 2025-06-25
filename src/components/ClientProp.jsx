@@ -1,5 +1,4 @@
 import React from "react";
-// import "../custom.css";
 import agreement from "/Icons/agreement.png";
 import analysis from "/Icons/analysis.png";
 import clientInfo from "/Icons/clientInfo.png";
@@ -8,10 +7,10 @@ import monitor from "/Icons/monitor.png";
 import presentation from "/Icons/presentation.png";
 import relationship from "/Icons/relationship.png";
 import implement from "/Icons/implement.png";
-// import ScrollAnimation from "../hooks/useScrollAnimation";
+
 
 const ClientProp = () => {
-  // ScrollAnimation();
+  
   const clientData = [
     {
       num: "01",

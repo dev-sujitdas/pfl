@@ -133,7 +133,7 @@ const useScrollAnimation = () => {
       ease: "power3.out",
     });
 
-    gsap.from(".news-card", {
+    gsap.from(".news-card-wrapper", {
       scrollTrigger: {
         trigger: ".news-card-wrapper",
         start: "top 70%",

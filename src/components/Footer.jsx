@@ -49,7 +49,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="poppins-regular text-sm tracking-wider hover:text-[#BA8748]">
                 {" "}
-                {/* <Link to="/aboutUs">About Us</Link> */}About Us
+                <a href="#about">About Us</a>
               </li>
               <li className="poppins-regular text-sm tracking-wider hover:text-[#BA8748]">
                 <a href="mailto:info@pfl.co.za">Support</a>
