@@ -17,7 +17,7 @@ const Home = () => {
       stagger: 0.2,
       duration: 0.8,
       ease: "power4.out",
-      delay: 0.5,
+      delay: 1,
     })
       .from(
         paraRef.current,

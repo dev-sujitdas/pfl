@@ -4,6 +4,7 @@ import video40 from '/Video/40-50.mp4'
 import video60 from '/Video/60+.mp4'
 import video20 from '/Video/20-40.mp4'
 import video50 from '/Video/50-60.mp4'
+// import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const ageGroups = {
 
@@ -62,6 +63,7 @@ const ageGroups = {
 };
 
 const FinancialTimeline = () => {
+  // useScrollAnimation();
   const [isMobile, setIsMobile]= useState(false);
   const [isDesktop, setIsDesktop]= useState(false);
   const [selectedAge, setSelectedAge] = useState("20-40");
@@ -109,6 +111,92 @@ useEffect(() => {
     }
   );
 }, [selectedAge]);
+
+useEffect(() => {
+    const titleAnimation = gsap.from(".timeline-top h2, .timeline-top h3", {
+      scrollTrigger: {
+        trigger: ".timeline-top",
+        start: "top 60%",
+        end: "top 0",
+        scrub: 1,
+      },
+      y: 80,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const lineAnimationation = gsap.fromTo(
+      ".timeline-top .line",
+      { width: "0", x: "7rem" },
+      {
+        scrollTrigger: {
+          trigger: ".timeline-top",
+          start: "top 60%",
+          end: "top 0",
+          scrub: 1,
+        },
+        width: "7rem",
+        x: "0",
+        opacity: 1,
+        ease: "power2.out",
+      }
+    );
+
+    const subtitleAnimation = gsap.from(".timeline-subtitle .subtitle", {
+    scrollTrigger: {
+      trigger: ".timeline-subtitle",
+      start: "top 65%",
+      end: "top 0",
+      scrub: 1,
+    },
+    y: 80,
+    opacity: 0,
+    stagger: 0.2,
+    ease: "power2.out",
+  });
+
+    return () => {
+      titleAnimation.scrollTrigger?.kill();
+      lineAnimationation.scrollTrigger?.kill();
+      subtitleAnimation.scrollTrigger?.kill();
+    };
+  }, []);
+
+useEffect(()=>{
+
+  const videoItemAnimation =  gsap.from(".timeline-wrapper", {
+      scrollTrigger: {
+        trigger: ".timeline-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      y: 60,
+      delay: 1,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+  
+    const btnAnimation = gsap.from(".btn",{
+      scrollTrigger:{
+        trigger: ".timeline-wrapper",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+        // markers: true
+      },
+      opacity: 0,
+      y: 40,
+      ease: "expo.inOut"
+    });
+  
+
+    return ()=>{
+      videoItemAnimation.scrollTrigger?.kill();
+      btnAnimation.scrollTrigger?.kill();      
+    }
+},[]);
 
 
   return (
@@ -174,13 +262,14 @@ useEffect(() => {
                 </div>
               ))}                          
             </div>
-          </div>          
-          <div className="absolute bottom-5 w-full flex justify-center gap-4 z-50">
+          </div>                    
+        </div>
+        <div className="absolute bottom-5 xl:bottom-12 left-0 w-full flex justify-center gap-4 z-50">
             {Object.keys(ageGroups).map((range) => (
               <button
                 key={range}
                 onClick={() => handleAgeClick(range)}
-                className={`px-2 md:px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-300 shadow-md 
+                className={`btn px-2 md:px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-300 shadow-md 
                   ${
                     selectedAge === range
                     ? "bg-[#2C2B2B] text-white"
@@ -192,7 +281,6 @@ useEffect(() => {
               </button>
             ))}
           </div>
-        </div>
       </div>
     </section>
   );

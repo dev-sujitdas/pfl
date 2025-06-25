@@ -7,9 +7,11 @@ import monitor from "/Icons/monitor.png";
 import presentation from "/Icons/presentation.png";
 import relationship from "/Icons/relationship.png";
 import implement from "/Icons/implement.png";
+// import useScrollAnimation from '../hooks/useScrollAnimation'
 
 
 const ClientProp = () => {
+  // useScrollAnimation();
   
   const clientData = [
     {

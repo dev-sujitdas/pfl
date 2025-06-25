@@ -1,7 +1,9 @@
 import React from "react";
 import finance from "/Images/finance-app.png";
+// import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const OurApp = () => {
+  // useScrollAnimation();
   return (
     <section id="app" className="w-full  bg-[#EEF4EA]">
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd] relative">

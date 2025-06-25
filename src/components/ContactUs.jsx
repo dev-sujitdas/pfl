@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import customer from "/Images/customer-support.png";
+// import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const ContactUs = () => {
+  // useScrollAnimation();
   const findoutmore = ["Our App", "Our Services", "Schedule an appointment"];
   const [formData, setFormData] = useState({
     name: "",

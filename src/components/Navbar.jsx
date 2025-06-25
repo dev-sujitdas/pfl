@@ -1,4 +1,4 @@
-import React, { useRef, useState, useLayoutEffect } from "react";
+import React, { useRef, useState, useLayoutEffect, useEffect } from "react";
 import logo from "/PFL Logo2.png";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
@@ -16,7 +16,7 @@ const navItems = [
 const Navbar = ({ lenis }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const mobNavRef = useRef();
-
+  const navRef = useRef();
   const handleScroll = (link) => {
     if (lenis?.current) {
       lenis.current.scrollTo(link);
@@ -43,9 +43,21 @@ const Navbar = ({ lenis }) => {
     }
   }, [isMobileOpen]);
 
+   useEffect(() => {
+      if (navRef.current) {
+        gsap.from(navRef.current.querySelectorAll("button, .desk-menu, img"), {
+          y: -30,
+          duration: 0.6,
+          delay: 0.5,
+          opacity: 0,
+          stagger: 0.1,
+        });
+      }
+    }, []);
+
   return (
     <nav className="w-full fixed top-0 z-[999] backdrop-blur-2xl bg-[#b7d4a334]" aria-label="Main navigation">
-      <div className="max-w-[150rem] w-[90%] mx-auto px-2 lg:px-7 py-4 sm:py-3 flex justify-between items-center border-b border-black/10">        
+      <div ref={navRef} className="max-w-[150rem] w-[90%] mx-auto px-2 lg:px-7 py-4 sm:py-3 flex justify-between items-center border-b border-black/10">        
         <div className="h-12">
           <a href="/">
             <img className="w-full h-full" src={logo} alt="Company Logo" />

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import face1 from "/Images/face1.jpg";
 import face2 from "/Images/face2.jpg";
 import face3 from "/Images/face3.jpg";
+// import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const OurAdvisor = () => {
+  // useScrollAnimation();
   const [isMobile, setIsMobile] = useState(false);
   const mobileView = 1280;
   useEffect(() => {

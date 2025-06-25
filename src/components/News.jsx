@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getFinancialNews } from "../api/news";
+// import { getFinancialNews } from "../api/news";
+// import useScrollAnimation from '../hooks/useScrollAnimation'
 
 const News = () => {
+  // useScrollAnimation();
   const [showArticles, setShowArticles] = useState([]);
   const [emailData, setEmailData] = useState({ email: "" });
 

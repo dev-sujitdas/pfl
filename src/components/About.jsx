@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const [isMobile, setIsMobile] = useState(false);
-  // const testimonialRef = useRef(null);
+
   const mobileView = 768;
 
   useEffect(() => {
@@ -26,14 +26,101 @@ const About = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-  // useEffect(() => {
-  //   if (isMobile && testimonialRef.current) {
-  //     testimonialRef.current.scrollTo({
-  //       left: 0,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // }, [isMobile]);
+  useEffect(() => {
+    const titleAnimation = gsap.from(".about-top h2, .about-top h3", {
+      scrollTrigger: {
+        trigger: ".about-top",
+        start: "top 60%",
+        end: "top 0",
+        scrub: 1,
+      },
+      y: 80,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const lineAnimationation = gsap.fromTo(
+      ".about-top .line",
+      { width: "0", x: "7rem" },
+      {
+        scrollTrigger: {
+          trigger: ".about-top",
+          start: "top 60%",
+          end: "top 0",
+          scrub: 1,
+        },
+        width: "7rem",
+        x: "0",
+        opacity: 1,
+        ease: "power2.out",
+      }
+    );
+
+    return () => {
+      titleAnimation.scrollTrigger?.kill();
+      lineAnimationation.scrollTrigger?.kill();
+    };
+  }, []);
+
+  useEffect(() => {
+    const saplingAnimation = gsap.from(".sapling", {
+      scrollTrigger: {
+        trigger: ".about-top",
+        start: "top 60%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      opacity: 0,
+      ease: "power2.out",
+    });
+
+    const rootsAnimation = gsap.from(".our-roots", {
+      scrollTrigger: {
+        trigger: ".our-roots",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+      y: 80,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+
+    const cardAnimation = gsap.from(".core-value-card-wrapper", {
+      scrollTrigger: {
+        trigger: ".core-value-card-wrapper",
+        start: "top 90%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      scale: 0.9,
+      y: 40,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "back.out(1.7)",
+    });
+
+    const testimAmination = gsap.from(".testimonial-card", {
+      scrollTrigger: {
+        trigger: ".testimonial-card",
+        start: "top 90%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      y: 60,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "power3.out",
+    });
+
+    return () => {
+      saplingAnimation.scrollTrigger?.kill();
+      rootsAnimation.scrollTrigger?.kill();
+      cardAnimation.scrollTrigger?.kill();
+      testimAmination.scrollTrigger?.kill();
+    };
+  }, []);
 
   const cardData = [
     {
@@ -159,7 +246,7 @@ const About = () => {
           <h3 className="text-2xl poppins-semibold text-center mb-10 text-[#2C2B2B]">
             What Our Clients Say
           </h3>
-          <div            
+          <div
             className={`flex gap-6 ${
               isMobile
                 ? "flex-nowrap overflow-x-auto overflow-y-hidden hide-scrollbar h-[18rem] snap-x snap-mandatory"
@@ -167,7 +254,12 @@ const About = () => {
             }`}
           >
             {testimonial.map(({ quote, name }, i) => (
-              <div key={i} className={`testimonial-card snap-start shrink-0 z-50 ${isMobile && i === 0 ? "pl-4" : ""}`}>
+              <div
+                key={i}
+                className={`testimonial-card snap-start shrink-0 z-50 ${
+                  isMobile && i === 0 ? "pl-4" : ""
+                }`}
+              >
                 <div className="max-w-72 h-fit  bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
                   <p className="poppins-semibold text-left text-lg">
                     <RiDoubleQuotesL />

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
@@ -12,14 +12,22 @@ import FinCalc from './components/FinCalc'
 import './custom.css'
 import FinancialTimeline from './components/FinancialTimeline'
 import Lenis from '@studio-freight/lenis' 
-import useScrollAnimation from './hooks/useScrollAnimation'
 import OurApp from './components/OurApp'
-
+import Loader from './components/Loader'
 
 
 const App = () => {
-
+  const [isLoading, setIsLoading] = useState(true);
   const lenisRef = useRef(null);
+
+  useEffect(()=>{
+    const appLoad = async ()=> {
+      await new Promise((resolve)=> setTimeout(resolve, 2000));
+      setIsLoading(false)
+    };
+    appLoad();
+  },[]);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.8,
@@ -38,12 +46,12 @@ const App = () => {
     return () => lenis.destroy();
   }, []);
   
-  useScrollAnimation();
   
 
   return (
     <>
-    <div className='relative'>
+    {isLoading ? (<Loader isLoading={isLoading} />) : (
+      <>
       <Navbar lenis={lenisRef}/>
       <Home />
       <About />
@@ -55,9 +63,10 @@ const App = () => {
       <OurApp/>
       <ContactUs/>
       <Footer/>
-      {/* <FinCalc/> */}
-    </div>
-    </>
+      {/* <FinCalc/> */} 
+      </>
+    )}
+    </>             
   );
 };
 
