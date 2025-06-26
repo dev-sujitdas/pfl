@@ -18,7 +18,8 @@ const OurApp = () => {
       ease: "power2.out",
     });
 
-    const lineAnimationation = gsap.fromTo(".app-top .line",
+    const lineAnimationation = gsap.fromTo(
+      ".app-top .line",
       { width: "0", x: "7rem" },
       {
         scrollTrigger: {
@@ -57,6 +58,8 @@ const OurApp = () => {
       stagger: 0.3,
       ease: "power3.out",
     });
+
+ 
 
     return () => {
       titleAnimation.scrollTrigger?.kill();

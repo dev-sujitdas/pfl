@@ -298,8 +298,7 @@ const FinancialTimeline = () => {
         start: "top 90%",
         end: "top 50%",
       },
-      y: 60,
-      delay: 1,
+      y: 60,      
       opacity: 0,
       stagger: 0.3,
       ease: "power3.out",
@@ -309,9 +308,7 @@ const FinancialTimeline = () => {
       scrollTrigger: {
         trigger: ".timeline-wrapper",
         start: "top 95%",
-        end: "top 70%",
-
-        // markers: true
+        end: "top 70%",        
       },
       opacity: 0,
       y: 40,

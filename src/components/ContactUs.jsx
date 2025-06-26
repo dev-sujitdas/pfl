@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import customer from "/Images/customer-support.png";
+import emailjs from '@emailjs/browser';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ContactUs = () => {
-  const findoutmore = [
+  const services = [
     "Our contact",
     "Our Services",
     "Schedule an contactointment",
@@ -16,10 +17,11 @@ const ContactUs = () => {
     email: "",
     message: "",
   });
-  const [selectFindoutMore, setSelectFindoutMore] = useState("");
+  const [selectServices, setSelectServices] = useState("");
 
-  const handleClick = (item) => {
-    setSelectFindoutMore(item);
+  const handleClick = (item, e) => {
+    e.preventDefault();
+    setSelectServices(item);
   };
 
   const handleChange = (e) => {
@@ -28,8 +30,30 @@ const ContactUs = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  e.preventDefault();
+
+  emailjs.send(
+    'service_l5w88d8', 
+    'template_9e9zxnz', 
+    {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      subject: selectServices 
+    },
+    '-kCBwfPFdb64GezCK' 
+  )
+  .then(() => {
+    alert("Message sent successfully!");
+    setFormData({ name: "", email: "", message: "" });
+    setSelectServices("");
+  })
+  .catch((error) => {
+    console.error("Error sending email:", error);
+    alert("Failed to send message.");
+  });
+};
+
 
   useEffect(() => {
     const titleAnimation = gsap.from(".contact-top h2, .contact-top h3", {
@@ -123,7 +147,7 @@ const ContactUs = () => {
           </div>
 
           <div className="right lg:w-1/2 w-full">
-            <form
+            <form             
               onSubmit={handleSubmit}
               className="contact-form max-w-[600px] mx-auto p-4"
             >
@@ -131,12 +155,12 @@ const ContactUs = () => {
                 Find out more about:
               </h4>
               <div className="flex flex-wrap gap-2 my-4">
-                {findoutmore.map((item, index) => (
+                {services.map((item, index) => (
                   <button
                     key={index}
-                    onClick={() => handleClick(item)}
+                    onClick={(e) => handleClick(item, e)}
                     className={`px-5 py-2 rounded-full poppins-regular ${
-                      selectFindoutMore === item
+                      selectServices === item
                         ? "bg-[#BA8748]"
                         : "bg-[#2c2b2b]"
                     }  border-2 border-amber-50 hover:bg-[#BA8748] text-sm md:text-medium text-amber-50 font-medium cursor-pointer`}
@@ -174,7 +198,7 @@ const ContactUs = () => {
                   className="w-full px-4 py-2 border bg-[#e9e9e9] border-gray-400 rounded-2xl my-2"
                 />
               </div>
-              <button
+              <button                
                 type="submit"
                 className="w-full px-5 py-2 rounded-2xl poppins-regular bg-[#2c2b2b] border-2 border-amber-50 hover:bg-[#BA8748] text-amber-50 text-sm md:text-medium poppins-medium cursor-pointer"
               >
