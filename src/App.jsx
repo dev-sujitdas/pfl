@@ -13,7 +13,7 @@ import OurAdvisor from "./components/OurAdvisor";
 import OurApp from "./components/OurApp";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
-import FinCalc from "./components/FinCalc";
+
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,8 +61,7 @@ const App = () => {
           <OurAdvisor />
           <OurApp />
           <ContactUs />
-          <Footer />
-          {/* <FinCalc/> */}
+          <Footer />                    
         </>
       )}
     </>

@@ -4,6 +4,7 @@ import face2 from "/Images/face2.jpg";
 import face3 from "/Images/face3.jpg";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,65 +43,66 @@ const OurAdvisor = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-  useEffect(() => {
-    const titleAnimation = gsap.from(".advisor-top h2, .advisor-top h3", {
-      scrollTrigger: {
-        trigger: ".advisor-top",
-        start: "top 90%",
-        end: "top 50%",
-      },
-      y: 80,
-      stagger: 0.2,
-      ease: "power2.out",
-    });
+   useEffect(() => {
+    ScrollTrigger.refresh();
+  }, [isMobile]);
 
-    const lineAnimationation = gsap.fromTo(
-      ".advisor-top .line",
-      { width: "0", x: "7rem" },
-      {
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      const titleTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: ".advisor-top",
-          start: "top 90%",
+          start: "top 70%",
+          end: "top 30%",
+          
+        },
+      });
+
+      titleTimeline.from(".advisor-top h2, .advisor-top h3", {
+        y: 80,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power2.out",
+      });
+
+      titleTimeline.fromTo(
+        ".advisor-top .line",
+        { width: "0", x: "7rem", opacity: 0 },
+        {
+          width: "7rem",
+          x: "0",
+          opacity: 1,
+          ease: "power2.out",
+        },
+        "<"
+      );
+
+      gsap.from(".advisor-subtitle .subtitle", {
+        scrollTrigger: {
+          trigger: ".advisor-subtitle",
+          start: "top 80%",
+          end: "top 40%",
+        },
+        y: 80,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power2.out",
+      });
+
+      gsap.from(".advisor-card", {
+        scrollTrigger: {
+          trigger: ".advisor-wrapper",
+          start: "top 95%",
           end: "top 50%",
         },
-        width: "7rem",
-        x: "0",
-        opacity: 1,
-        ease: "power2.out",
-      }
-    );
-
-    const subtitleAnimation = gsap.from(".advisor-subtitle .subtitle", {
-      scrollTrigger: {
-        trigger: ".advisor-subtitle",
-        start: "top 85%",
-        end: "top 40%",
-      },
-      y: 80,
-      opacity: 0,
-      stagger: 0.2,
-      ease: "power2.out",
+        y: 60,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power3.out",
+      });
     });
 
-    const advisorAnimation = gsap.from(".advisor-card", {
-      scrollTrigger: {
-        trigger: ".advisor-wrapper",
-        start: "top 70%",
-        end: "top 30%",
-      },
-      y: 60,
-      delay: 1,
-      opacity: 0,
-      stagger: 0.2,
-      ease: "power3.out",
-    });
-
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-      subtitleAnimation.scrollTrigger?.kill();
-      advisorAnimation.scrollTrigger?.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -134,9 +136,8 @@ const OurAdvisor = () => {
         </div>
         <div className="w-full mx-auto mt-10 flex justify-center items-center">
           <div
-            className={`advisor-wrapper flex flex-wrap ${
-              isMobile && "justify-center items-center"
-            } gap-10 relative`}
+            className={`advisor-wrapper flex flex-wrap gap-10 relative 
+              ${isMobile ? "justify-center items-center" : ""}`}
           >
             {advisorData.map((item, index) => (
               <div

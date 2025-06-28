@@ -9,6 +9,7 @@ import insurance from "/Images/insurance.jpg";
 import { FaChevronUp } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 
@@ -126,59 +127,48 @@ const OurServices = () => {
     });
   };
 
-  useEffect(() => {
-  const titleAnimation = gsap.from(".service-top h2, .service-top h3", {
-    scrollTrigger: {
-      trigger: ".service-top",
-      start: "top 90%",
-      end: "top 50%",
-      
-    },
-    y: 80,
-    stagger: 0.2,
-    ease: "power2.out",
-  });
-
-  const lineAnimationation = gsap.fromTo(
-    ".service-top .line",
-    { width: "0", x: "7rem" },
-    {
+useGSAP(() => {
+  const ctx = gsap.context(() => {
+    
+    const titleTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".service-top",
         start: "top 85%",
-        end: "top 40%",
-        
+        end: "top 50%",
       },
-      width: "7rem",
-      x: "0",
-      opacity: 1,
-      ease: "power2.out",
-    }
-  );
+    });
 
-  const serviceAnimation = gsap.utils.toArray(".service-list").forEach((item, i) => {
-    gsap.from(item, {
-      scrollTrigger: {
-        trigger: item,
-        start: "top 95%",
-        end: "top 60%",
-        
-        // markers: true
-      },
-      scale: 0.9,
-      y: 40,
-      opacity: 0,
-      ease: "back.out(1.5)",
-      delay: i * 0.1,
+    titleTimeline
+      .from(".service-top h2, .service-top h3", {
+        y: 80,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "power2.out",
+      })
+      .from(".service-top .line", {
+        width: 0,
+        x: "7rem",
+        opacity: 0,
+        ease: "power2.out",
+      }, "-=0.4");
+    
+    gsap.utils.toArray(".service-list").forEach((item, i) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%",
+          end: "top 40%",
+        },
+        scale: 0.9,
+        y: 40,
+        opacity: 0,
+        ease: "back.out(1.5)",
+        delay: i * 0.1,
+      });
     });
   });
 
-
-  return () => {
-    titleAnimation.scrollTrigger?.kill();
-    lineAnimationation.scrollTrigger?.kill();
-    serviceAnimation.scrollTrigger?.kill();
-  };
+  return () => ctx.revert(); 
 }, []);
 
 
@@ -211,7 +201,7 @@ const OurServices = () => {
           {serviceData.map(({ num, title, description, image }, index) => (
             <div
               key={index}
-              className={`service-list flex lg:flex-row flex-col border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] -z-10 select-none`}
+              className={`service-list flex lg:flex-row flex-col border-t-2 border-[#FDFDFD] nth-last-[1]:border-b-2 hover:bg-[#BA8748] -z-0 select-none`}
             >
               <div className={`xl:w-[30%] w-full py-[2rem] flex justify-center gap-12 items-center`}>
                 <h2

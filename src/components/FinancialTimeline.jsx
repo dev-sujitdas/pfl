@@ -3,6 +3,7 @@ import video40 from "/Video/40-50.mp4";
 import video60 from "/Video/60+.mp4";
 import video20 from "/Video/20-40.mp4";
 import video50 from "/Video/50-60.mp4";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -230,52 +231,54 @@ const FinancialTimeline = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-  useEffect(() => {
-    gsap.fromTo(
-      ".timeline-item",
-      { opacity: 0, x: -30 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out",
-      }
-    );
-  }, [selectedAge]);
+  useGSAP(() => {
+  gsap.fromTo(
+    ".timeline-item",
+    { opacity: 0, x: -30 },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.6,
+      stagger: 0.2,
+      ease: "power2.out",
+    }
+  );
+}, [selectedAge]);
 
-  useEffect(() => {
-    const titleAnimation = gsap.from(".timeline-top h2, .timeline-top h3", {
+
+  useGSAP(() => {
+  const ctx = gsap.context(() => {
+    const titleTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".timeline-top",
-        start: "top 90%",
+        start: "top 85%",
         end: "top 50%",
       },
+    });
+
+    titleTimeline.from(".timeline-top h2, .timeline-top h3", {
       y: 80,
       stagger: 0.2,
       ease: "power2.out",
+      opacity: 0,
     });
 
-    const lineAnimationation = gsap.fromTo(
+    titleTimeline.fromTo(
       ".timeline-top .line",
-      { width: "0", x: "7rem" },
+      { width: "0", x: "7rem", opacity: 0 },
       {
-        scrollTrigger: {
-          trigger: ".timeline-top",
-          start: "top 90%",
-          end: "top 50%",
-        },
         width: "7rem",
         x: "0",
         opacity: 1,
         ease: "power2.out",
-      }
+      },
+      "<" 
     );
 
-    const subtitleAnimation = gsap.from(".timeline-subtitle .subtitle", {
+    gsap.from(".timeline-subtitle .subtitle", {
       scrollTrigger: {
         trigger: ".timeline-subtitle",
-        start: "top 85%",
+        start: "top 80%",
         end: "top 40%",
       },
       y: 80,
@@ -284,42 +287,33 @@ const FinancialTimeline = () => {
       ease: "power2.out",
     });
 
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-      subtitleAnimation.scrollTrigger?.kill();
-    };
-  }, []);
-
-  useEffect(() => {
-    const videoItemAnimation = gsap.from(".timeline-wrapper", {
+    gsap.from(".timeline-wrapper", {
       scrollTrigger: {
         trigger: ".timeline-wrapper",
         start: "top 90%",
         end: "top 50%",
       },
-      y: 60,      
+      y: 60,
       opacity: 0,
       stagger: 0.3,
       ease: "power3.out",
     });
 
-    const btnAnimation = gsap.from(".btn", {
+    gsap.from(".btn", {
       scrollTrigger: {
         trigger: ".timeline-wrapper",
-        start: "top 95%",
-        end: "top 70%",        
+        start: "top 90%",
+        end: "top 50%",
       },
       opacity: 0,
       y: 40,
       ease: "expo.inOut",
-    });
+    },"<");
+  });
 
-    return () => {
-      videoItemAnimation.scrollTrigger?.kill();
-      btnAnimation.scrollTrigger?.kill();
-    };
-  }, []);
+  return () => ctx.revert();
+}, []);
+
 
   return (
     <section id="timeline" className="w-full bg-[#2D2D2C] relative">

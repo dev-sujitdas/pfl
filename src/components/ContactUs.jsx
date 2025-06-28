@@ -3,6 +3,7 @@ import customer from "/Images/customer-support.png";
 import emailjs from '@emailjs/browser';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,65 +56,67 @@ const ContactUs = () => {
 };
 
 
-  useEffect(() => {
-    const titleAnimation = gsap.from(".contact-top h2, .contact-top h3", {
+  useGSAP(() => {
+  const ctx = gsap.context(() => {
+    ScrollTrigger.refresh(); 
+
+    const titleTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".contact-top",
-        start: "top 90%",
-        end: "top 50%",
+        start: "top 70%",
+        end: "top 30%",                
       },
+    });
+
+    titleTimeline.from(".contact-top h2, .contact-top h3", {
       y: 80,
+      opacity: 0,
       stagger: 0.2,
       ease: "power2.out",
     });
 
-    const lineAnimationation = gsap.fromTo(
+    titleTimeline.fromTo(
       ".contact-top .line",
-      { width: "0", x: "7rem" },
+      { width: "0", x: "7rem", opacity: 0 },
       {
-        scrollTrigger: {
-          trigger: ".contact-top",
-          start: "top 90%",
-          end: "top 50%",
-        },
         width: "7rem",
         x: "0",
         opacity: 1,
         ease: "power2.out",
-      }
+      },
+      "<" 
     );
 
-    const subtitleAnimation = gsap.from(".contact-subtitle .subtitle", {
+    gsap.from(".contact-subtitle .subtitle", {
       scrollTrigger: {
         trigger: ".contact-subtitle",
         start: "top 85%",
-        end: "top 40%",
+        end: "top 50%",
+        toggleActions: "play none none reverse",
       },
       y: 80,
       opacity: 0,
-      stagger: 0.2,
       ease: "power2.out",
     });
 
     gsap.from([".contact-form", ".contact-img"], {
       scrollTrigger: {
         trigger: ".contact-wrapper",
-        start: "top 90%",
-        end: "top 55%",
+        start: "top 85%",
+        end: "top 50%",
+        toggleActions: "play none none reverse",
       },
       y: 60,
-      delay: 1,
       opacity: 0,
-      stagger: 0.3,
+      stagger: 0.2,
       ease: "power3.out",
     });
+  });
 
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-      subtitleAnimation.scrollTrigger?.kill();
-    };
-  }, []);
+  return () => ctx.revert(); 
+}, []);
+
+
 
   return (
     <section id="contact" className="w-full  bg-[#fdfdfd]">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getFinancialNews } from "../api/news";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,38 +35,39 @@ const News = () => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    const titleAnimation = gsap.from(".news-top h2, .news-top h3", {
+  useGSAP(() => {
+  const ctx = gsap.context(() => {
+    const titleTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".news-top",
-        start: "top 90%",
+        start: "top 85%",
         end: "top 50%",
       },
+    });
+
+    titleTimeline.from(".news-top h2, .news-top h3", {
       y: 80,
+      opacity: 0,
       stagger: 0.2,
       ease: "power2.out",
     });
 
-    const lineAnimationation = gsap.fromTo(
+    titleTimeline.fromTo(
       ".news-top .line",
-      { width: "0", x: "7rem" },
+      { width: "0", x: "7rem", opacity: 0 },
       {
-        scrollTrigger: {
-          trigger: ".news-top",
-          start: "top 90%",
-          end: "top 50%",
-        },
         width: "7rem",
         x: "0",
         opacity: 1,
         ease: "power2.out",
-      }
+      },
+      "<" 
     );
 
-    const subtitleAnimation = gsap.from(".news-subtitle .subtitle", {
+    gsap.from(".news-subtitle .subtitle", {
       scrollTrigger: {
         trigger: ".news-subtitle",
-        start: "top 85%",
+        start: "top 80%",
         end: "top 40%",
       },
       y: 80,
@@ -74,7 +76,7 @@ const News = () => {
       ease: "power2.out",
     });
 
-    const cardAnimation = gsap.from(".news-card-wrapper", {
+    gsap.from(".news-card-wrapper", {
       scrollTrigger: {
         trigger: ".news-card-wrapper",
         start: "top 90%",
@@ -86,7 +88,7 @@ const News = () => {
       ease: "power3.out",
     });
 
-    const newsAnimation = gsap.from(".newsletter", {
+    gsap.from(".newsletter", {
       scrollTrigger: {
         trigger: ".newsletter",
         start: "top 90%",
@@ -96,15 +98,11 @@ const News = () => {
       opacity: 0,
       ease: "power3.out",
     });
+  });
 
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-      subtitleAnimation.scrollTrigger?.kill();
-      cardAnimation.scrollTrigger?.kill();
-      newsAnimation.scrollTrigger?.kill();
-    };
-  }, []);
+  return () => ctx.revert();
+}, []);
+
 
   return (
     <section id="news" className="w-full  bg-[#EEF4EA]">

@@ -2,42 +2,45 @@ import React, { useEffect } from "react";
 import finance from "/Images/finance-app.png";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const OurApp = () => {
-  useEffect(() => {
-    const titleAnimation = gsap.from(".app-top h2, .app-top h3", {
+
+  useGSAP(() => {
+  const ctx = gsap.context(() => {
+    const titleTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".app-top",
-        start: "top 90%",
-        end: "top 50%",
+        start: "top 70%",
+        end: "top 30%",
       },
+    });
+
+    titleTimeline.from(".app-top h2, .app-top h3", {
       y: 80,
+      opacity: 0,
       stagger: 0.2,
       ease: "power2.out",
     });
 
-    const lineAnimationation = gsap.fromTo(
+    titleTimeline.fromTo(
       ".app-top .line",
-      { width: "0", x: "7rem" },
+      { width: "0", x: "7rem", opacity: 0 },
       {
-        scrollTrigger: {
-          trigger: ".app-top",
-          start: "top 90%",
-          end: "top 50%",
-        },
         width: "7rem",
         x: "0",
         opacity: 1,
         ease: "power2.out",
-      }
+      },
+      "<"
     );
 
-    const subtitleAnimation = gsap.from(".app-subtitle .subtitle", {
+    gsap.from(".app-subtitle .subtitle", {
       scrollTrigger: {
         trigger: ".app-subtitle",
-        start: "top 85%",
+        start: "top 80%",
         end: "top 40%",
       },
       y: 80,
@@ -49,24 +52,20 @@ const OurApp = () => {
     gsap.from([".app-subtitle", ".app-para", ".app-img"], {
       scrollTrigger: {
         trigger: ".app-wrapper",
-        start: "top 70%",
-        end: "top 30%",
+        start: "top 90%",
+        end: "top 50%",
       },
       y: 60,
-      delay: 1,
+      delay: 0.5,
       opacity: 0,
       stagger: 0.3,
       ease: "power3.out",
     });
+  });
 
- 
+  return () => ctx.revert();
+}, []);
 
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-      subtitleAnimation.scrollTrigger?.kill();
-    };
-  }, []);
 
   return (
     <section id="app" className="w-full  bg-[#EEF4EA]">

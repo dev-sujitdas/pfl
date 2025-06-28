@@ -9,6 +9,7 @@ import relationship from "/Icons/relationship.png";
 import implement from "/Icons/implement.png";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,38 +73,39 @@ const clientData = [
 ];
 
 const ClientProp = () => {
-  useEffect(() => {
-    const titleAnimation = gsap.from(".client-top h2, .client-top h3", {
+  useGSAP(() => {
+  const ctx = gsap.context(() => {
+    const titleTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".client-top",
-        start: "top 90%",
+        start: "top 85%",
         end: "top 50%",
       },
+    });
+
+    titleTimeline.from(".client-top h2, .client-top h3", {
       y: 80,
       stagger: 0.2,
+      opacity: 0,
       ease: "power2.out",
     });
 
-    const lineAnimationation = gsap.fromTo(
+    titleTimeline.fromTo(
       ".client-top .line",
-      { width: "0", x: "7rem" },
+      { width: "0", x: "7rem", opacity: 0 },
       {
-        scrollTrigger: {
-          trigger: ".client-top",
-          start: "top 90%",
-          end: "top 50%",
-        },
         width: "7rem",
         x: "0",
         opacity: 1,
         ease: "power2.out",
-      }
+      },
+      "<" 
     );
 
-    const subtitleAnimation = gsap.from(".client-subtitle .subtitle", {
+    gsap.from(".client-subtitle .subtitle", {
       scrollTrigger: {
         trigger: ".client-subtitle",
-        start: "top 85%",
+        start: "top 80%",
         end: "top 40%",
       },
       y: 80,
@@ -112,28 +114,24 @@ const ClientProp = () => {
       ease: "power2.out",
     });
 
-    const listAnimation = gsap.utils.toArray(".client-list").forEach((item) => {
+    gsap.utils.toArray(".client-list").forEach((item) => {
       gsap.from(item, {
         scrollTrigger: {
           trigger: item,
-          start: "top 80%",
-          end: "top 40%",
+          start: "top 90%",
+          end: "top 50%",
         },
         scale: 0.9,
         y: 40,
         opacity: 0,
-
         ease: "back.out(1.7)",
       });
     });
+  });
 
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-      subtitleAnimation.scrollTrigger?.kill();
-      listAnimation.scrollTrigger?.kill();
-    };
-  }, []);
+  return () => ctx.revert();
+}, []);
+
 
   return (
     <section id="proposition" className=" w-full  bg-[#fdfdfd] relative">

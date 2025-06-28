@@ -7,6 +7,7 @@ import mirror from "/Icons/mirror.png";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { FaCaretRight } from "react-icons/fa";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,73 +27,63 @@ const About = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-  useEffect(() => {
-    const titleAnimation = gsap.from(".about-top h2, .about-top h3", {
+  useGSAP(() => {
+  const ctx = gsap.context(() => {
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".about-top",
-        start: "top 60%",
-        end: "top 0",
-        
-      },
+        start: "top 85%",
+        end: "top 50%",
+      }
+    });
+
+    tl.from(".about-top h2, .about-top h3", {
       y: 80,
       stagger: 0.2,
       ease: "power2.out",
-    });
-
-    const lineAnimationation = gsap.fromTo(
-      ".about-top .line",
-      { width: "0", x: "7rem" },
-      {
-        scrollTrigger: {
-          trigger: ".about-top",
-          start: "top 60%",
-          end: "top 0",
-          
-        },
-        width: "7rem",
-        x: "0",
-        opacity: 1,
-        ease: "power2.out",
-      }
-    );
-
-    return () => {
-      titleAnimation.scrollTrigger?.kill();
-      lineAnimationation.scrollTrigger?.kill();
-    };
-  }, []);
-
-  useEffect(() => {
-    const saplingAnimation = gsap.from(".sapling", {
-      scrollTrigger: {
-        trigger: ".about-top",
-        start: "top 60%",
-        end: "top 30%",
-        
-      },
       opacity: 0,
+    }).from(".about-top .line", {
+      width: "0",
+      x: "7rem",
       ease: "power2.out",
-    });
+    }, "-=0.3"); 
+  });
 
-    const rootsAnimation = gsap.from(".our-roots", {
+  return () => ctx.revert(); 
+}, []);
+
+useGSAP(() => {
+  const ctx = gsap.context(() => {
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".our-roots",
-        start: "top 70%",
-        end: "top 30%",
-        
+        start: "top 80%",
+        end: "top 40%",
       },
-      y: 80,
-      opacity: 0,
-      stagger: 0.2,
-      ease: "power2.out",
     });
 
-    const cardAnimation = gsap.from(".core-value-card-wrapper", {
+    tl.from(".our-roots", {
+      y: 80,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    }).from(".sapling", {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    }, "-=0.5"); 
+  });
+
+  return () => ctx.revert();
+}, []);
+
+useGSAP(() => {
+  const ctx = gsap.context(() => {
+    gsap.from(".core-value-card-wrapper", {
       scrollTrigger: {
         trigger: ".core-value-card-wrapper",
         start: "top 90%",
         end: "top 50%",
-        
       },
       scale: 0.9,
       y: 40,
@@ -101,26 +92,22 @@ const About = () => {
       ease: "back.out(1.7)",
     });
 
-    const testimAmination = gsap.from(".testimonial-card", {
+    gsap.from(".testimonial-card", {
       scrollTrigger: {
         trigger: ".testimonial-card",
         start: "top 90%",
         end: "top 50%",
-        
       },
       y: 60,
       opacity: 0,
       stagger: 0.3,
       ease: "power3.out",
     });
+  });
 
-    return () => {
-      saplingAnimation.scrollTrigger?.kill();
-      rootsAnimation.scrollTrigger?.kill();
-      cardAnimation.scrollTrigger?.kill();
-      testimAmination.scrollTrigger?.kill();
-    };
-  }, []);
+  return () => ctx.revert();
+}, []);
+
 
   const cardData = [
     {
