@@ -165,7 +165,7 @@ const News = () => {
             ))}
           </div>
         </div>
-        <div className="newsletter mt-10 flex md:w-fit w-full lg:justify-items-start justify-center items-center">
+        {/* <div className="newsletter mt-10 flex md:w-fit w-full lg:justify-items-start justify-center items-center">
           <input
             type="email"
             name="email"
@@ -180,7 +180,7 @@ const News = () => {
           >
             Subscribe
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
