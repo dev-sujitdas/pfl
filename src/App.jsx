@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./custom.css";
-import Loader from "./components/Loader";
 import Lenis from "@studio-freight/lenis";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import About from "./components/About";
-import OurServices from "./components/OurServices";
-import FinancialTimeline from "./components/FinancialTimeline";
-import ClientProp from "./components/ClientProp";
-import News from "./components/News";
-import OurAdvisor from "./components/OurAdvisor";
-import OurApp from "./components/OurApp";
-import ContactUs from "./components/ContactUs";
-import Footer from "./components/Footer";
+const Loader = React.lazy(()=> import('./components/Loader')) ;
+const Navbar = React.lazy(()=> import('./components/Navbar')) ;
+const Home = React.lazy(()=> import('./components/Home')) ;
+const About = React.lazy(()=> import('./components/About')) ;
+const OurServices = React.lazy(()=> import('./components/OurServices')) ;
+const FinancialTimeline = React.lazy(()=> import('./components/FinancialTimeline'));
+const ClientProp = React.lazy(()=> import('./components/ClientProp'));
+const News = React.lazy(()=> import('./components/News'));
+const OurAdvisor = React.lazy(()=> import('./components/OurAdvisor'));
+const OurApp = React.lazy(()=> import('./components/OurApp'));
+const ContactUs = React.lazy(() => import('./components/ContactUs'));
+const Footer = React.lazy(()=> import('./components/Footer'));
 
 
 const App = () => {
@@ -51,6 +51,7 @@ const App = () => {
         <Loader isLoading={isLoading} />
       ) : (
         <>
+        <Suspense fallback={<div>Loading...</div>}>
           <Navbar lenis={lenisRef} />
           <Home />
           <About />
@@ -61,7 +62,8 @@ const App = () => {
           <OurAdvisor />
           <OurApp />
           <ContactUs />
-          <Footer />                    
+          <Footer />   
+          </Suspense>                 
         </>
       )}
     </>
