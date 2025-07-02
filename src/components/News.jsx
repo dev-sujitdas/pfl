@@ -88,16 +88,16 @@ const News = () => {
       ease: "power3.out",
     });
 
-    gsap.from(".newsletter", {
-      scrollTrigger: {
-        trigger: ".newsletter",
-        start: "top 90%",
-        end: "top 50%",
-      },
-      y: 60,
-      opacity: 0,
-      ease: "power3.out",
-    });
+  //   gsap.from(".newsletter", {
+  //     scrollTrigger: {
+  //       trigger: ".newsletter",
+  //       start: "top 90%",
+  //       end: "top 50%",
+  //     },
+  //     y: 60,
+  //     opacity: 0,
+  //     ease: "power3.out",
+  //   });
   });
 
   return () => ctx.revert();

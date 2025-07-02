@@ -58,7 +58,7 @@ const Navbar = ({ lenis }) => {
   return (
     <nav className="w-full fixed top-0 z-[999] backdrop-blur-2xl bg-[#b7d4a334]" aria-label="Main navigation">
       <div ref={navRef} className="max-w-[150rem] w-[90%] mx-auto px-2 lg:px-7 py-4 sm:py-3 flex justify-between items-center border-b border-black/10">        
-        <div className="h-12">
+        <div className="h-12 w-20">
           <a href="/">
             <img className="w-full h-full" src={logo} alt="Company Logo" />
           </a>

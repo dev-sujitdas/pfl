@@ -106,7 +106,7 @@ const OurAdvisor = () => {
   }, []);
 
   return (
-    <section id="advisors" className="w-full  bg-[#2D2D2C]">
+    <section id="advisors" className="w-full  bg-[#FDFDFD]">
       <div
         // id="advisor"
         className="w-full 2xl:h-screen max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative"

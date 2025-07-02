@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import "./custom.css";
 import Lenis from "@studio-freight/lenis";
 const Loader = React.lazy(()=> import('./components/Loader')) ;
@@ -8,12 +8,13 @@ const About = React.lazy(()=> import('./components/About')) ;
 const OurServices = React.lazy(()=> import('./components/OurServices')) ;
 const FinancialTimeline = React.lazy(()=> import('./components/FinancialTimeline'));
 const ClientProp = React.lazy(()=> import('./components/ClientProp'));
-const News = React.lazy(()=> import('./components/News'));
+const RiskCover = React.lazy(()=> import("./components/RiskCover"));
 const OurAdvisor = React.lazy(()=> import('./components/OurAdvisor'));
+const News = React.lazy(()=> import('./components/News'));
 const OurApp = React.lazy(()=> import('./components/OurApp'));
 const ContactUs = React.lazy(() => import('./components/ContactUs'));
 const Footer = React.lazy(()=> import('./components/Footer'));
-
+const Fincalc = React.lazy(()=> import("./components/FinCalc/FinCalc"));
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,19 +52,21 @@ const App = () => {
         <Loader isLoading={isLoading} />
       ) : (
         <>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader isLoading={isLoading} />}>       
           <Navbar lenis={lenisRef} />
           <Home />
           <About />
           <OurServices />
           <FinancialTimeline />
           <ClientProp />
-          <News />
+          <RiskCover/>
           <OurAdvisor />
+          <News />
           <OurApp />
           <ContactUs />
           <Footer />   
-          </Suspense>                 
+          <Fincalc/>
+        </Suspense>                           
         </>
       )}
     </>

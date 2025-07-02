@@ -11,7 +11,7 @@ const ContactUs = () => {
   const services = [
     "Our contact",
     "Our Services",
-    "Schedule an contactointment",
+    "Schedule an apointment",
   ];
   const [formData, setFormData] = useState({
     name: "",
@@ -91,8 +91,7 @@ const ContactUs = () => {
       scrollTrigger: {
         trigger: ".contact-subtitle",
         start: "top 85%",
-        end: "top 50%",
-        toggleActions: "play none none reverse",
+        end: "top 50%",        
       },
       y: 80,
       opacity: 0,
@@ -103,8 +102,7 @@ const ContactUs = () => {
       scrollTrigger: {
         trigger: ".contact-wrapper",
         start: "top 85%",
-        end: "top 50%",
-        toggleActions: "play none none reverse",
+        end: "top 50%",        
       },
       y: 60,
       opacity: 0,

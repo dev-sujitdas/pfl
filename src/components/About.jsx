@@ -200,7 +200,7 @@ useGSAP(() => {
           <img
             src={sapling}
             alt="Growing Sapling"
-            className="sapling w-full lg:w-[40%] h-[25rem]"
+            className="sapling w-full lg:w-[40%] h-[20rem]"
           />
 
           <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] top-[70%] right-1/3 -translate-x-1/2 -translate-y-[70%] z-10 rounded-full"></div>
