@@ -1,4 +1,5 @@
 import React, { useRef, useState, useLayoutEffect, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "/PFL Logo2.png";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
@@ -14,12 +15,25 @@ const navItems = [
 ];
 
 const Navbar = ({ lenis }) => {
+  
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const mobNavRef = useRef();
   const navRef = useRef();
-  const handleScroll = (link) => {
-    if (lenis?.current) {
-      lenis.current.scrollTo(link);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleScroll = (target) => {
+    if (location.pathname !== "/") {      
+      navigate("/");      
+      setTimeout(() => {
+        if (lenis?.current) {
+          lenis.current.scrollTo(target);
+        }
+      }, 400);
+    } else {
+      if (lenis?.current) {
+        lenis.current.scrollTo(target);
+      }
     }
   };
 

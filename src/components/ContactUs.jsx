@@ -117,8 +117,8 @@ const ContactUs = () => {
 
 
   return (
-    <section id="contact" className="w-full  bg-[#fdfdfd]">
-      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#2D2D2C]">
+    <section id="contact" className="w-full relative z-50  bg-[#fdfdfd]">
+      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#2D2D2C] ">
         <div className="contact-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">
             <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#fdfdfd]">

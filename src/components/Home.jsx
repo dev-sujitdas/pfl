@@ -39,12 +39,13 @@ const Home = () => {
         },
         "-=0.3"
       );
+     
   }, []);
 
   return (
     <section
       id="home"
-      className="h-screen w-full bg-[#FDFDFD] relative overflow-hidden"
+      className="h-screen w-full bg-[#FDFDFD] sticky top-0 overflow-hidden"
     >
       <div id="home-container" className="lg:p-[7rem] max-w-[150rem] h-full mx-auto relative flex justify-center items-center">
         <div
@@ -55,7 +56,7 @@ const Home = () => {
             <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
               <span className="inline-block">Your Partner in</span>
             </h1>
-            <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
+            <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6.2rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
               <span className="inline-block">Lifelong Financial</span>
             </h1>
             <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">

@@ -319,7 +319,7 @@ const FinancialTimeline = () => {
     <section id="timeline" className="w-full bg-[#2D2D2C] relative">
       <div
         id="f-timeline"
-        className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd]"
+        className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd] "
       >
         <div className="timeline-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">

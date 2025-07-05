@@ -1,25 +1,23 @@
 import React, { useState } from "react";
 import { FcCalculator } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
-import RetirementCalc from "../FinCalc/RetirementCalc"
-import EducationCalc from "../FinCalc/EducationCalc"
-import InvestmentCalc from "../FinCalc/InvestmentCalc"
-import TaxCalc from "../FinCalc/TaxCalc"
-import FinancialQuiz from "../FinCalc/FinancialQuiz"
-
+import RetirementCalc from "../FinCalc/RetirementCalc";
+import EducationCalc from "../FinCalc/EducationCalc";
+import InvestmentCalc from "../FinCalc/InvestmentCalc";
+import TaxCalc from "../FinCalc/TaxCalc";
+import FinancialQuiz from "../FinCalc/FinancialQuiz";
 
 const FinCalc = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Retirement");
 
   const handleClick = () => {
-  setIsOpen((prev) => {
-    const newState = !prev;
-    document.body.style.overflow = newState ? "hidden" : "auto";
-    return newState;
-  });
-};
-
+    setIsOpen((prev) => {
+      const newState = !prev;
+      document.body.style.overflow = newState ? "hidden" : "auto";
+      return newState;
+    });
+  };
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -38,26 +36,34 @@ const FinCalc = () => {
     }
   };
 
-  const tabs = ["Retirement", "Education", "Investment", "Tax", "Financial Quiz"];
+  const tabs = [
+    "Retirement",
+    "Education",
+    "Investment",
+    "Tax",
+    "Financial Quiz",
+  ];
 
   return (
     <>
+    <div className="fixed lg:bottom-5 lg:right-5 bottom-0.5 right-0.5 z-[999] lg:h-[7rem] lg:w-[7rem] h-[4.5rem] w-[4.5rem] lg:bg-[url('/Images/CalculateFinance.png')] bg-cover bg-center rounded-full flex items-center justify-center">
       <button
         onClick={handleClick}
-        className="fixed bottom-5 right-5 z-999 text-5xl p-2 rounded-full bg-[#FDFDFD] shadow-md cursor-pointer"
+        className="z-[999] lg:h-[4rem] lg:w-[4rem] h-[2.8rem] w-[2.8rem] rounded-full bg-amber-50 shadow-md flex items-center justify-center  text-5xl cursor-pointer"
       >
         {isOpen ? <IoMdClose /> : <FcCalculator />}
       </button>
+    </div>
 
       {isOpen && (
-        <div className="fin-calc fixed bottom-0 left-0 right-5 h-screen w-full p-[7rem] bg-zinc-900 z-888 flex flex-col rounded-2xl">
+        <div className="fin-calc fixed bottom-0 left-0 right-5 h-screen w-full xl:p-[7rem] px-2 pt-[6rem] bg-zinc-900 z-888 flex flex-col lg:rounded-2xl">
           {/* Tabs */}
-          <div className="flex gap-4 mb-6">
+          <div className="flex flex-wrap  gap-4 mb-6">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-full text-medium poppins-regular border-2 ${
+                className={`lg:px-4 lg:py-2 px-2 py-1 rounded-full lg:text-base text-xs poppins-regular border-2 ${
                   activeTab === tab
                     ? "bg-[#BA8748] text-amber-50"
                     : "bg-zinc-700 text-amber-50 hover:bg-[#BA8748]"

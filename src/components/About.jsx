@@ -152,7 +152,7 @@ useGSAP(() => {
 
   return (
     <section id="about" className="w-full bg-[#FDFDFD] relative">
-      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative">
+      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative ">
         <div className="about-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden">
             <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#2C2B2B]">
@@ -259,7 +259,7 @@ useGSAP(() => {
           </div>
         </div>
 
-        <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] bottom-0 left-28 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
+        <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] bottom-20 left-28 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
       </div>
     </section>
   );

@@ -105,8 +105,8 @@ const News = () => {
 
 
   return (
-    <section id="news" className="w-full  bg-[#EEF4EA]">
-      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#2D2D2C]">
+    <section id="news" className="w-full relative z-50 bg-[#EEF4EA]">
+      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#2D2D2C] ">
         <div className="news-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">
             <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#fdfdfd]">

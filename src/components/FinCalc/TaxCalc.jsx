@@ -12,38 +12,38 @@ const TaxCalculator = () => {
   };
 
   return (
-    <div className="w-fit p-6 rounded-2xl shadow">
-      <h2 className="text-3xl poppins-bold mb-4 text-amber-50">
+    <div className="w-fit lg:p-6 p-0 rounded-2xl shadow">
+      <h2 className="lg:text-3xl text-xl poppins-bold mb-4 text-amber-50">
         Tax Savings Calculator
       </h2>
 
       <div className="flex flex-col flex-wrap justify-between gap-4">
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">Annual Taxable Income (R):</label>
+          <label className="text-amber-50 text-xs lg:text-base poppins-regular">Annual Taxable Income (R):</label>
           <input
             type="number"
             value={income}
             onChange={(e) => setIncome(+e.target.value)}
-            className="bg-amber-50 p-2 rounded-xl"
+            className="bg-amber-50 text-xs lg:text-base p-2 rounded-xl"
           />
         </div>
 
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">RA/TFSA Contributions (R):</label>
+          <label className="text-amber-50 text-xs lg:text-base poppins-regular">RA/TFSA Contributions (R):</label>
           <input
             type="number"
             value={contribution}
             onChange={(e) => setContribution(+e.target.value)}
-            className="bg-amber-50 p-2 rounded-xl"
+            className="bg-amber-50 text-xs lg:text-base p-2 rounded-xl"
           />
         </div>
 
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">Tax Year:</label>
+          <label className="text-amber-50 text-xs lg:text-base poppins-regular">Tax Year:</label>
           <select
             value={taxYear}
             onChange={(e) => setTaxYear(+e.target.value)}
-            className="bg-amber-50 p-2 rounded-xl"
+            className="bg-amber-50 text-xs lg:text-base p-2 rounded-xl"
           >
             <option value={2025}>2025</option>
             <option value={2024}>2024</option>
@@ -53,7 +53,7 @@ const TaxCalculator = () => {
       </div>
 
       <button
-        className="mt-4 px-4 py-2 bg-[#2D2D2C] text-amber-50 rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+        className="mt-4 px-4 py-2 bg-[#2D2D2C] text-amber-50 text-xs lg:text-base rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
         onClick={calculate}
       >
         Calculate
