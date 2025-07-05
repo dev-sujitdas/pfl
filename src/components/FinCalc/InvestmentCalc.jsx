@@ -14,7 +14,7 @@ const InvestmentCalc = () => {
   };
 
   return (
-    <div className="w-fit lg:p-6 p-0 rounded-2xl shadow">
+    <div className="w-fit lg:p-6 p-0 rounded-2xl">
       <h2 className="lg:text-3xl text-xl poppins-bold mb-4 text-amber-50">
         Investment Growth Calculator
       </h2>

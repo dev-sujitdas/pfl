@@ -56,7 +56,7 @@ const FinCalc = () => {
     </div>
 
       {isOpen && (
-        <div className="fin-calc fixed bottom-0 left-0 right-5 h-screen w-full xl:p-[7rem] px-2 pt-[6rem] bg-zinc-900 z-888 flex flex-col lg:rounded-2xl">
+        <div className="fin-calc fixed bottom-0 left-0 right-5 lg:h-screen h-[100svh] w-full xl:p-[7rem] px-2 pt-[6rem] bg-zinc-900 z-888 flex flex-col lg:rounded-2xl">
           {/* Tabs */}
           <div className="flex flex-wrap  gap-4 mb-6">
             {tabs.map((tab) => (
