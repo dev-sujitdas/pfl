@@ -68,7 +68,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={age}
                   onChange={(e) => setAge(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -79,7 +79,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={dependents}
                   onChange={(e) => setDependents(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -90,7 +90,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={monthlyExpenses}
                   onChange={(e) => setMonthlyExpenses(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -101,7 +101,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={debts}
                   onChange={(e) => setDebts(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -112,7 +112,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={savings}
                   onChange={(e) => setSavings(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -123,7 +123,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={yourIncome}
                   onChange={(e) => setYourIncome(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -134,7 +134,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={partnerIncome}
                   onChange={(e) => setPartnerIncome(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
             </div>
@@ -148,7 +148,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={otherIncome}
                   onChange={(e) => setOtherIncome(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -159,7 +159,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={lifeCover}
                   onChange={(e) => setLifeCover(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -170,7 +170,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={disabilityCover}
                   onChange={(e) => setDisabilityCover(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -181,7 +181,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={criticalCover}
                   onChange={(e) => setCriticalCover(+e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -191,7 +191,7 @@ const FinancialNeedsAnalysis = () => {
                 <select
                   value={medicalAid}
                   onChange={(e) => setMedicalAid(e.target.value)}
-                  className="bg-amber-50 p-2 rounded-xl w-full"
+                  className="bg-white p-2 rounded-xl w-full"
                 >
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
@@ -206,14 +206,14 @@ const FinancialNeedsAnalysis = () => {
                     type="text"
                     value={provider}
                     onChange={(e) => setProvider(e.target.value)}
-                    className="bg-amber-50 p-2 rounded-xl w-full"
+                    className="bg-white p-2 rounded-xl w-full"
                   />
                 </div>
               )}
 
               <button
                 onClick={calculateGaps}
-                className="w-fit mt-6 px-4 py-2 bg-[#2D2D2C] text-amber-50 poppins-regular rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+                className="w-fit mt-6 px-4 py-2 bg-[#2D2D2C] text-white poppins-regular rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
               >
                 Calculate Cover Gaps
               </button>
