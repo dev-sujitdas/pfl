@@ -11,7 +11,7 @@ const Home = () => {
   const buttonRef = useRef();
   const homeRef = useRef();     
   const scrollRef = useRef();    
-
+  const videoRef = useRef();
   
   useEffect(() => {
     const tl = gsap.timeline();
@@ -60,6 +60,12 @@ const Home = () => {
       },
     });
   }, []);
+
+  useEffect(()=>{
+    if(videoRef.currect){
+      videoRef.current.playbackRate = 1.5;
+    }
+  },[]);
 
   return (
     <section
@@ -122,6 +128,7 @@ const Home = () => {
             className="h-full w-1/2 flex flex-col items-center justify-center"
           >
             <video
+              ref={videoRef}
               className="h-full w-full object-contain"
               src={video}
               autoPlay
