@@ -61,20 +61,12 @@ const Home = () => {
     });
   }, []);
 
-<<<<<<< HEAD
   useEffect(() => {
   if (videoRef.current) {
     videoRef.current.playbackRate = 1.5;
   }
 }, []);
 
-=======
-  useEffect(()=>{
-    if(videoRef.currect){
-      videoRef.current.playbackRate = 1.5;
-    }
-  },[]);
->>>>>>> c5d593172c8cd71fe5978ee7bcb374c7780320e8
 
   return (
     <section
