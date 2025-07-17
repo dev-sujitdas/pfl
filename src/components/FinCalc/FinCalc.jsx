@@ -63,7 +63,7 @@ const FinCalc = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`lg:px-4 lg:py-2 px-2 py-1 rounded-full lg:text-base text-xs poppins-regular border-2 ${
+                className={`lg:px-4 lg:py-2 px-2 py-1 rounded-full lg:text-base text-sm poppins-regular border-2 ${
                   activeTab === tab
                     ? "bg-[#BA8748] text-amber-50"
                     : "bg-zinc-700 text-amber-50 hover:bg-[#BA8748]"
@@ -75,7 +75,7 @@ const FinCalc = () => {
           </div>
 
           {/* Tab Content */}
-          <div className="flex-grow bg-zinc-800 p-5 rounded-xl">
+          <div className="fincalc-render flex-grow bg-zinc-800 p-5 rounded-xl mb-1 md:mb-0">
             {renderTabContent()}
           </div>
         </div>

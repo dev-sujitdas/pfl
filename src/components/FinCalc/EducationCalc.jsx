@@ -56,89 +56,89 @@ const EducationCalculator = () => {
   };
 
   return (
-    <div className="w-fit p-6 rounded-2xl shadow">
-      <h2 className="text-3xl poppins-bold mb-4 text-amber-50">
+    <div className="w-fit lg:p-6 p-0 rounded-2xl shadow">
+      <h2 className="lg:text-3xl text-xl poppins-bold mb-4 text-amber-50">
         Education Savings Calculator
       </h2>
 
       <div className="flex flex-col flex-wrap justify-between gap-4">
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">
+          <label className="text-amber-50 md:text-base text-sm poppins-regular">
             Child's Current Age:
           </label>
           <input
             type="number"
             value={childAge}
             onChange={(e) => setChildAge(+e.target.value)}
-            className="bg-[#FDFDFD] p-2 rounded-xl"
+            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
           />
         </div>
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">
+          <label className="text-amber-50 md:text-base text-sm poppins-regular">
             Age at Tertiary Education:
           </label>
           <input
             type="number"
             value={educationAge}
             onChange={(e) => setEducationAge(+e.target.value)}
-            className="bg-[#FDFDFD] p-2 rounded-xl"
+            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
           />
         </div>
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">
+          <label className="text-amber-50 md:text-base text-sm poppins-regular">
             Annual Education Cost (R):
           </label>
           <input
             type="number"
             value={annualCost}
             onChange={(e) => setAnnualCost(+e.target.value)}
-            className="bg-[#FDFDFD] p-2 rounded-xl"
+            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
           />
         </div>
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">
+          <label className="text-amber-50 md:text-base text-sm poppins-regular">
             Inflation Rate (%):
           </label>
           <input
             type="number"
             value={inflationRate}
             onChange={(e) => setInflationRate(+e.target.value)}
-            className="bg-[#FDFDFD] p-2 rounded-xl"
+            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
           />
         </div>
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">
+          <label className="text-amber-50 md:text-base text-sm poppins-regular">
             Current Savings (R):
           </label>
           <input
             type="number"
             value={currentSavings}
             onChange={(e) => setCurrentSavings(+e.target.value)}
-            className="bg-[#FDFDFD] p-2 rounded-xl"
+            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
           />
         </div>
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 poppins-regular">
+          <label className="text-amber-50 md:text-base text-sm poppins-regular">
             Monthly Contribution (R):
           </label>
           <input
             type="number"
             value={monthlyContribution}
             onChange={(e) => setMonthlyContribution(+e.target.value)}
-            className="bg-[#FDFDFD] p-2 rounded-xl"
+            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
           />
         </div>
       </div>
 
       <div className="flex gap-4">
         <button
-          className="mt-4 px-4 py-2 bg-[#2D2D2C] text-amber-50 rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+          className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
           onClick={calculate}
         >
           Calculate
         </button>
         <button
-          className="mt-4 px-4 py-2 bg-[#2D2D2C] text-amber-50 rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+          className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
           onClick={resetHandler}
         >
           Reset
@@ -146,7 +146,7 @@ const EducationCalculator = () => {
       </div>
 
       {results && (
-        <div className="mt-6 bg-gray-100 p-4 rounded-xl">
+        <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl">
           <p>
             <strong>Future Annual Education Cost:</strong> R{" "}
             {results.inflatedAnnualCost}

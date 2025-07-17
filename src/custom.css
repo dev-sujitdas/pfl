@@ -211,6 +211,9 @@
    #anchor-container{
     bottom: 4px;
   }
+  .fincalc-render{
+    overflow: auto;
+  }
 }
 
 @media (max-width: 375px){
@@ -227,6 +230,9 @@
   }
   .arrow{
     bottom: 0;
+  }
+   .fincalc-render{
+    overflow: auto;
   }
 }
 
