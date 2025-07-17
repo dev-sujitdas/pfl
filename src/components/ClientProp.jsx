@@ -175,7 +175,7 @@ useEffect(() => {
             future with expert guidance at every stage
           </h3>
         </div>
-        <div className="w-full mx-auto flex justify-center items-center flex-wrap mt-10">
+        <div className="w-full mx-auto flex justify-center items-center  mt-10">
           <div className="w-full mx-auto flex flex-wrap justify-center items-center lg:gap-10 gap-5">
             {clientData.map(({ num, icon, title, description }, index) => (
               <div key={index} className="client-list">

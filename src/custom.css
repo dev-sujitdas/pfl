@@ -222,6 +222,12 @@
     width: 100%;
     height: 35%;
   }
+  #home-container{
+    margin-top: 14rem;
+  }
+  .arrow{
+    bottom: 0;
+  }
 }
 
 .loader-container {

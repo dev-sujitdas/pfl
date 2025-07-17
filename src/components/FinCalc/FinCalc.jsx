@@ -5,7 +5,7 @@ import RetirementCalc from "../FinCalc/RetirementCalc";
 import EducationCalc from "../FinCalc/EducationCalc";
 import InvestmentCalc from "../FinCalc/InvestmentCalc";
 import TaxCalc from "../FinCalc/TaxCalc";
-import FinancialQuiz from "../FinCalc/FinancialQuiz";
+// import FinancialQuiz from "../FinCalc/FinancialQuiz";
 
 const FinCalc = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +29,8 @@ const FinCalc = () => {
         return <InvestmentCalc />;
       case "Tax":
         return <TaxCalc />;
-      case "Financial Quiz":
-        return <FinancialQuiz />;
+      // case "Financial Quiz":
+      //   return <FinancialQuiz />;
       default:
         return null;
     }
@@ -41,7 +41,7 @@ const FinCalc = () => {
     "Education",
     "Investment",
     "Tax",
-    "Financial Quiz",
+    // "Financial Quiz",
   ];
 
   return (
@@ -56,9 +56,9 @@ const FinCalc = () => {
     </div>
 
       {isOpen && (
-        <div className="fin-calc fixed bottom-0 left-0 right-5 lg:h-screen h-[100svh] w-full xl:p-[7rem] px-2 pt-[6rem] bg-zinc-900 z-888 flex flex-col lg:rounded-2xl">
+        <div className="fin-calc fixed bottom-0 left-0 right-5 lg:h-screen h-[100svh] w-full xl:p-[7rem] px-2 pt-[6rem] bg-[#EEF4EA] z-888 flex flex-col ">
           {/* Tabs */}
-          <div className="flex flex-wrap  gap-4 mb-6">
+          <div className="flex flex-wrap  gap-4 mb-4">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -75,7 +75,7 @@ const FinCalc = () => {
           </div>
 
           {/* Tab Content */}
-          <div className="flex-grow overflow-auto bg-zinc-800 p-6 rounded-xl">
+          <div className="flex-grow bg-zinc-800 p-5 rounded-xl">
             {renderTabContent()}
           </div>
         </div>

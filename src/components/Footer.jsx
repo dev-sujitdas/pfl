@@ -11,8 +11,8 @@ const Footer = () => {
     <footer className="text-white h-auto bg-[#343634] max-w-[150rem] mx-auto relative overflow-hidden border-t-[1px] border-[#d4d4d8]">
       <div className="top flex flex-col gap-10  items-start py-12 px-5 md:flex-wrap lg:flex-row lg:justify-evenly">
         <div className="footer-elem flex flex-col justify-start lg:h-[14rem] h-auto">
-          <div>
-            <img src="/PFL Logo2.png" alt="GGS Logo" className="h-16 mb-3" />
+          <div className="h-24 w-28 mb-5">
+            <img src="/PFL LOGO.png" alt="GGS Logo" className="h-full w-full " />
           </div>
           <div>
             <h3 className="font-space-mono text-medium">

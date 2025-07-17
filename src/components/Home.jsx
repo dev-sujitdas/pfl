@@ -11,7 +11,7 @@ const Home = () => {
   const buttonRef = useRef();
   const homeRef = useRef();     
   const scrollRef = useRef();    
-
+  const videoRef = useRef();
   
   useEffect(() => {
     const tl = gsap.timeline();
@@ -61,6 +61,13 @@ const Home = () => {
     });
   }, []);
 
+  useEffect(() => {
+  if (videoRef.current) {
+    videoRef.current.playbackRate = 1.5;
+  }
+}, []);
+
+
   return (
     <section
       id="home"
@@ -95,7 +102,7 @@ const Home = () => {
             <div className="para w-full 2xl:w-1/2 mt-2 2xl:mt-5 z-50">
               <p
                 ref={paraRef}
-                className="xl:text-[1.2rem] text-[1rem] text-zinc-600"
+                className="text-[1rem] md:text-[1.2rem] text-zinc-600"
               >
                 Offering personalized financial strategies to help you grow,
                 protect, and enjoy your wealth — with clarity, integrity, and
@@ -106,7 +113,7 @@ const Home = () => {
             <a href="#contact">
               <button
                 ref={buttonRef}
-                className="px-5 py-2 mt-2 2xl:mt-5 rounded-full poppins-regular bg-[#2c2b2b] border-2 border-amber-50 hover:bg-[#BA8748] text-amber-50 font-medium text-[0.8rem] xl:text-[1rem] cursor-pointer"
+                className="px-5 py-2 mt-2 2xl:mt-5 rounded-full poppins-regular bg-[#2c2b2b] border-2 border-amber-50 hover:bg-[#BA8748] text-amber-50 font-medium text-[0.8rem] md:text-[1rem] cursor-pointer"
               >
                 Get in touch
               </button>
@@ -122,17 +129,18 @@ const Home = () => {
             className="h-full w-1/2 flex flex-col items-center justify-center"
           >
             <video
+              ref={videoRef}
               className="h-full w-full object-contain"
               src={video}
               autoPlay
-              muted
+              muted              
             ></video>
           </div>
         </div>
       </div>
 
       {/* Down arrow */}
-      <div className="w-full h-16 absolute bottom-3 z-30 flex justify-center items-center">
+      <div className="arrow w-full h-16 absolute bottom-3 z-30 flex justify-center items-center">
         <a href="#about">
           <h2 className="font-bold text-4xl 2xl:text-5xl text-[#2C2B2B]">
             <RiArrowDownDoubleFill />

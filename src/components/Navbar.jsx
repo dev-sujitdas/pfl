@@ -1,11 +1,12 @@
 import React, { useRef, useState, useLayoutEffect, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "/PFL Logo2.png";
+import logo from "/PFL LOGO.png";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import gsap from "gsap";
 
-const navItems = [
+const navItems = [  
+  { name: "", link: "/" },
   { name: "About Us", link: "#about" },
   { name: "Our Services", link: "#services" },
   { name: "Financial Timeline", link: "#timeline" },
@@ -30,7 +31,7 @@ const Navbar = ({ lenis }) => {
           lenis.current.scrollTo(target);
         }
       }, 400);
-    } else {
+    }else {
       if (lenis?.current) {
         lenis.current.scrollTo(target);
       }
@@ -72,7 +73,7 @@ const Navbar = ({ lenis }) => {
   return (
     <nav className="w-full fixed top-0 z-[999] backdrop-blur-2xl bg-[#b7d4a334]" aria-label="Main navigation">
       <div ref={navRef} className="max-w-[150rem] w-[90%] mx-auto px-2 lg:px-7 py-4 sm:py-3 flex justify-between items-center border-b border-black/10">        
-        <div className="h-12 w-20">
+        <div className="md:h-18 md:w-24 h-12 w-20">
           <a href="/">
             <img className="w-full h-full" src={logo} alt="Company Logo" />
           </a>
@@ -136,7 +137,7 @@ const Navbar = ({ lenis }) => {
                   handleScroll(item.link);
                   setIsMobileOpen(false);
                 }}
-                className="poppins-semibold text-xl cursor-pointer text-amber-50"
+                className="poppins-semibold text-lg md:text-xl cursor-pointer text-amber-50"
               >
                 {item.name}
               </button>

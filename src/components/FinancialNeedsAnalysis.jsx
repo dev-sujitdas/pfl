@@ -25,10 +25,44 @@ const FinancialNeedsAnalysis = () => {
   const [disabilityGap, setDisabilityGap] = useState(null);
   const [criticalGap, setCriticalGap] = useState(null);
 
-  const calculateGaps = () => {    
-    setLifeGap();
-    setDisabilityGap();
-    setCriticalGap();
+  const calculateGaps = () => {
+    const annualExpenses = monthlyExpenses * 12;
+    const futureNeeds = 300000;
+    const lifeCapitalNeeded = annualExpenses * 15 + debts + futureNeeds;
+    const lifeCoverGap = lifeCapitalNeeded - lifeCover;
+
+    const monthlyDisabilityNeed = yourIncome + partnerIncome * 0.5;
+    const disabilityCapital = monthlyDisabilityNeed * 12 * (65 - age);
+    const disabilityCoverGap = disabilityCapital - disabilityCover;
+
+    const criticalNeeds = 750000;
+    const criticalIllnessGap = criticalNeeds - criticalCover;
+
+    setLifeGap(lifeCoverGap);
+    setDisabilityGap(disabilityCoverGap);
+    setCriticalGap(criticalIllnessGap);
+  };
+
+  const resetHandler = () => {
+    setAge(30);
+    setDependents(2);
+    setMonthlyExpenses(30000);
+    setDebts(500000);
+    setSavings(200000);
+
+    setYourIncome(40000);
+    setPartnerIncome(20000);
+    setOtherIncome(5000);
+
+    setLifeCover(1000000);
+    setDisabilityCover(500000);
+    setCriticalCover(300000);
+    setMedicalAid("Yes");
+    setProvider("Discovery");
+
+    setLifeGap(null);
+    setDisabilityGap(null);
+    setCriticalGap(null);
   };
 
   return (
@@ -59,7 +93,7 @@ const FinancialNeedsAnalysis = () => {
           </div>
           <h3 className="text-center text-zinc-700 poppins-semibold text-xl mt-5">Complete this assessment to see if your family is protected in the            
               event of unexpected life events.</h3>
-
+              
           <div className="w-full flex flex-col lg:flex-row justify-center gap-10 mt-5">
             <div className="left flex flex-col gap-5">
               <div>
@@ -68,7 +102,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={age}
                   onChange={(e) => setAge(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -79,7 +113,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={dependents}
                   onChange={(e) => setDependents(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -90,7 +124,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={monthlyExpenses}
                   onChange={(e) => setMonthlyExpenses(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -101,7 +135,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={debts}
                   onChange={(e) => setDebts(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -112,7 +146,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={savings}
                   onChange={(e) => setSavings(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -123,7 +157,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={yourIncome}
                   onChange={(e) => setYourIncome(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -134,7 +168,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={partnerIncome}
                   onChange={(e) => setPartnerIncome(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
             </div>
@@ -148,7 +182,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={otherIncome}
                   onChange={(e) => setOtherIncome(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -159,7 +193,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={lifeCover}
                   onChange={(e) => setLifeCover(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -170,7 +204,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={disabilityCover}
                   onChange={(e) => setDisabilityCover(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -181,7 +215,7 @@ const FinancialNeedsAnalysis = () => {
                   type="number"
                   value={criticalCover}
                   onChange={(e) => setCriticalCover(+e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 />
               </div>
               <div>
@@ -191,7 +225,7 @@ const FinancialNeedsAnalysis = () => {
                 <select
                   value={medicalAid}
                   onChange={(e) => setMedicalAid(e.target.value)}
-                  className="bg-white p-2 rounded-xl w-full"
+                  className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                 >
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
@@ -206,17 +240,25 @@ const FinancialNeedsAnalysis = () => {
                     type="text"
                     value={provider}
                     onChange={(e) => setProvider(e.target.value)}
-                    className="bg-white p-2 rounded-xl w-full"
+                    className="bg-[#FDFDFD] p-2 rounded-xl w-full"
                   />
                 </div>
               )}
-
+              <div className="flex gap-4">
               <button
                 onClick={calculateGaps}
-                className="w-fit mt-6 px-4 py-2 bg-[#2D2D2C] text-white poppins-regular rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+                className="w-fit mt-6 px-4 py-2 bg-[#2D2D2C] text-amber-50 poppins-regular rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
               >
                 Calculate Cover Gaps
               </button>
+              <button
+                onClick={resetHandler}
+                className="w-fit mt-6 px-4 py-2 bg-[#2D2D2C] text-amber-50 poppins-regular rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+              >
+                Reset
+              </button>
+              </div>
+              
 
               {(lifeGap !== null ||
                 disabilityGap !== null ||
@@ -224,17 +266,20 @@ const FinancialNeedsAnalysis = () => {
                 <div className="mt-6 bg-gray-100 p-4 rounded-xl">
                   <h3 className="text-xl mb-2">Risk Cover Gap Summary</h3>
                   <p>
-                    <strong>Life Cover Gap:</strong> R{" "}                    
+                    <strong>Life Cover Gap:</strong> R{" "}
+                    {lifeGap.toLocaleString()}
                   </p>
                   <p>
-                    <strong>Disability Cover Gap:</strong> R{" "}                    
+                    <strong>Disability Cover Gap:</strong> R{" "}
+                    {disabilityGap.toLocaleString()}
                   </p>
                   <p>
-                    <strong>Critical Illness Cover Gap:</strong> R{" "}                    
+                    <strong>Critical Illness Cover Gap:</strong> R{" "}
+                    {criticalGap.toLocaleString()}
                   </p>
-                  <p className="mt-2 text-sm italic">
-                    These are estimates. For tailored advice, speak to a
-                    certified financial planner.
+                  <p className="mt-2 text-base font-medium text-red-500">
+                    These are estimates. For tailored advice, speak to our
+                    certified financial advisor.
                   </p>
                 </div>
               )}
