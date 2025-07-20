@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-//import video from "/Video/tree.mp4";
+import video from "/Video/tree.mp4";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -131,7 +131,7 @@ const Home = () => {
             <video
               ref={videoRef}
               className="h-full w-full object-contain"
-              src="https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/tree.mp4"
+              src={video}
               autoPlay
               muted              
             ></video>
