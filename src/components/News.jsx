@@ -15,7 +15,7 @@ const News = () => {
       const fetchNews = async () => {
         const data = await getFinancialNews();
         if (data) {
-          setShowArticles(data.sort(() => 0.5 - Math.random()).slice(0, 3));
+          setShowArticles(data.sort(() => 0.5 - Math.random()).slice(0, 3));         
         } else {
           throw Error(err);
         }
@@ -25,6 +25,8 @@ const News = () => {
       console.log(err);
     }
   }, []);
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -152,7 +154,7 @@ const News = () => {
                     ? article.description.slice(0, 90) + "..."
                     : article.description}
                 </p>
-                <h5>{article.author}</h5>
+                <h5>{article.source.name}</h5>
                 <a
                   href={article.url}
                   target="_blank"

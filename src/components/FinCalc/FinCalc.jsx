@@ -29,8 +29,7 @@ const FinCalc = () => {
         return <InvestmentCalc />;
       case "Tax":
         return <TaxCalc />;
-      // case "Financial Quiz":
-      //   return <FinancialQuiz />;
+      
       default:
         return null;
     }
@@ -40,8 +39,7 @@ const FinCalc = () => {
     "Retirement",
     "Education",
     "Investment",
-    "Tax",
-    // "Financial Quiz",
+    "Tax",    
   ];
 
   return (
@@ -75,7 +73,7 @@ const FinCalc = () => {
           </div>
 
           {/* Tab Content */}
-          <div className="fincalc-render flex-grow bg-zinc-800 p-5 rounded-xl mb-1 md:mb-0">
+          <div className="fincalc-render h-full bg-zinc-800 p-5 rounded-xl mb-1 md:mb-0">
             {renderTabContent()}
           </div>
         </div>

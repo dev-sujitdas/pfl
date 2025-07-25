@@ -6,46 +6,68 @@ const RetirementSavingsCalculator = () => {
   const [lifeExpectancy, setLifeExpectancy] = useState(85);
   const [currentSavings, setCurrentSavings] = useState(0);
   const [monthlyContribution, setMonthlyContribution] = useState(0);
-  const [growthRate, setGrowthRate] = useState(6); // % annually
+  const [growthRate, setGrowthRate] = useState(10); 
+  const [postRetirementRate, setPostRetirementRate] = useState(8); 
+  const [inflationRate, setInflationRate] = useState(5); 
   const [desiredIncomePercent, setDesiredIncomePercent] = useState(70);
   const [currentIncome, setCurrentIncome] = useState(50000);
 
   const [results, setResults] = useState(null);
 
   const calculate = () => {
-    const yearsToRetirement = retirementAge - currentAge;
-    const yearsInRetirement = lifeExpectancy - retirementAge;
-    const monthlyRate = growthRate / 100 / 12;
+    
+    const age_now = currentAge;
+    const age_retire = retirementAge;
+    const years_to_retire = age_retire - age_now;
+    const months_to_retire = years_to_retire * 12;
+    const years_in_retirement = lifeExpectancy - age_retire;
 
-    // Future value of current savings
-    const futureValueCurrentSavings =
-      currentSavings * Math.pow(1 + monthlyRate, yearsToRetirement * 12);
+    const return_pre = growthRate / 100;
+    const return_post = postRetirementRate / 100;
+    const inflation = inflationRate / 100;
 
-    // Future value of monthly contributions
-    const futureValueContributions =
+    const real_return_pre = (1 + return_pre) / (1 + inflation) - 1;
+    const real_return_post = (1 + return_post) / (1 + inflation) - 1;
+
+    const FV_curr = currentSavings * Math.pow(1 + return_pre, years_to_retire);
+
+    const FV_cont =
       monthlyContribution *
-      ((Math.pow(1 + monthlyRate, yearsToRetirement * 12) - 1) / monthlyRate);
+      ((Math.pow(1 + return_pre / 12, months_to_retire) - 1) /
+        (return_pre / 12)) *
+      (1 + return_pre / 12); 
 
-    const totalSavingsAtRetirement =
-      futureValueCurrentSavings + futureValueContributions;
+    const FV_total = FV_curr + FV_cont;
 
-    // Desired monthly income in retirement
-    const desiredMonthlyIncome = currentIncome * (desiredIncomePercent / 100);
-    const totalIncomeNeeded = desiredMonthlyIncome * 12 * yearsInRetirement;
+    const spend_retire_monthly_today =
+      (currentIncome * desiredIncomePercent) / 100;
 
-    const shortfall = totalSavingsAtRetirement - totalIncomeNeeded;
+    const spend_retire_monthly =
+      spend_retire_monthly_today * Math.pow(1 + inflation, years_to_retire);
+    const W = spend_retire_monthly * 12;
 
-    // Suggest new monthly contribution if shortfall exists
+    let PV_needed;
+    if (real_return_post === 0) {
+      PV_needed = W * years_in_retirement;
+    } else {
+      PV_needed =
+        (W * (1 - Math.pow(1 + real_return_post, -years_in_retirement))) /
+        real_return_post;
+    }
+
+    const shortfall = FV_total - PV_needed;
+
     let suggestedContribution = monthlyContribution;
     if (shortfall < 0) {
-      const futureValueNeeded = totalIncomeNeeded - futureValueCurrentSavings;
+      const FV_needed = PV_needed - FV_curr;
       suggestedContribution =
-        (futureValueNeeded * monthlyRate) /
-        (Math.pow(1 + monthlyRate, yearsToRetirement * 12) - 1);
+        (FV_needed * (return_pre / 12)) /
+        ((Math.pow(1 + return_pre / 12, months_to_retire) - 1) *
+          (1 + return_pre / 12));
     }
 
     setResults({
-      totalSavingsAtRetirement: totalSavingsAtRetirement.toFixed(2),
+      totalSavingsAtRetirement: FV_total.toFixed(2),
       shortfallOrSurplus: shortfall.toFixed(2),
       suggestedMonthlyContribution: suggestedContribution.toFixed(2),
     });
@@ -57,136 +79,113 @@ const RetirementSavingsCalculator = () => {
     setLifeExpectancy(85);
     setCurrentSavings(0);
     setMonthlyContribution(0);
-    setGrowthRate(6);
+    setGrowthRate(10);
+    setPostRetirementRate(8);
+    setInflationRate(5);
     setDesiredIncomePercent(70);
     setCurrentIncome(50000);
-
     setResults(null);
   };
 
   return (
-    <div className="w-fit lg:p-6 p-0 rounded-2xl shadow">
-      <h2 className="lg:text-3xl text-xl poppins-bold mb-4 text-amber-50">
-        Retirement Savings Calculator
-      </h2>
+    <div className="w-fit lg:p-6 p-0 rounded-2xl flex flex-col xl:flex-row xl:gap-10 gap-3">
+      <div className="">
+        <h2 className="lg:text-3xl text-xl poppins-bold mb-4 text-amber-50">
+          Retirement Savings Calculator
+        </h2>
 
-      <div className="flex flex-col flex-wrap justify-between gap-4">
-        <div className="flex justify-between  items-center gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">Current Age:</label>
-          <input
-            type="number"
-            value={currentAge}
-            onChange={(e) => setCurrentAge(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
-        </div>
-        <div className="flex justify-between items-center  gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Retirement Age:
-          </label>
-          <input
-            type="number"
-            value={retirementAge}
-            onChange={(e) => setRetirementAge(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
-        </div>
-        <div className="flex justify-between items-center  gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Life Expectancy:
-          </label>
-          <input
-            type="number"
-            value={lifeExpectancy}
-            onChange={(e) => setLifeExpectancy(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
-        </div>
-
-        <div className="flex justify-between items-center  gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Current Savings:
-          </label>
-          <input
-            type="number"
-            value={currentSavings}
-            onChange={(e) => setCurrentSavings(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
-        </div>
-
-        <div className="flex justify-between items-center  gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Monthly Contribution:
-          </label>
-          <input
-            type="number"
-            value={monthlyContribution}
-            onChange={(e) => setMonthlyContribution(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
-        </div>
-
-        <div className="flex justify-between items-center  gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Expected Annual Growth Rate (%):
-          </label>
-          <input
-            type="number"
-            value={growthRate}
-            onChange={(e) => setGrowthRate(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
-        </div>
-
-        <div className="flex justify-between items-center  gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Current Monthly Income:
-          </label>
-          <input
-            type="number"
-            value={currentIncome}
-            onChange={(e) => setCurrentIncome(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
+        <div className="flex flex-col flex-wrap justify-between gap-4">
+          {[
+            {
+              label: "Current Age",
+              value: currentAge,
+              set: setCurrentAge,              
+            },
+            {
+              label: "Planned Retirement Age",
+              value: retirementAge,
+              set: setRetirementAge,              
+            },
+            {
+              label: "Expected Lifespan",
+              value: lifeExpectancy,
+              set: setLifeExpectancy,              
+            },
+            {
+              label: "Current Savings ",
+              value: currentSavings,
+              set: setCurrentSavings,              
+            },
+            {
+              label: "Monthly Contribution ",
+              value: monthlyContribution,
+              set: setMonthlyContribution,              
+            },
+            {
+              label: "Inflation Rate (%)",
+              value: inflationRate,
+              set: setInflationRate,              
+            },
+            {
+              label: "Expected Annual Growth Rate (%)",
+              value: growthRate,
+              set: setGrowthRate,              
+            },
+            {
+              label: "Post-Retirement Return (%)",
+              value: postRetirementRate,
+              set: setPostRetirementRate,              
+            },            
+            {
+              label: "Current Monthly Income ",
+              value: currentIncome,
+              set: setCurrentIncome,              
+            },
+            {
+              label: "Desired Retirement Income (% of income)",
+              value: desiredIncomePercent,
+              set: setDesiredIncomePercent,              
+            },
+          ].map(({ label, value, set, placeholder }, i) => (
+            <div key={i} className="flex justify-between items-center gap-5">
+              <label className="text-amber-50 md:text-base text-sm poppins-regular">
+                {label}
+              </label>
+              <input
+                type="number"
+                value={value}
+                placeholder={placeholder}
+                onChange={(e) => set(+e.target.value)}
+                className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
+              />
+            </div>
+          ))}
         </div>
 
-        <div className="flex justify-between items-center  gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Desired Income in Retirement (% of current):
-          </label>
-          <input
-            type="number"
-            value={desiredIncomePercent}
-            onChange={(e) => setDesiredIncomePercent(+e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          />
+        <div className="flex gap-4">
+          <button
+            className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+            onClick={calculate}
+          >
+            Calculate
+          </button>
+          <button
+            className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+            onClick={resetHandler}
+          >
+            Reset
+          </button>
         </div>
-      </div>
-
-      <div className="flex gap-4">
-        <button
-          className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
-          onClick={calculate}
-        >
-          Calculate
-        </button>
-        <button
-          className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
-          onClick={resetHandler}
-        >
-          Reset
-        </button>
       </div>
 
       {results && (
-        <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl">
+        <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl h-fit">
           <p>
             <strong>Projected Retirement Savings:</strong> R{" "}
             {results.totalSavingsAtRetirement}
           </p>
           <p>
-            <strong>Shortfall/Surplus:</strong> R {results.shortfallOrSurplus}
+            <strong>Shortfall / Surplus:</strong> R {results.shortfallOrSurplus}
           </p>
           <p>
             <strong>Suggested Monthly Contribution:</strong> R{" "}
