@@ -6,16 +6,14 @@ const RetirementSavingsCalculator = () => {
   const [lifeExpectancy, setLifeExpectancy] = useState(85);
   const [currentSavings, setCurrentSavings] = useState(0);
   const [monthlyContribution, setMonthlyContribution] = useState(0);
-  const [growthRate, setGrowthRate] = useState(10); 
-  const [postRetirementRate, setPostRetirementRate] = useState(8); 
-  const [inflationRate, setInflationRate] = useState(5); 
-  const [desiredIncomePercent, setDesiredIncomePercent] = useState(70);
-  const [currentIncome, setCurrentIncome] = useState(50000);
+  const [growthRate, setGrowthRate] = useState(10); // return_pre
+  const [postRetirementRate, setPostRetirementRate] = useState(8); // return_post
+  const [inflationRate, setInflationRate] = useState(5);
+  const [spendRetireMonthlyToday, setSpendRetireMonthlyToday] = useState(35000); // now user-defined
 
   const [results, setResults] = useState(null);
 
   const calculate = () => {
-    
     const age_now = currentAge;
     const age_retire = retirementAge;
     const years_to_retire = age_retire - age_now;
@@ -33,20 +31,15 @@ const RetirementSavingsCalculator = () => {
 
     const FV_cont =
       monthlyContribution *
-      ((Math.pow(1 + return_pre / 12, months_to_retire) - 1) /
-        (return_pre / 12)) *
-      (1 + return_pre / 12); 
+      ((Math.pow(1 + return_pre / 12, months_to_retire) - 1) / (return_pre / 12));
 
     const FV_total = FV_curr + FV_cont;
 
-    const spend_retire_monthly_today =
-      (currentIncome * desiredIncomePercent) / 100;
-
     const spend_retire_monthly =
-      spend_retire_monthly_today * Math.pow(1 + inflation, years_to_retire);
+      spendRetireMonthlyToday * Math.pow(1 + inflation, years_to_retire);
     const W = spend_retire_monthly * 12;
 
-    let PV_needed;
+    let PV_needed = 0;
     if (real_return_post === 0) {
       PV_needed = W * years_in_retirement;
     } else {
@@ -57,19 +50,11 @@ const RetirementSavingsCalculator = () => {
 
     const shortfall = FV_total - PV_needed;
 
-    let suggestedContribution = monthlyContribution;
-    if (shortfall < 0) {
-      const FV_needed = PV_needed - FV_curr;
-      suggestedContribution =
-        (FV_needed * (return_pre / 12)) /
-        ((Math.pow(1 + return_pre / 12, months_to_retire) - 1) *
-          (1 + return_pre / 12));
-    }
-
     setResults({
       totalSavingsAtRetirement: FV_total.toFixed(2),
+      retirementCorpusNeeded: PV_needed.toFixed(2),
       shortfallOrSurplus: shortfall.toFixed(2),
-      suggestedMonthlyContribution: suggestedContribution.toFixed(2),
+      status: shortfall >= 0 ? "Surplus" : "Shortfall",
     });
   };
 
@@ -82,79 +67,34 @@ const RetirementSavingsCalculator = () => {
     setGrowthRate(10);
     setPostRetirementRate(8);
     setInflationRate(5);
-    setDesiredIncomePercent(70);
-    setCurrentIncome(50000);
+    setSpendRetireMonthlyToday(35000);
     setResults(null);
   };
 
   return (
     <div className="w-fit lg:p-6 p-0 rounded-2xl flex flex-col xl:flex-row xl:gap-10 gap-3">
-      <div className="">
+      <div>
         <h2 className="lg:text-3xl text-xl poppins-bold mb-4 text-amber-50">
           Retirement Savings Calculator
         </h2>
 
         <div className="flex flex-col flex-wrap justify-between gap-4">
           {[
-            {
-              label: "Current Age",
-              value: currentAge,
-              set: setCurrentAge,              
-            },
-            {
-              label: "Planned Retirement Age",
-              value: retirementAge,
-              set: setRetirementAge,              
-            },
-            {
-              label: "Expected Lifespan",
-              value: lifeExpectancy,
-              set: setLifeExpectancy,              
-            },
-            {
-              label: "Current Savings ",
-              value: currentSavings,
-              set: setCurrentSavings,              
-            },
-            {
-              label: "Monthly Contribution ",
-              value: monthlyContribution,
-              set: setMonthlyContribution,              
-            },
-            {
-              label: "Inflation Rate (%)",
-              value: inflationRate,
-              set: setInflationRate,              
-            },
-            {
-              label: "Expected Annual Growth Rate (%)",
-              value: growthRate,
-              set: setGrowthRate,              
-            },
-            {
-              label: "Post-Retirement Return (%)",
-              value: postRetirementRate,
-              set: setPostRetirementRate,              
-            },            
-            {
-              label: "Current Monthly Income ",
-              value: currentIncome,
-              set: setCurrentIncome,              
-            },
-            {
-              label: "Desired Retirement Income (% of income)",
-              value: desiredIncomePercent,
-              set: setDesiredIncomePercent,              
-            },
-          ].map(({ label, value, set, placeholder }, i) => (
+            { label: "Current Age", value: currentAge, set: setCurrentAge },
+            { label: "Planned Retirement Age", value: retirementAge, set: setRetirementAge },
+            { label: "Expected Lifespan", value: lifeExpectancy, set: setLifeExpectancy },
+            { label: "Current Savings", value: currentSavings, set: setCurrentSavings },
+            { label: "Monthly Contribution", value: monthlyContribution, set: setMonthlyContribution },
+            { label: "Inflation Rate (%)", value: inflationRate, set: setInflationRate },
+            { label: "Expected Annual Growth Rate (%)", value: growthRate, set: setGrowthRate },
+            { label: "Post-Retirement Return (%)", value: postRetirementRate, set: setPostRetirementRate },
+            { label: "Monthly Spend Needed in Today's Value", value: spendRetireMonthlyToday, set: setSpendRetireMonthlyToday },
+          ].map(({ label, value, set }, i) => (
             <div key={i} className="flex justify-between items-center gap-5">
-              <label className="text-amber-50 md:text-base text-sm poppins-regular">
-                {label}
-              </label>
+              <label className="text-amber-50 md:text-base text-sm poppins-regular">{label}</label>
               <input
                 type="number"
                 value={value}
-                placeholder={placeholder}
                 onChange={(e) => set(+e.target.value)}
                 className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
               />
@@ -185,11 +125,11 @@ const RetirementSavingsCalculator = () => {
             {results.totalSavingsAtRetirement}
           </p>
           <p>
-            <strong>Shortfall / Surplus:</strong> R {results.shortfallOrSurplus}
+            <strong>Retirement Corpus Needed:</strong> R{" "}
+            {results.retirementCorpusNeeded}
           </p>
           <p>
-            <strong>Suggested Monthly Contribution:</strong> R{" "}
-            {results.suggestedMonthlyContribution}
+            <strong>{results.status}:</strong> R {results.shortfallOrSurplus}
           </p>
         </div>
       )}
