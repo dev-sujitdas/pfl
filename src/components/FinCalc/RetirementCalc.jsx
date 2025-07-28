@@ -6,10 +6,10 @@ const RetirementSavingsCalculator = () => {
   const [lifeExpectancy, setLifeExpectancy] = useState(85);
   const [currentSavings, setCurrentSavings] = useState(0);
   const [monthlyContribution, setMonthlyContribution] = useState(0);
-  const [growthRate, setGrowthRate] = useState(10); // return_pre
-  const [postRetirementRate, setPostRetirementRate] = useState(8); // return_post
+  const [growthRate, setGrowthRate] = useState(10); 
+  const [postRetirementRate, setPostRetirementRate] = useState(8); 
   const [inflationRate, setInflationRate] = useState(5);
-  const [spendRetireMonthlyToday, setSpendRetireMonthlyToday] = useState(35000); // now user-defined
+  const [spendRetireMonthlyToday, setSpendRetireMonthlyToday] = useState(35000); 
 
   const [results, setResults] = useState(null);
 
@@ -86,9 +86,9 @@ const RetirementSavingsCalculator = () => {
             { label: "Current Savings", value: currentSavings, set: setCurrentSavings },
             { label: "Monthly Contribution", value: monthlyContribution, set: setMonthlyContribution },
             { label: "Inflation Rate (%)", value: inflationRate, set: setInflationRate },
-            { label: "Expected Annual Growth Rate (%)", value: growthRate, set: setGrowthRate },
-            { label: "Post-Retirement Return (%)", value: postRetirementRate, set: setPostRetirementRate },
-            { label: "Monthly Spend Needed in Today's Value", value: spendRetireMonthlyToday, set: setSpendRetireMonthlyToday },
+            { label: "Expected Annual return (Pre-retirement)", value: growthRate, set: setGrowthRate },
+            { label: "Expected Annual return (Post-retirement)", value: postRetirementRate, set: setPostRetirementRate },
+            { label: "Retirement Monthly Expenses (Today’s Value)", value: spendRetireMonthlyToday, set: setSpendRetireMonthlyToday },
           ].map(({ label, value, set }, i) => (
             <div key={i} className="flex justify-between items-center gap-5">
               <label className="text-amber-50 md:text-base text-sm poppins-regular">{label}</label>

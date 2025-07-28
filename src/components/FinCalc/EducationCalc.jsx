@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 
-// 1) Finance helper functions
 function futureValueLumpSum(PV, r, n) {
-  // Grow a lump sum PV at rate r for n periods
   return PV * Math.pow(1 + r, n);
 }
 
 function futureValueAnnuity(PMT, r, n) {
-  // Grow a monthly payment PMT at rate r for n periods
   if (r === 0) return PMT * n;
   return PMT * ((Math.pow(1 + r, n) - 1) / r);
 }
 
 const EducationCalculator = () => {
-  // 2) Inputs
   const [childAge, setChildAge] = useState(5);
   const [educationAge, setEducationAge] = useState(18);
   const [programYears, setProgramYears] = useState(3);
@@ -26,18 +22,15 @@ const EducationCalculator = () => {
   const [results, setResults] = useState(null);
 
   const calculate = () => {
-    // 3) Time spans and rates
     const yearsToEducation = educationAge - childAge;
     const monthsToEducation = yearsToEducation * 12;
     const monthlyRate = annualReturn / 100 / 12;
     const inflation = inflationRate / 100;
 
-    // 4) Future cost of education
     const inflatedAnnualCost =
       annualCostToday * Math.pow(1 + inflation, yearsToEducation);
     const totalProgramCost = inflatedAnnualCost * programYears;
 
-    // 5) Accumulated savings & contributions
     const fvCurrentSavings = futureValueLumpSum(
       currentSavings,
       monthlyRate,
@@ -52,7 +45,6 @@ const EducationCalculator = () => {
 
     const totalFutureValue = fvCurrentSavings + fvContributions;
 
-    // 6) Shortfall and required monthly
     const shortfall = totalProgramCost - totalFutureValue;
 
     let requiredMonthly = monthlyContribution;
@@ -62,7 +54,6 @@ const EducationCalculator = () => {
         (Math.pow(1 + monthlyRate, monthsToEducation) - 1);
     }
 
-    // 7) Set results
     setResults({
       inflatedAnnualCost: inflatedAnnualCost.toFixed(2),
       totalProgramCost: totalProgramCost.toFixed(2),
@@ -92,14 +83,46 @@ const EducationCalculator = () => {
         </h2>
 
         <div className="flex flex-col flex-wrap justify-between gap-4">
-          <InputField label="Child's Current Age:" value={childAge} setter={setChildAge} />
-          <InputField label="Higher Education Age:" value={educationAge} setter={setEducationAge} />
-          <InputField label="Annual Education Cost Today (R):" value={annualCostToday} setter={setAnnualCostToday} />
-          <InputField label="Program Duration (Years):" value={programYears} setter={setProgramYears} />
-          <InputField label="Current Savings (R):" value={currentSavings} setter={setCurrentSavings} />
-          <InputField label="Monthly Contribution (R):" value={monthlyContribution} setter={setMonthlyContribution} />
-          <InputField label="Inflation Rate (%):" value={inflationRate} setter={setInflationRate} />
-          <InputField label="Expected Annual Return (%):" value={annualReturn} setter={setAnnualReturn} />
+          <InputField
+            label="Child's Current Age:"
+            value={childAge}
+            setter={setChildAge}
+          />
+          <InputField
+            label="Higher Education Age:"
+            value={educationAge}
+            setter={setEducationAge}
+          />
+          <InputField
+            label="Annual Education Cost Today (R):"
+            value={annualCostToday}
+            setter={setAnnualCostToday}
+          />
+          <InputField
+            label="Program Duration (Years):"
+            value={programYears}
+            setter={setProgramYears}
+          />
+          <InputField
+            label="Current Savings (R):"
+            value={currentSavings}
+            setter={setCurrentSavings}
+          />
+          <InputField
+            label="Monthly Contribution (R):"
+            value={monthlyContribution}
+            setter={setMonthlyContribution}
+          />
+          <InputField
+            label="Inflation Rate (%):"
+            value={inflationRate}
+            setter={setInflationRate}
+          />
+          <InputField
+            label="Expected Annual Return (%):"
+            value={annualReturn}
+            setter={setAnnualReturn}
+          />
         </div>
 
         <div className="flex gap-4">
@@ -121,19 +144,23 @@ const EducationCalculator = () => {
       {results && (
         <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl h-fit">
           <p>
-            <strong>Future Annual Education Cost:</strong> R {results.inflatedAnnualCost}
+            <strong>Future Annual Education Cost:</strong> R{" "}
+            {results.inflatedAnnualCost}
           </p>
           <p>
-            <strong>Total Higher Education Cost:</strong> R {results.totalProgramCost}
+            <strong>Total Higher Education Cost:</strong> R{" "}
+            {results.totalProgramCost}
           </p>
           <p>
-            <strong>Projected Future Value:</strong> R {results.totalFutureValue}
+            <strong>Projected Future Value:</strong> R{" "}
+            {results.totalFutureValue}
           </p>
           <p>
             <strong>Shortfall:</strong> R {results.shortfall}
           </p>
           <p>
-            <strong>Suggested Monthly Savings:</strong> R {results.requiredMonthly}
+            <strong>Suggested Monthly Savings:</strong> R{" "}
+            {results.requiredMonthly}
           </p>
           <p className="text-sm italic text-gray-700 mt-2">
             Suggested vehicles: TFSAs, Unit Trusts
@@ -144,7 +171,7 @@ const EducationCalculator = () => {
   );
 };
 
-// Reusable input component
+
 const InputField = ({ label, value, setter }) => (
   <div className="flex justify-between items-center gap-5">
     <label className="text-amber-50 md:text-base text-sm poppins-regular">
