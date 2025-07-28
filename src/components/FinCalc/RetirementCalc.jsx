@@ -6,10 +6,10 @@ const RetirementSavingsCalculator = () => {
   const [lifeExpectancy, setLifeExpectancy] = useState(85);
   const [currentSavings, setCurrentSavings] = useState(0);
   const [monthlyContribution, setMonthlyContribution] = useState(0);
-  const [growthRate, setGrowthRate] = useState(10); 
-  const [postRetirementRate, setPostRetirementRate] = useState(8); 
+  const [growthRate, setGrowthRate] = useState(10);
+  const [postRetirementRate, setPostRetirementRate] = useState(8);
   const [inflationRate, setInflationRate] = useState(5);
-  const [spendRetireMonthlyToday, setSpendRetireMonthlyToday] = useState(35000); 
+  const [spendRetireMonthlyToday, setSpendRetireMonthlyToday] = useState(35000);
 
   const [results, setResults] = useState(null);
 
@@ -31,7 +31,8 @@ const RetirementSavingsCalculator = () => {
 
     const FV_cont =
       monthlyContribution *
-      ((Math.pow(1 + return_pre / 12, months_to_retire) - 1) / (return_pre / 12));
+      ((Math.pow(1 + return_pre / 12, months_to_retire) - 1) /
+        (return_pre / 12));
 
     const FV_total = FV_curr + FV_cont;
 
@@ -81,17 +82,51 @@ const RetirementSavingsCalculator = () => {
         <div className="flex flex-col flex-wrap justify-between gap-4">
           {[
             { label: "Current Age", value: currentAge, set: setCurrentAge },
-            { label: "Planned Retirement Age", value: retirementAge, set: setRetirementAge },
-            { label: "Expected Lifespan", value: lifeExpectancy, set: setLifeExpectancy },
-            { label: "Current Savings", value: currentSavings, set: setCurrentSavings },
-            { label: "Monthly Contribution", value: monthlyContribution, set: setMonthlyContribution },
-            { label: "Inflation Rate (%)", value: inflationRate, set: setInflationRate },
-            { label: "Expected Annual return (Pre-retirement)", value: growthRate, set: setGrowthRate },
-            { label: "Expected Annual return (Post-retirement)", value: postRetirementRate, set: setPostRetirementRate },
-            { label: "Retirement Monthly Expenses (Today’s Value)", value: spendRetireMonthlyToday, set: setSpendRetireMonthlyToday },
+            {
+              label: "Planned Retirement Age",
+              value: retirementAge,
+              set: setRetirementAge,
+            },
+            {
+              label: "Expected Lifespan",
+              value: lifeExpectancy,
+              set: setLifeExpectancy,
+            },
+            {
+              label: "Current Savings (R)",
+              value: currentSavings,
+              set: setCurrentSavings,
+            },
+            {
+              label: "Monthly Contribution (R)",
+              value: monthlyContribution,
+              set: setMonthlyContribution,
+            },
+            {
+              label: "Inflation Rate (%)",
+              value: inflationRate,
+              set: setInflationRate,
+            },
+            {
+              label: "Expected Annual return (Pre-retirement)",
+              value: growthRate,
+              set: setGrowthRate,
+            },
+            {
+              label: "Expected Annual return (Post-retirement)",
+              value: postRetirementRate,
+              set: setPostRetirementRate,
+            },
+            {
+              label: "Retirement Monthly Expenses (Today’s Value)",
+              value: spendRetireMonthlyToday,
+              set: setSpendRetireMonthlyToday,
+            },
           ].map(({ label, value, set }, i) => (
             <div key={i} className="flex justify-between items-center gap-5">
-              <label className="text-amber-50 md:text-base text-sm poppins-regular">{label}</label>
+              <label className="text-amber-50 md:text-base text-sm poppins-regular">
+                {label}
+              </label>
               <input
                 type="number"
                 value={value}
@@ -119,17 +154,25 @@ const RetirementSavingsCalculator = () => {
       </div>
 
       {results && (
-        <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl h-fit">
+        <div className="mt-6 bg-gray-100 md:text-lg text-base md:p-4 p-2 rounded-xl h-fit">
           <p>
-            <strong>Projected Retirement Savings:</strong> R{" "}
-            {results.totalSavingsAtRetirement}
+            <strong>Projected Retirement Savings: R</strong> {" "}
+            {Number(results.totalSavingsAtRetirement).toLocaleString(
+              undefined,
+              { minimumFractionDigits: 2 }
+            )}
           </p>
           <p>
-            <strong>Retirement Corpus Needed:</strong> R{" "}
-            {results.retirementCorpusNeeded}
+            <strong>Retirement Corpus Needed: R</strong> {" "}
+            {Number(results.retirementCorpusNeeded).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>{results.status}:</strong> R {results.shortfallOrSurplus}
+            <strong>{results.status}: R</strong> {" "}
+            {Number(results.shortfallOrSurplus).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
         </div>
       )}

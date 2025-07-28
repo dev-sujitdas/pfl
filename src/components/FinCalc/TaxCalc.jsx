@@ -3,12 +3,11 @@ import React, { useState } from "react";
 const TaxCalculator = () => {
   const [income, setIncome] = useState(300000);
   const [contribution, setContribution] = useState(30000);
-  const [taxYear, setTaxYear] = useState(2025);
+  // const [taxYear, setTaxYear] = useState(2025);
 
   const [results, setResults] = useState(null);
 
   const calculate = () => {
-    
     let taxRate = 0;
     if (income <= 237100) taxRate = 0.18;
     else if (income <= 370500) taxRate = 0.26;
@@ -21,7 +20,9 @@ const TaxCalculator = () => {
     const deductionLimit = income * 0.275;
     const allowableDeduction = Math.min(contribution, deductionLimit);
     const taxSavings = allowableDeduction * taxRate;
-    const effectiveReturn = ((taxSavings / allowableDeduction) * 100).toFixed(2);
+    const effectiveReturn = ((taxSavings / allowableDeduction) * 100).toFixed(
+      2
+    );
 
     setResults({
       reducedIncome: income - allowableDeduction,
@@ -33,7 +34,7 @@ const TaxCalculator = () => {
   const resetHandler = () => {
     setIncome(300000);
     setContribution(30000);
-    setTaxYear(2025);
+    // setTaxYear(2025);
 
     setResults(null);
   };
@@ -46,7 +47,9 @@ const TaxCalculator = () => {
 
       <div className="flex flex-col flex-wrap justify-between gap-4">
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 md:text-base text-sm  poppins-regular">Annual Taxable Income (R):</label>
+          <label className="text-amber-50 md:text-base text-sm  poppins-regular">
+            Annual Taxable Income (R):
+          </label>
           <input
             type="number"
             value={income}
@@ -56,7 +59,9 @@ const TaxCalculator = () => {
         </div>
 
         <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 md:text-base text-sm  poppins-regular">RA/TFSA Contributions (R):</label>
+          <label className="text-amber-50 md:text-base text-sm  poppins-regular">
+            RA/TFSA Contributions (R):
+          </label>
           <input
             type="number"
             value={contribution}
@@ -65,7 +70,7 @@ const TaxCalculator = () => {
           />
         </div>
 
-        <div className="flex justify-between items-center gap-5">
+        {/* <div className="flex justify-between items-center gap-5">
           <label className="text-amber-50 md:text-base text-sm  poppins-regular">Tax Year:</label>
           <select
             value={taxYear}
@@ -76,34 +81,40 @@ const TaxCalculator = () => {
             <option value={2024}>2024</option>
             <option value={2023}>2023</option>
           </select>
-        </div>
+        </div> */}
       </div>
-    <div className="flex gap-4">
-       <button
-        className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
-        onClick={calculate}
-      >
-        Calculate
-      </button>
-       <button
-        className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
-        onClick={resetHandler}
-      >
-        Reset
-      </button>
-    </div>
-      
+      <div className="flex gap-4">
+        <button
+          className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+          onClick={calculate}
+        >
+          Calculate
+        </button>
+        <button
+          className="mt-4 md:px-4 md:py-2 px-2 py-1 bg-[#2D2D2C] text-amber-50 md:text-base text-sm rounded-full border-2 poppins-regular hover:bg-[#BA8748]"
+          onClick={resetHandler}
+        >
+          Reset
+        </button>
+      </div>
 
       {results && (
-        <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl">
+        <div className="mt-6 bg-gray-100 md:text-lg text-base md:p-4 p-2 rounded-xl">
           <p>
-            <strong>Taxable Income After Deduction:</strong> R {results.reducedIncome.toLocaleString()}
+            <strong>Taxable Income After Deduction: R</strong>{" "}
+            {Number(results.reducedIncome).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Estimated Annual Tax Savings:</strong> R {results.taxSavings}
+            <strong>Estimated Annual Tax Savings: R</strong>{" "}
+            {Number(results.taxSavings).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Effective Return on Contribution:</strong> {results.effectiveReturn}%
+            <strong>Effective Return on Contribution:</strong>{" "}
+            {results.effectiveReturn}%
           </p>
         </div>
       )}

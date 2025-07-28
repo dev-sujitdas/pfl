@@ -142,25 +142,36 @@ const EducationCalculator = () => {
       </div>
 
       {results && (
-        <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl h-fit">
+        <div className="mt-6 bg-gray-100 md:text-lg text-base md:p-4 p-2 rounded-xl h-fit">
           <p>
-            <strong>Future Annual Education Cost:</strong> R{" "}
-            {results.inflatedAnnualCost}
+            <strong>Future Annual Education Cost: R</strong>{" "}
+            {Number(results.inflatedAnnualCost).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Total Higher Education Cost:</strong> R{" "}
-            {results.totalProgramCost}
+            <strong>Total Higher Education Cost: R</strong>{" "}
+            {Number(results.totalProgramCost).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Projected Future Value:</strong> R{" "}
-            {results.totalFutureValue}
+            <strong>Projected Future Value: R</strong>{" "}
+            {Number(results.totalFutureValue).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Shortfall:</strong> R {results.shortfall}
+            <strong>Shortfall: R </strong>
+            {Number(results.shortfall).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Suggested Monthly Savings:</strong> R{" "}
-            {results.requiredMonthly}
+            <strong>Suggested Monthly Savings: R </strong>{" "}
+            {Number(results.requiredMonthly).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p className="text-sm italic text-gray-700 mt-2">
             Suggested vehicles: TFSAs, Unit Trusts
@@ -170,7 +181,6 @@ const EducationCalculator = () => {
     </div>
   );
 };
-
 
 const InputField = ({ label, value, setter }) => (
   <div className="flex justify-between items-center gap-5">

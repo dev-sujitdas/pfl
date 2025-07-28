@@ -5,7 +5,6 @@ const InvestmentCalc = () => {
   const [monthlyContribution, setMonthlyContribution] = useState(1000);
   const [years, setYears] = useState(10);
   const [returnRate, setReturnRate] = useState(8);
-  const [riskTolerance, setRiskTolerance] = useState("Balanced");
 
   const [results, setResults] = useState(null);
 
@@ -41,7 +40,6 @@ const InvestmentCalc = () => {
     setMonthlyContribution(1000);
     setYears(10);
     setReturnRate(8);
-    setRiskTolerance("Balanced");
 
     setResults(null);
   };
@@ -97,20 +95,6 @@ const InvestmentCalc = () => {
             className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
           />
         </div>
-        <div className="flex justify-between items-center gap-5">
-          <label className="text-amber-50 md:text-base text-sm poppins-regular">
-            Risk Tolerance:
-          </label>
-          <select
-            value={riskTolerance}
-            onChange={(e) => setRiskTolerance(e.target.value)}
-            className="bg-[#FDFDFD] md:text-base text-sm md:p-2 p-1 rounded-xl"
-          >
-            <option value="Conservative">Conservative</option>
-            <option value="Balanced">Balanced</option>
-            <option value="Aggressive">Aggressive</option>
-          </select>
-        </div>
       </div>
 
       <div className="flex gap-4">
@@ -129,19 +113,30 @@ const InvestmentCalc = () => {
       </div>
 
       {results && (
-        <div className="mt-6 bg-gray-100 md:text-base text-sm md:p-4 p-2 rounded-xl">
+        <div className="mt-6 bg-gray-100 md:text-lg text-base md:p-4 p-2 rounded-xl">
           <p>
-            <strong>Future Investment Value (Local):</strong> R{" "}
-            {results.totalFutureValue}
+            <strong>Future Investment Value (Local): R</strong> {" "}
+            {Number(results.totalFutureValue).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Capital Invested:</strong> R {results.capital}
+            <strong>Capital Invested: R</strong> {" "}
+            {Number(results.capital).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Growth Earned:</strong> R {results.growth}
+            <strong>Growth Earned: R</strong> {" "}
+            {Number(results.growth).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
           <p>
-            <strong>Estimated Offshore Return:</strong> R {results.offshore}
+            <strong>Estimated Offshore Return: R</strong> {" "}
+            {Number(results.offshore).toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+            })}
           </p>
         </div>
       )}
