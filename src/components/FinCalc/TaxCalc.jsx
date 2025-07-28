@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const TaxCalculator = () => {
   const [income, setIncome] = useState(300000);
   const [contribution, setContribution] = useState(30000);
-  const [taxYear, setTaxYear] = useState(2025);
+  //const [taxYear, setTaxYear] = useState(2025);
 
   const [results, setResults] = useState(null);
 
@@ -33,7 +33,7 @@ const TaxCalculator = () => {
   const resetHandler = () => {
     setIncome(300000);
     setContribution(30000);
-    setTaxYear(2025);
+    // setTaxYear(2025);
 
     setResults(null);
   };
@@ -65,7 +65,7 @@ const TaxCalculator = () => {
           />
         </div>
 
-        <div className="flex justify-between items-center gap-5">
+{/*         <div className="flex justify-between items-center gap-5">
           <label className="text-amber-50 md:text-base text-sm  poppins-regular">Tax Year:</label>
           <select
             value={taxYear}
@@ -76,7 +76,7 @@ const TaxCalculator = () => {
             <option value={2024}>2024</option>
             <option value={2023}>2023</option>
           </select>
-        </div>
+        </div> */}
       </div>
     <div className="flex gap-4">
        <button
