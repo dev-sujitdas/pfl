@@ -95,7 +95,7 @@ const Home = () => {
               <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex gap-5 flex-wrap items-center">
                 <span className="inline-block">Lifelong Financial</span>
               </h1>
-              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:h-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
+              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.4.5rem] lg:text-[3.5rem] md:h-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
                 <span className="inline-block">Growth</span>
               </h1>
             </div>
