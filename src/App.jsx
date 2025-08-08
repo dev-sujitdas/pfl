@@ -6,6 +6,7 @@ const Loader = React.lazy(() => import("./components/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar"));
 const Home = React.lazy(() => import("./components/Home"));
 const About = React.lazy(() => import("./components/About"));
+const Diffrentiator = React.lazy(() => import("./components/Diffrentiator"));
 const OurServices = React.lazy(() => import("./components/OurServices"));
 const FinancialTimeline = React.lazy(() => import("./components/FinancialTimeline"));
 const ClientProp = React.lazy(() => import("./components/ClientProp"));
@@ -64,7 +65,8 @@ const App = () => {
                   <>
                     <Home />
                     <About />
-                    <OurServices />
+                    {/* <Diffrentiator lenis={lenisRef}/> */}
+                    <OurServices />                    
                     <FinancialTimeline />
                     <ClientProp />
                     <RiskCover />

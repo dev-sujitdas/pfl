@@ -18,8 +18,8 @@ const FinancialNeedsAnalysis = () => {
   const [lifeCover, setLifeCover] = useState(1000000);
   const [disabilityCover, setDisabilityCover] = useState(500000);
   const [criticalCover, setCriticalCover] = useState(300000);
-  const [medicalAid, setMedicalAid] = useState("Yes");
-  const [provider, setProvider] = useState("Discovery");
+  const [medicalAid, setMedicalAid] = useState("No");
+  const [provider, setProvider] = useState("");
 
   const [lifeGap, setLifeGap] = useState(null);
   const [disabilityGap, setDisabilityGap] = useState(null);
@@ -58,7 +58,7 @@ const FinancialNeedsAnalysis = () => {
     setDisabilityCover(500000);
     setCriticalCover(300000);
     setMedicalAid("Yes");
-    setProvider("Discovery");
+    setProvider("");
 
     setLifeGap(null);
     setDisabilityGap(null);

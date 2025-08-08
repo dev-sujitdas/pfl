@@ -174,7 +174,7 @@ const OurServices = () => {
   }, []);
 
   return (
-    <section id="services" className="w-full relative z-20 bg-[#EEF4EA]">
+    <section id="services" className="w-full relative z-20 bg-[#fdfdfd]">
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#2D2D2C] ">
         <div className="service-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">
@@ -186,8 +186,8 @@ const OurServices = () => {
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#d4d4d8]"></div>
             </div>
-            <div className="h-[4rem] md:h-[5.3rem] w-[7rem] md:w-[10rem] overflow-hidden">
-              <h3 className="text-sm md:text-lg 2xl:text-xl poppins-medium w-[7rem] md:w-[10rem] text-zinc-300">
+            <div className="h-[4rem] md:h-[6.6rem] w-[8rem] md:w-[10rem] overflow-hidden">
+              <h3 className="text-sm md:text-lg 2xl:text-xl poppins-medium w-[8rem] md:w-[10rem] text-zinc-300">
                 Reliable Services for a Secure Tomorrow
               </h3>
             </div>
@@ -260,3 +260,6 @@ const OurServices = () => {
 };
 
 export default OurServices;
+
+
+

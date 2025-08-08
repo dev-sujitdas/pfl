@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef} from "react";
 import video from "/Video/tree.mp4";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 import gsap from "gsap";
@@ -12,6 +12,7 @@ const Home = () => {
   const homeRef = useRef();     
   const scrollRef = useRef();    
   const videoRef = useRef();
+  
   
   useEffect(() => {
     const tl = gsap.timeline();
@@ -88,13 +89,13 @@ const Home = () => {
             className="w-full lg:w-1/2 h-full flex flex-col justify-center relative z-50 2xl:pl-5"
           >
             <div id="title">
-              <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
+              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
                 <span className="inline-block">Your Partner in</span>
               </h1>
-              <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6.2rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
+              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex gap-5 flex-wrap items-center">
                 <span className="inline-block">Lifelong Financial</span>
               </h1>
-              <h1 className="leading-20 poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
+              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:h-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
                 <span className="inline-block">Growth</span>
               </h1>
             </div>

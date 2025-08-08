@@ -10,6 +10,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
+import { FaBullseye, FaMapMarkerAlt, FaHandshake, FaLaptop } from "react-icons/fa";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
@@ -27,87 +29,118 @@ const About = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
+
+  const features = [
+    {
+      icon: <FaBullseye className="text-3xl text-[#1F2023]" />,
+      title: "Personalised Strategies",
+      desc: "Driven by your goals, not products.",
+    },
+    {
+      icon: <FaMapMarkerAlt className="text-3xl text-[#1F2023]" />,
+      title: "Local Expertise",
+      desc: "South African specialists who understand volatility, tax laws, and regulation.",
+    },
+    {
+      icon: <FaHandshake className="text-3xl text-[#1F2023]" />,
+      title: "Long-Term Relationships",
+      desc: "Annual reviews and life-stage planning for lasting success.",
+    },
+    {
+      icon: <FaLaptop className="text-3xl text-[#1F2023]" />,
+      title: "Modern Platforms",
+      desc: "Stay informed and engaged with digital tools tailored to you.",
+    },
+  ];
+
   useGSAP(() => {
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".about-top",
-        start: "top 85%",
-        end: "top 50%",
-      }
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".about-top",
+          start: "top 85%",
+          end: "top 50%",
+        },
+      });
+
+      tl.from(".about-top h2, .about-top h3", {
+        y: 80,
+        stagger: 0.2,
+        ease: "power2.out",
+        opacity: 0,
+      }).from(
+        ".about-top .line",
+        {
+          width: "0",
+          x: "7rem",
+          ease: "power2.out",
+        },
+        "-=0.3"
+      );
     });
 
-    tl.from(".about-top h2, .about-top h3", {
-      y: 80,
-      stagger: 0.2,
-      ease: "power2.out",
-      opacity: 0,
-    }).from(".about-top .line", {
-      width: "0",
-      x: "7rem",
-      ease: "power2.out",
-    }, "-=0.3"); 
-  });
+    return () => ctx.revert();
+  }, []);
 
-  return () => ctx.revert(); 
-}, []);
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".our-roots",
+          start: "top 80%",
+          end: "top 40%",
+        },
+      });
 
-useGSAP(() => {
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".our-roots",
-        start: "top 80%",
-        end: "top 40%",
-      },
+      tl.from(".our-roots", {
+        y: 80,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      }).from(
+        ".sapling",
+        {
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      );
     });
 
-    tl.from(".our-roots", {
-      y: 80,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    }).from(".sapling", {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    }, "-=0.5"); 
-  });
+    return () => ctx.revert();
+  }, []);
 
-  return () => ctx.revert();
-}, []);
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".core-value-card-wrapper", {
+        scrollTrigger: {
+          trigger: ".core-value-card-wrapper",
+          start: "top 90%",
+          end: "top 50%",
+        },
+        scale: 0.9,
+        y: 40,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "back.out(1.7)",
+      });
 
-useGSAP(() => {
-  const ctx = gsap.context(() => {
-    gsap.from(".core-value-card-wrapper", {
-      scrollTrigger: {
-        trigger: ".core-value-card-wrapper",
-        start: "top 90%",
-        end: "top 50%",
-      },
-      scale: 0.9,
-      y: 40,
-      opacity: 0,
-      stagger: 0.2,
-      ease: "back.out(1.7)",
+      gsap.from(".testimonial-card", {
+        scrollTrigger: {
+          trigger: ".testimonial-card",
+          start: "top 90%",
+          end: "top 50%",
+        },
+        y: 60,
+        opacity: 0,
+        stagger: 0.3,
+        ease: "power3.out",
+      });
     });
 
-    gsap.from(".testimonial-card", {
-      scrollTrigger: {
-        trigger: ".testimonial-card",
-        start: "top 90%",
-        end: "top 50%",
-      },
-      y: 60,
-      opacity: 0,
-      stagger: 0.3,
-      ease: "power3.out",
-    });
-  });
-
-  return () => ctx.revert();
-}, []);
-
+    return () => ctx.revert();
+  }, []);
 
   const cardData = [
     {
@@ -151,7 +184,7 @@ useGSAP(() => {
   ];
 
   return (
-    <section id="about" className="w-full bg-[#FDFDFD] relative">
+    <section id="about" className="w-full bg-[#FDFDFD] relative overflow-hidden">
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative ">
         <div className="about-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden">
@@ -186,6 +219,23 @@ useGSAP(() => {
               their life stage, We currently operate throughout the country with
               our HQ located in Umhlanga.
             </p>
+
+            {/* <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
+              Who We Are
+            </h3>
+            <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
+              PFL Financial Advisors is an independent, boutique financial
+              planning firm with offices in Durban, Cape Town, and Richards Bay.
+              We specialise in long-term, client-centred strategies that are
+              tailored to South African realities.
+            </p>
+
+            <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600 mt-5">
+              Our Mission
+            </h3>
+            <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
+              To give South Africans the confidence and clarity to build financial futures through personalised advice, smart tools, and a trusted relationship.
+            </p> */}
             <h4 className="flex items-center text-lg poppins-semibold mt-5">
               <FaCaretRight />
               25 years of experience
@@ -194,7 +244,7 @@ useGSAP(() => {
               <FaCaretRight />
               Operate throughout South Africa
             </h4>
-            <div className="absolute w-30 h-30 blur-[150px] bg-[#50aa35] top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
+            <div className="absolute w-20 h-15 blur-[150px] bg-[#50aa35] top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
           </div>
 
           <img
@@ -260,7 +310,7 @@ useGSAP(() => {
         </div>
 
         <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] bottom-20 left-28 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
-      </div>
+      </div>       
     </section>
   );
 };

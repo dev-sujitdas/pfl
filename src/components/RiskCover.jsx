@@ -4,7 +4,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const ReasonBlock = ({ number, title, points }) => (
-  <div className="flex flex-col md:flex-row gap-4 border-t-2 border-[#9e9797] nth-last-[1]:border-b-2 py-5 hover:bg-[#EEF4EA] text-amber-50 select-none">
+  <div className="flex flex-col md:flex-row gap-4 border-t-2 border-[#9e9797] nth-last-[1]:border-b-2 py-5 select-none 
+    bg-gradient-to-r from-[#FDFDFD] via-[#EEF4EA] to-[#FDFDFD] hover:from-[#eef4ea] hover:to-[#fdfdfd] text-amber-50">
     <h2 id="num2" className="text-6xl poppins-bold">
       {number}
     </h2>

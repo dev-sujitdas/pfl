@@ -179,10 +179,7 @@
     width: 100%;  
     height: fit-content;  
   }
-  #home-container #left h1{
-    height: fit-content;
-    line-height: 5rem;
-  }
+ 
   #home #right{
     height: 50%;
     width: 100%;

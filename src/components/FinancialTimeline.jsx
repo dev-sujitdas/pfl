@@ -331,7 +331,7 @@ const FinancialTimeline = () => {
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
-            <div className="h-[4rem] md:h-[5.3rem] w-[7rem] md:w-[10rem] overflow-hidden">
+            <div className="h-[4rem] md:h-[6.6rem] w-[7rem] md:w-[10rem] overflow-hidden">
               <h3 className="text-sm md:text-lg 2xl:text-xl poppins-medium w-[7rem] md:w-[10rem] text-zinc-600">
                 Reliable Services for a Secure Tomorrow
               </h3>

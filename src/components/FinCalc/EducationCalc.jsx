@@ -14,10 +14,10 @@ const EducationCalculator = () => {
   const [educationAge, setEducationAge] = useState(18);
   const [programYears, setProgramYears] = useState(3);
   const [annualCostToday, setAnnualCostToday] = useState(150000);
-  const [inflationRate, setInflationRate] = useState(8); // %
+  const [inflationRate, setInflationRate] = useState(8); 
   const [currentSavings, setCurrentSavings] = useState(0);
   const [monthlyContribution, setMonthlyContribution] = useState(0);
-  const [annualReturn, setAnnualReturn] = useState(7); // %
+  const [annualReturn, setAnnualReturn] = useState(7); 
 
   const [results, setResults] = useState(null);
 
