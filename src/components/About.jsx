@@ -184,7 +184,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="w-full bg-[#FDFDFD] relative overflow-hidden">
+    <section id="about" className="w-full bg-[#EEF4EA] relative overflow-hidden">
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative ">
         <div className="about-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden">
