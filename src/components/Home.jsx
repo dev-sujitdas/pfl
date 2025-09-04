@@ -146,11 +146,11 @@ const Home = () => {
           {/* Right section */}
           <div
             id="right"
-            className="h-full w-1/2 flex flex-col justify-center md:pt-4 xl:pt-0"
+            className="h-full w-1/2 flex flex-col items-center justify-center md:pt-4 xl:pt-0"
           >
             <video
               ref={videoRef}
-              className="h-full w-full object-contain"
+              className="h-full w-full object-contain mb-3"
               src={video}
               autoPlay
               muted
