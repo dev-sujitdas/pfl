@@ -150,7 +150,7 @@ const Home = () => {
           >
             <video
               ref={videoRef}
-              className="h-full w-full object-contain mb-3"
+              className="h-full w-full object-contain"
               src={video}
               autoPlay
               muted
