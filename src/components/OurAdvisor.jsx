@@ -27,6 +27,12 @@ const advisorData = [
     description:
       "Micky began her career in financial services in 1976 with NBS Bank and achieved Executive Financial Planner status in 1984. She joined Plan for Life in 2000 and specializes in personal financial planning, serving a well-established client base in Durban.",
   },
+  {
+    image: face3,
+    name: "Aleisha Bezuidenhout",
+    description:
+      "Aleisha, a Durban native, holds degrees in Social Dynamics (Stellenbosch, 2013) and Law (Free State, 2017). After completing her articles in Paarl, she was admitted as a legal practitioner in 2020 and later as a Conveyancer and Notary. She prides herself on delivering affordable, quality legal services.",
+  },
 ];
 
 const OurAdvisor = () => {
@@ -43,7 +49,7 @@ const OurAdvisor = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     ScrollTrigger.refresh();
   }, [isMobile]);
 
@@ -54,7 +60,7 @@ const OurAdvisor = () => {
           trigger: ".advisor-top",
           start: "top 70%",
           end: "top 30%",
-          
+
         },
       });
 
@@ -109,7 +115,7 @@ const OurAdvisor = () => {
     <section id="advisors" className="w-full  bg-[#FDFDFD]">
       <div
         // id="advisor"
-        className="w-full 2xl:h-screen max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative "
+        className="w-full h-auto max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative "
       >
         <div className="advisor-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">
@@ -134,39 +140,22 @@ const OurAdvisor = () => {
             Meet the experts behind your financial success.
           </h3>
         </div>
-        <div className="w-full mx-auto mt-10 flex justify-center items-center">
+        <div className="w-full mx-auto flex justify-center items-center mt-20">
           <div
-            className={`advisor-wrapper flex flex-wrap gap-10 relative 
-              ${isMobile ? "justify-center items-center" : ""}`}
-          >
-            {advisorData.map((item, index) => (
-              <div
-                key={index}
-                className="advisor-card group w-72 2xl:w-80 rounded-2xl overflow-hidden bg-transparent"
-              >
-                <div className="w-full 2xl:h-96 h-80">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div
-                  className={`transition-all duration-500 ease-in-out px-5 bg-[#2D2D2C] ${
-                    isMobile
-                      ? "opacity-100 max-h-full py-4"
-                      : "opacity-0 max-h-0 py-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:py-4"
-                  }`}
-                >
-                  <h2 className="text-lg text-white poppins-semibold mb-2">
-                    {item.name}
-                  </h2>
-                  <p className="text-sm italic text-white">
-                    {item.description}
-                  </p>
-                </div>
+            className={`advisor-wrapper flex gap-6 ${
+              isMobile
+                ? "flex-nowrap overflow-x-auto overflow-y-hidden hide-scrollbar snap-x snap-mandatory"
+                : "flex-wrap justify-center"
+            }`}>
+            {advisorData.map((data, index)=>(
+              <div key={index} className="advisor-card w-80 rounded-xl bg-[#fdfdfd] p-4 shadow-md snap-start shrink-0 z-50">
+              <div className="p-4 rounded-xl bg-emerald-900">
+                <h2 className="text-zinc-100 text-xl poppins-semibold">{data.name}</h2>
               </div>
+              <p className="text-base mt-3 poppins-regular-italic">
+                {data.description}
+              </p>
+            </div>
             ))}
           </div>
         </div>

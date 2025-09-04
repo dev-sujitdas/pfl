@@ -226,11 +226,14 @@
     margin-top: 14rem;
   }
   .arrow{
-    bottom: 0;
+    display: none;
   }
    .fincalc-render{
     overflow: auto;
   }
+  .para-2{
+      display: none;
+    }  
 }
 
 .loader-container {
@@ -263,3 +266,4 @@
   position: relative;
   z-index: 10;
 }
+

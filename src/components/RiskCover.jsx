@@ -20,52 +20,52 @@ const ReasonBlock = ({ number, title, points }) => (
   </div>
 );
 
-const riskReasons = [
-  {
-    number: "1",
-    title: "High Underinsurance Rates",
-    points: [
-      "According to the Financial Planning Institute of Southern Africa (FPI), over 70% of South Africans are underinsured, leaving families exposed to significant financial risks.",
-      "Without sufficient life cover, dependents may struggle to cover daily expenses, debts (e.g., home loans averaging R1.8M in 2025), or future goals like education.",
-      "Disability and critical illness cover are often overlooked, yet 1 in 4 South Africans may face a disability before retirement, and chronic diseases like cancer are rising (Cancer Association of SA, 2025).",
-    ],
-  },
-  {
-    number: "2",
-    title: "Economic Pressures",
-    points: [
-      "South Africa’s economy faces challenges like rand volatility, inflation (4-5% in 2025), and high unemployment (27% in Q1 2025). These pressures make it harder for families to recover from financial shocks without insurance.",
-      "Rising costs—education (7-9% annual increase), healthcare (6-8% above CPI), and debt servicing—mean a loss of income can push families into poverty.",
-      "Example: A family with R30,000 monthly expenses needs R5.4M in life cover to sustain 15 years of support, yet many have less than R1M",
-    ],
-  },
-  {
-    number: "3",
-    title: "Prevalence of Debt",
-    points: [
-      "South Africans carry significant debt, with household debt-to-income ratios at 75% (SA Reserve Bank, 2025). Home loans, car loans, and credit card debt are common.",
-      "Without life cover, dependents inherit debt, often forcing asset sales (e.g., family homes) or reliance on high-interest loans.",
-      "Risk cover clears debts, preserving wealth and stability.",
-    ],
-  },
-  {
-    number: "4",
-    title: "Limited Social Safety Nets",
-    points: [
-      "Unlike some developed countries, South Africa has minimal government support for disability or dependants. The Disability Grant (R2,180/month in 2025) is insufficient to replace income.",
-      "Private risk cover bridges this gap, ensuring families maintain their lifestyle and meet obligations.",
-    ],
-  },
-  {
-    number: "5",
-    title: "Health Risks and Medical Costs",
-    points: [
-      "Chronic illnesses like diabetes, hypertension, and cancer are prevalent, with 100,000 new cancer cases annually (CANSA, 2025).",
-      "Medical aid often doesn’t cover non-medical costs (e.g., home modifications, lost income) during illness. Critical illness cover provides a lump sum to ease these burdens.",
-      "Example: A cancer diagnosis could cost R500,000–R1M in ancillary expenses over 5 years.",
-    ],
-  },
-];
+// const riskReasons = [
+//   {
+//     number: "1",
+//     title: "High Underinsurance Rates",
+//     points: [
+//       "According to the Financial Planning Institute of Southern Africa (FPI), over 70% of South Africans are underinsured, leaving families exposed to significant financial risks.",
+//       "Without sufficient life cover, dependents may struggle to cover daily expenses, debts (e.g., home loans averaging R1.8M in 2025), or future goals like education.",
+//       "Disability and critical illness cover are often overlooked, yet 1 in 4 South Africans may face a disability before retirement, and chronic diseases like cancer are rising (Cancer Association of SA, 2025).",
+//     ],
+//   },
+//   {
+//     number: "2",
+//     title: "Economic Pressures",
+//     points: [
+//       "South Africa’s economy faces challenges like rand volatility, inflation (4-5% in 2025), and high unemployment (27% in Q1 2025). These pressures make it harder for families to recover from financial shocks without insurance.",
+//       "Rising costs—education (7-9% annual increase), healthcare (6-8% above CPI), and debt servicing—mean a loss of income can push families into poverty.",
+//       "Example: A family with R30,000 monthly expenses needs R5.4M in life cover to sustain 15 years of support, yet many have less than R1M",
+//     ],
+//   },
+//   {
+//     number: "3",
+//     title: "Prevalence of Debt",
+//     points: [
+//       "South Africans carry significant debt, with household debt-to-income ratios at 75% (SA Reserve Bank, 2025). Home loans, car loans, and credit card debt are common.",
+//       "Without life cover, dependents inherit debt, often forcing asset sales (e.g., family homes) or reliance on high-interest loans.",
+//       "Risk cover clears debts, preserving wealth and stability.",
+//     ],
+//   },
+//   {
+//     number: "4",
+//     title: "Limited Social Safety Nets",
+//     points: [
+//       "Unlike some developed countries, South Africa has minimal government support for disability or dependants. The Disability Grant (R2,180/month in 2025) is insufficient to replace income.",
+//       "Private risk cover bridges this gap, ensuring families maintain their lifestyle and meet obligations.",
+//     ],
+//   },
+//   {
+//     number: "5",
+//     title: "Health Risks and Medical Costs",
+//     points: [
+//       "Chronic illnesses like diabetes, hypertension, and cancer are prevalent, with 100,000 new cancer cases annually (CANSA, 2025).",
+//       "Medical aid often doesn’t cover non-medical costs (e.g., home modifications, lost income) during illness. Critical illness cover provides a lump sum to ease these burdens.",
+//       "Example: A cancer diagnosis could cost R500,000–R1M in ancillary expenses over 5 years.",
+//     ],
+//   },
+// ];
 
 const adviceReasons = [
   {
@@ -168,18 +168,6 @@ const RiskCover = () => {
         ease: "power2.out",
       });
 
-      gsap.from(".risk-sub-subtitle > h2, .risk-sub-subtitle > p", {
-        scrollTrigger: {
-          trigger: ".risk-sub-subtitle",
-          start: "top 85%",
-          end: "top 50%",
-        },
-        y: 80,
-        opacity: 0,
-        stagger: 0.2,
-        ease: "power2.out",
-      });
-
       gsap.from(".advice-sub-subtitle > h2, .advice-sub-subtitle > p", {
         scrollTrigger: {
           trigger: ".advice-sub-subtitle",
@@ -253,31 +241,7 @@ const RiskCover = () => {
             </h3>
           </div>
 
-          <div className="mt-10">
-            <div className="risk-sub-subtitle">
-              <h2 className="text-2xl md:text-4xl poppins-bold text-zinc-700 mb-4">
-                Why Risk Cover Is Essential in South Africa?
-              </h2>
-              <p className="text-zinc-600 mb-10 lg:w-1/2 w-full poppins-medium-italic ">
-                Risk cover protects individuals and families from financial
-                devastation caused by unexpected events like death, disability,
-                or serious illness. In South Africa, where economic and social
-                challenges amplify financial vulnerabilities, adequate risk
-                cover is not a luxury—it’s a necessity. Here’s why:
-              </p>
-            </div>
-            
-            <div className="risk-list">
-              {riskReasons.map((reason) => (
-                <ReasonBlock
-                  key={reason.number}
-                  number={reason.number}
-                  title={reason.title}
-                  points={reason.points}
-                />
-              ))}
-            </div>
-
+          <div className="mt-10">      
             <div id="graph-cta" className="flex justify-center lg:flex-row flex-col items-center mb-10">
               <div className="left lg:w-1/2 w-full flex justify-center items-center">
                 <div className="mt-12 h-[30rem] w-[30rem] rounded-xl shadow-md">

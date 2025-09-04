@@ -1,4 +1,4 @@
-import { useEffect, useRef} from "react";
+import {useState, useEffect, useRef } from "react";
 import video from "/Video/tree.mp4";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 import gsap from "gsap";
@@ -9,11 +9,26 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const paraRef = useRef();
   const buttonRef = useRef();
-  const homeRef = useRef();     
-  const scrollRef = useRef();    
+  const homeRef = useRef();
+  const scrollRef = useRef();
   const videoRef = useRef();
-  
-  
+  const [extraSmall, setExtraSmall] = useState(false);
+
+  useEffect(()=>{
+    const handleResize = ()=> {
+      if(window.innerWidth <= 375){
+        setExtraSmall(true);
+      }else{
+        setExtraSmall(false);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return ()=> window.removeEventListener('resize', handleResize)
+  },[])
+
+
   useEffect(() => {
     const tl = gsap.timeline();
 
@@ -47,7 +62,7 @@ const Home = () => {
       );
   }, []);
 
-  
+
   useEffect(() => {
     gsap.to(scrollRef.current, {
       yPercent: -30,
@@ -57,24 +72,24 @@ const Home = () => {
         start: "top bottom",
         end: "bottom top",
         scrub: true,
-        scroller: document.body, 
+        scroller: document.body,
       },
     });
   }, []);
 
   useEffect(() => {
-  if (videoRef.current) {
-    videoRef.current.playbackRate = 1.5;
-  }
-}, []);
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.5;
+    }
+  }, []);
 
 
   return (
     <section
       id="home"
       ref={homeRef}
-      className="h-screen w-full bg-[#FDFDFD] overflow-hidden sticky top-0"
-    >      
+      className={`h-screen w-full bg-[#FDFDFD] overflow-hidden sticky top-0`}
+    >
       <div
         ref={scrollRef}
         className="h-full w-full flex justify-center items-center"
@@ -89,25 +104,29 @@ const Home = () => {
             className="w-full lg:w-1/2 h-full flex flex-col justify-center relative z-50 2xl:pl-5"
           >
             <div id="title">
-              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
+              <h1 className="md:leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[2.5rem] sm:text-[2rem] text-[1.5rem]  flex items-center">
                 <span className="inline-block">Your Partner in</span>
               </h1>
-              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[3rem] text-[2rem] flex gap-5 flex-wrap items-center">
+              <h1 className="leading-8 md:leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[2.5rem] sm:text-[2rem] text-[1.5rem] flex gap-5 flex-wrap items-center">
                 <span className="inline-block">Lifelong Financial</span>
               </h1>
-              <h1 className="leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.4.5rem] lg:text-[3.5rem] md:h-[3.5rem] md:text-[3rem] text-[2rem] flex items-center">
+              <h1 className="md:leading-tight poppins-semibold h-fit 2xl:h-[6rem] overflow-hidden 2xl:text-[4.5rem] lg:text-[3.5rem] md:text-[2.5rem] sm:text-[2rem] text-[1.5rem] flex items-center">
                 <span className="inline-block">Growth</span>
               </h1>
             </div>
 
-            <div className="para w-full 2xl:w-1/2 mt-2 2xl:mt-5 z-50">
-              <p
-                ref={paraRef}
-                className="text-[1rem] md:text-[1.2rem] text-zinc-600"
+            <div ref={paraRef} className="para w-full 2xl:w-[80%] mt-2 2xl:mt-5 z-50">
+              <h4  className="text-zinc-600 poppins-semibold text-[1rem] md:text-[1.2rem]">More Than Just Algorithms</h4>
+              <p                
+                className={`para-1 text-sm md:text-[1.2rem] text-zinc-600`}
               >
-                Offering personalized financial strategies to help you grow,
-                protect, and enjoy your wealth — with clarity, integrity, and
-                expert guidance every step of the way.
+                Digital tools can track your money—but they can’t understand your goals, your fears, or your vision.
+                At PFL, we combine human insight with smart technology to give you real advice, in real time, tailored to your life.
+              </p>
+              <p                
+                className={`para-2 text-sm md:text-[1.2rem] text-zinc-600 mt-2`}
+              >
+                While AI and robo-advisors can automate tasks, they can’t truly understand your unique story. We believe that meaningful financial planning requires both insight and empathy—qualities that only come from a personal relationship with a trusted advisor.
               </p>
             </div>
 
@@ -127,21 +146,21 @@ const Home = () => {
           {/* Right section */}
           <div
             id="right"
-            className="h-full w-1/2 flex flex-col items-center justify-center"
+            className="h-full w-1/2 flex flex-col items-center justify-center md:pt-4 xl:pt-0"
           >
             <video
               ref={videoRef}
               className="h-full w-full object-contain"
               src={video}
               autoPlay
-              muted              
+              muted
             ></video>
           </div>
         </div>
       </div>
 
       {/* Down arrow */}
-      <div className="arrow w-full h-16 absolute bottom-3 z-30 flex justify-center items-center">
+      <div className={`arrow w-full h-16 absolute bottom-3 z-30 md:flex justify-center items-center hidden`}>
         <a href="#about">
           <h2 className="font-bold text-4xl 2xl:text-5xl text-[#2C2B2B]">
             <RiArrowDownDoubleFill />

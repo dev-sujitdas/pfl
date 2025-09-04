@@ -206,7 +206,7 @@ const About = () => {
 
         <div className="flex flex-col lg:flex-row justify-between items-center gap-10 mb-5 md:mb-16 mt-5 md:mt-16 relative">
           <div className="w-full lg:w-[40%] relative our-roots">
-            <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
+            {/* <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
               Our Roots
             </h3>
             <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
@@ -218,9 +218,9 @@ const About = () => {
               we realise that each client requires a different plan depending on
               their life stage, We currently operate throughout the country with
               our HQ located in Umhlanga.
-            </p>
+            </p> */}
 
-            {/* <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
+            <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
               Who We Are
             </h3>
             <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
@@ -230,7 +230,7 @@ const About = () => {
               tailored to South African realities.
             </p>
 
-            <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600 mt-5">
+            {/* <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600 mt-5">
               Our Mission
             </h3>
             <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">

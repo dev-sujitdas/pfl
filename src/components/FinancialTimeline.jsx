@@ -16,38 +16,50 @@ const ageGroups = {
       {
         num: "01",
         title: "Getting Married",
-        titleColor: "#f472b6",
-        numColor: "#f9a8d4",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "02",
         title: "First Home",
-        titleColor: "#fb923c",
-        numColor: "#fdba74",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "03",
         title: "Having Children",
-        titleColor: "#fde047",
-        numColor: "#fef08a",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "04",
         title: "Income Protection",
-        titleColor: "#60a5fa",
-        numColor: "#93c5fd",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "05",
         title: "Debt Management",
-        titleColor: "#64748b",
-        numColor: "#94a3b8",
+         titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "06",
         title: "Family Healthcare",
-        titleColor: "#4ade80",
-        numColor: "#86efac",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
     ],
     desc: {
@@ -62,38 +74,50 @@ const ageGroups = {
       {
         num: "01",
         title: "Protection of lifestyle",
-        titleColor: "#facc15",
-        numColor: "#fde68a",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "02",
         title: "Healthcare",
-        titleColor: "#34d399",
-        numColor: "#6ee7b7",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "03",
         title: "Investments",
-        titleColor: "#3b82f6",
-        numColor: "#93c5fd",
+       titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "04",
         title: "Tax management",
-        titleColor: "#f87171",
-        numColor: "#fecaca",
+       titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "05",
         title: "Inheritance",
-        titleColor: "#c084fc",
-        numColor: "#e9d5ff",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "06",
         title: "Retirement planning",
-        titleColor: "#f97316",
-        numColor: "#fdba74",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
     ],
     desc: {
@@ -108,38 +132,50 @@ const ageGroups = {
       {
         num: "01",
         title: "Protection of assets",
-        titleColor: "#fbbf24",
-        numColor: "#fde68a",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "02",
         title: "Debt elimination",
-        titleColor: "#f87171",
-        numColor: "#fecaca",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "03",
         title: "Family healthcare",
-        titleColor: "#34d399",
-        numColor: "#a7f3d0",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "04",
         title: "Helping your children",
-        titleColor: "#60a5fa",
-        numColor: "#bfdbfe",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "05",
         title: "Retirement planning",
-        titleColor: "#fb923c",
-        numColor: "#fdba74",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "06",
         title: "Wills and trusts",
-        titleColor: "#a78bfa",
-        numColor: "#ddd6fe",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
     ],
     desc: {
@@ -154,38 +190,50 @@ const ageGroups = {
       {
         num: "01",
         title: "Protection of assets",
-        titleColor: "#fbbf24",
-        numColor: "#fde68a",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "02",
         title: "Age care planning",
-        titleColor: "#818cf8",
-        numColor: "#e0e7ff",
+       titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "03",
         title: "Healthcare",
-        titleColor: "#34d399",
-        numColor: "#a7f3d0",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "04",
         title: "Estate Tax Planning",
-        titleColor: "#facc15",
-        numColor: "#fcd34d",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
       {
         num: "05",
         title: "Gifting to family",
-        titleColor: "#f87171",
-        numColor: "#fecaca",
+        titleColor: "#064E3B",
+        numColor: "#064E3B",
+        titleText: "#fff",
+        numText: "#fff"
       },
       {
         num: "06",
         title: "Capital Protection",
-        titleColor: "#a78bfa",
-        numColor: "#ddd6fe",
+        titleColor: "#D1D5DC",
+        numColor: "#D1D5DC",
+        titleText: "#064E3B",
+        numText: "#064E3B"
       },
     ],
     desc: {
@@ -316,7 +364,7 @@ const FinancialTimeline = () => {
 
 
   return (
-    <section id="timeline" className="w-full bg-[#2D2D2C] relative">
+    <section id="timeline" className="w-full bg-[#064E3B] relative">
       <div
         id="f-timeline"
         className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd] "
@@ -374,16 +422,19 @@ const FinancialTimeline = () => {
               {ageGroups[selectedAge].content.map((item, index) => (
                 <div key={index}>
                   <div className="timeline-item flex justify-center items-center gap-5">
-                    <h2
-                      id="num2"
+                    <h2                      
                       className={`lg:h-16 lg:w-16 h-10 w-10 lg:text-4xl text-xl poppins-semibold rounded-full flex justify-center items-center shadow-md`}
-                      style={{ backgroundColor: item.numColor }}
+                      style={{ 
+                          backgroundColor: item.numColor, 
+                          color: "transparent", 
+                          WebkitTextStroke:  `1px ${item.numText}`
+                        }}
                     >
                       {item.num}
                     </h2>
                     <h3
-                      className="w-52 lg:w-64 text-lg lg:text-xl font-bold text-white lg:px-6 px-3 py-2 bg-red-400 rounded-r-full shadow-md"
-                      style={{ backgroundColor: item.titleColor }}
+                      className="w-52 lg:w-64 text-lg lg:text-xl font-bold lg:px-6 px-3 py-2 rounded-r-full shadow-md"
+                      style={{ backgroundColor: item.titleColor, color: item.titleText }}
                     >
                       {item.title}
                     </h3>
@@ -398,11 +449,11 @@ const FinancialTimeline = () => {
             <button
               key={range}
               onClick={() => handleAgeClick(range)}
-              className={`btn px-2 md:px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-300 shadow-md 
+              className={`btn px-2 md:px-4 py-3 rounded-2xl text-sm md:text-base font-medium transition-all duration-300 shadow-md 
                   ${
                     selectedAge === range
-                      ? "bg-[#2C2B2B] text-white"
-                      : "bg-gray-200"
+                      ? "bg-[#064E3B] text-white"
+                      : "bg-gray-300 text-[#064E3B]"
                   }`}
             >
               <div>

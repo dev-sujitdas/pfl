@@ -6,7 +6,6 @@ const Loader = React.lazy(() => import("./components/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar"));
 const Home = React.lazy(() => import("./components/Home"));
 const About = React.lazy(() => import("./components/About"));
-const Diffrentiator = React.lazy(() => import("./components/Diffrentiator"));
 const OurServices = React.lazy(() => import("./components/OurServices"));
 const FinancialTimeline = React.lazy(() => import("./components/FinancialTimeline"));
 const ClientProp = React.lazy(() => import("./components/ClientProp"));
@@ -16,8 +15,10 @@ const News = React.lazy(() => import("./components/News"));
 const OurApp = React.lazy(() => import("./components/OurApp"));
 const ContactUs = React.lazy(() => import("./components/ContactUs"));
 const Footer = React.lazy(() => import("./components/Footer"));
-const Fincalc = React.lazy(() => import("./components/FinCalc/FinCalc"));
+const Fincalc = React.lazy(() => import("./components/FinCalc"));
 const FinancialNeedsAnalysis = React.lazy(()=> import("./components/FinancialNeedsAnalysis"));
+
+
 
 
 const App = () => {
@@ -64,9 +65,8 @@ const App = () => {
                 element={
                   <>
                     <Home />
-                    <About />
-                    {/* <Diffrentiator lenis={lenisRef}/> */}
-                    <OurServices />                    
+                    <About />                     
+                    <OurServices />                                        
                     <FinancialTimeline />
                     <ClientProp />
                     <RiskCover />
@@ -81,7 +81,7 @@ const App = () => {
               <Route
                 path="/FinancialNeedsAnalysis"
                 element={<FinancialNeedsAnalysis />}
-              />
+              />          
             </Routes>
             <Footer />
           </Suspense>

@@ -7,12 +7,13 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { IoIosCall } from "react-icons/io";
 
 const Footer = () => {
+  const url = ["https://www.moneyweb.co.za/moneyweb-insider/newsletters/", "http://pfl-newsletter.s3-website-eu-west-1.amazonaws.com/"];
   return (
     <footer className="text-white h-auto bg-[#343634] max-w-[150rem] mx-auto relative overflow-hidden border-t-[1px] border-[#d4d4d8]">
       <div className="top flex flex-col gap-10  items-start py-12 px-5 md:flex-wrap lg:flex-row lg:justify-evenly">
         <div className="footer-elem flex flex-col justify-start lg:h-[14rem] h-auto">
-          <div className="h-24 w-28 mb-5">
-            <img src="/PFL LOGO.png" alt="GGS Logo" className="h-full w-full " />
+          <div className="h-28 w-fit mb-5">
+            <img src="/PFL.png" alt="GGS Logo" className="h-full w-fit " />
           </div>
           <div>
             <h3 className="font-space-mono text-medium">
@@ -65,7 +66,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="poppins-regular text-sm border-2 px-2 py-1 rounded-2xl tracking-wider hover:text-amber-50 hover:bg-[#BA8748]">
-                <a target="_blank" href="http://pfl-newsletter.s3-website-eu-west-1.amazonaws.com/">
+                <a target="_blank" href={url[1]}>
                   View Our Newsletter
                 </a>
               </li>

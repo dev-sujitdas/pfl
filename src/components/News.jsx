@@ -8,8 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const News = () => {
   const [showArticles, setShowArticles] = useState([]);
-  const [emailData, setEmailData] = useState({ email: "" });
-
+  
   useEffect(() => {
     try {
       const fetchNews = async () => {
@@ -26,16 +25,6 @@ const News = () => {
     }
   }, []);
 
-
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEmailData({ ...emailData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   useGSAP(() => {
   const ctx = gsap.context(() => {
@@ -89,17 +78,6 @@ const News = () => {
       stagger: 0.3,
       ease: "power3.out",
     });
-
-  //   gsap.from(".newsletter", {
-  //     scrollTrigger: {
-  //       trigger: ".newsletter",
-  //       start: "top 90%",
-  //       end: "top 50%",
-  //     },
-  //     y: 60,
-  //     opacity: 0,
-  //     ease: "power3.out",
-  //   });
   });
 
   return () => ctx.revert();
@@ -108,7 +86,7 @@ const News = () => {
 
   return (
     <section id="news" className="w-full relative z-50 bg-[#EEF4EA]">
-      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#2D2D2C] ">
+      <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-emerald-900 ">
         <div className="news-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">
             <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#fdfdfd]">
@@ -132,7 +110,7 @@ const News = () => {
             Stay informed with the latest in finance and market trends.
           </h3>
         </div>
-        <div className="lg:w-[80%] w-full mx-auto flex flex-col justify-center items-center mt-10">
+        <div className="lg:w-[80%] w-full mx-auto flex flex-col justify-center items-center mt-20">
           <div className="news-card-wrapper flex flex-wrap justify-center items-center gap-6">
             {showArticles.map((article, index) => (
               <div
@@ -167,22 +145,6 @@ const News = () => {
             ))}
           </div>
         </div>
-        {/* <div className="newsletter mt-10 flex md:w-fit w-full lg:justify-items-start justify-center items-center">
-          <input
-            type="email"
-            name="email"
-            placeholder="Subscribe to our newsletter"
-            value={emailData.email}
-            onChange={handleChange}
-            className="flex-1 w-64 px-4 py-2 border bg-[#e9e9e9] border-none rounded-l-2xl "
-          />
-          <button
-            onClick={() => handleSubmit}
-            className="px-5 py-2 rounded-r-2xl poppins-regular bg-[#2c2b2b] border-1 border-amber-50 hover:bg-[#BA8748] text-amber-50 font-medium text-[0.8rem] xl:text-[1rem] cursor-pointer"
-          >
-            Subscribe
-          </button>
-        </div> */}
       </div>
     </section>
   );
