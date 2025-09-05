@@ -12,21 +12,10 @@ const Home = () => {
   const homeRef = useRef();
   const scrollRef = useRef();
   const videoRef = useRef();
-  const [extraSmall, setExtraSmall] = useState(false);
+  const timerRef = useRef(null);
+  const [toggle, setToggle] = useState(false);
 
-  useEffect(()=>{
-    const handleResize = ()=> {
-      if(window.innerWidth <= 375){
-        setExtraSmall(true);
-      }else{
-        setExtraSmall(false);
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
 
-    return ()=> window.removeEventListener('resize', handleResize)
-  },[])
 
 
   useEffect(() => {
@@ -83,6 +72,21 @@ const Home = () => {
     }
   }, []);
 
+  const handleClick = ()=> {
+    setToggle((prev)=> !prev);
+
+    if(timerRef.current){
+      clearTimeout(timerRef.current)
+    }
+    timerRef.current = setTimeout(()=>{
+      setToggle(false);
+    }, 3000)             
+  };
+
+  useEffect(()=>{
+    return ()=> clearTimeout(timerRef.current);
+  },[])
+
 
   return (
     <section
@@ -123,10 +127,12 @@ const Home = () => {
                 Digital tools can track your money—but they can’t understand your goals, your fears, or your vision.
                 At PFL, we combine human insight with smart technology to give you real advice, in real time, tailored to your life.
               </p>
+              <span onClick={handleClick} className="text-xs text-blue-800 md:hidden">{toggle ? "Close" : "Learn more"}</span>
               <p                
-                className={`para-2 text-sm md:text-[1.2rem] text-zinc-600 mt-2`}
+                className={`para-2 ${toggle ? "block absolute bottom-0 bg-gray-300 p-2 rounded-xl" : "hidden"} md:block text-sm md:text-[1.2rem] text-zinc-600 mt-2 `}
               >
-                While AI and robo-advisors can automate tasks, they can’t truly understand your unique story. We believe that meaningful financial planning requires both insight and empathy—qualities that only come from a personal relationship with a trusted advisor.
+                While AI and robo-advisors can automate tasks, they can’t truly understand your unique story. 
+                We believe that meaningful financial planning requires both insight and empathy—qualities that only come from a personal relationship with a trusted advisor.
               </p>
             </div>
 

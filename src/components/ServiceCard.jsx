@@ -9,7 +9,7 @@ const ServiceCard = ({ service, isOpen, toggle }) => {
   const imageRef = useRef(null);
   const timeoutRef = useRef(null);
 
-  // Detect mobile
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -20,7 +20,7 @@ const ServiceCard = ({ service, isOpen, toggle }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Toggle (click for mobile)
+  
   const handleToggle = () => {
     const el = contentRef.current;
     const img = imageRef.current;
@@ -56,10 +56,10 @@ const ServiceCard = ({ service, isOpen, toggle }) => {
       );
     }
 
-    toggle(); // notify parent
+    toggle();
   };
 
-  // Hover enter (desktop)
+  
   const handleMouseEnter = () => {
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {

@@ -231,9 +231,9 @@
    .fincalc-render{
     overflow: auto;
   }
-  .para-2{
+  /* .para-2{
       display: none;
-    }  
+    }   */
 }
 
 .loader-container {
