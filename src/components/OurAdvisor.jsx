@@ -113,8 +113,7 @@ const OurAdvisor = () => {
 
   return (
     <section id="advisors" className="w-full  bg-[#FDFDFD]">
-      <div
-        // id="advisor"
+      <div        
         className="w-full h-auto max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative "
       >
         <div className="advisor-top flex justify-between items-center">
