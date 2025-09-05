@@ -127,7 +127,7 @@ const Home = () => {
                 Digital tools can track your money—but they can’t understand your goals, your fears, or your vision.
                 At PFL, we combine human insight with smart technology to give you real advice, in real time, tailored to your life.
               </p>
-              <span onClick={handleClick} className="text-xs text-blue-800 md:hidden">{toggle ? "Close" : "Learn more"}</span>
+              <span onClick={handleClick} className="text-xs text-blue-800 md:hidden">Read more</span>
               <p                
                 className={`para-2 ${toggle ? "block absolute bottom-0 bg-gray-300 p-2 rounded-xl" : "hidden"} md:block text-sm md:text-[1.2rem] text-zinc-600 mt-2 `}
               >
