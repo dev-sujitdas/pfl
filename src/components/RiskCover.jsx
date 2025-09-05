@@ -191,8 +191,7 @@ const RiskCover = () => {
           scale: 0.95,
           y: 40,
           opacity: 0,
-          ease: "back.out(1.7)",
-          delay: index * 0.1,
+          ease: "back.out(1.7)",          
         });
       });
 

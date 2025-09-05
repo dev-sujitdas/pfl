@@ -224,8 +224,7 @@ const OurServices = () => {
           scale: 0.9,
           y: 40,
           opacity: 0,
-          ease: "back.out(1.5)",
-          delay: i * 0.1,
+          ease: "back.out(1.5)",          
         });
       });
     });

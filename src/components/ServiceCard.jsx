@@ -6,6 +6,7 @@ const ServiceCard = ({ service, isOpen, toggle }) => {
   const [isMobile, setIsMobile] = useState(false);
   const contentRef = useRef(null);
   const imageRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,43 +18,99 @@ const ServiceCard = ({ service, isOpen, toggle }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleToggle = () => {
+const handleToggle = () => {
+  const el = contentRef.current;
+  const img = imageRef.current;
+
+  if (isOpen) {
+    gsap.to(el, { height: 0, duration: 0.5, ease: "power2.inOut" });
+    gsap.to(img, {
+      opacity: 0,
+      x: 50,
+      height: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  } else {
+    const contentHeight = el.scrollHeight;
+    gsap.fromTo(
+      el,
+      { height: 0 },
+      { height: contentHeight, duration: 0.5, ease: "power2.inOut" }
+    );
+
+    const imgHeight = img.scrollHeight;
+    gsap.fromTo(
+      img,
+      { opacity: 0, x: 50, height: 0 },
+      {
+        opacity: 1,
+        x: 0,
+        height: imgHeight,
+        duration: 0.5,
+        ease: "power2.inOut",
+      }
+    );
+  }
+
+  toggle();
+};
+
+
+
+
+const handleMouseEnter = () => {
+  clearTimeout(timeoutRef.current);
+  timeoutRef.current = setTimeout(() => {
     const el = contentRef.current;
     const img = imageRef.current;
 
-    if (isOpen) {      
-      gsap.to(el, { height: 0, duration: 0.5, ease: "power2.inOut" });
-      gsap.to(img, {
-        opacity: 0,
-        x: 50,
-        height: 0,
+    const contentHeight = el.scrollHeight;
+    gsap.fromTo(
+      el,
+      { height: 0 },
+      { height: contentHeight, duration: 0.5, ease: "power2.inOut" }
+    );
+
+    const imgHeight = img.scrollHeight;
+    gsap.fromTo(
+      img,
+      { opacity: 0, x: 50, height: 0 },
+      {
+        opacity: 1,
+        x: 0,
+        height: imgHeight,
         duration: 0.5,
         ease: "power2.inOut",
-      });
-      
-    } else {      
-      const contentHeight = el.scrollHeight;
-      gsap.fromTo(
-        el,
-        { height: 0 },
-        { height: contentHeight, duration: 0.5, ease: "power2.inOut" }
-      );      
-      const imgHeight = img.scrollHeight;
-      gsap.fromTo(
-        img,
-        { opacity: 0, x: 50, height: 0 },
-        { opacity: 1, x: 0, height: imgHeight, duration: 0.5, ease: "power2.inOut" }
-      );      
-    }
-    toggle();
-  };
+      }
+    );
+  }, 300);
+};
+
+const handleMouseLeave = () => {
+  clearTimeout(timeoutRef.current);
+  timeoutRef.current = setTimeout(() => {
+    const el = contentRef.current;
+    const img = imageRef.current;
+
+    gsap.to(el, { height: 0, duration: 0.5, ease: "power2.inOut" });
+    gsap.to(img, {
+      opacity: 0,
+      x: 50,
+      height: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  });
+};
+
 
   return (
     <div
       // onClick={handleToggle}
       onClick={isMobile ? handleToggle : undefined}
-      onMouseEnter={!isMobile ? handleToggle : undefined}
-      onMouseLeave={!isMobile ? handleToggle : undefined}
+      onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+      onMouseLeave={!isMobile ? handleMouseLeave: undefined}
       className="service-list border rounded-2xl bg-[#EEF4EA] p-3 mb-5 overflow-hidden"
     >
 
