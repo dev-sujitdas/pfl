@@ -112,7 +112,7 @@ const OurAdvisor = () => {
   }, []);
 
   return (
-    <section id="advisors" className="w-full  bg-[#FDFDFD]">
+    <section id="advisors" className="w-full h-full bg-[#FDFDFD]">
       <div        
         className="w-full h-auto max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative "
       >
@@ -122,7 +122,7 @@ const OurAdvisor = () => {
               Our Advisors
             </h2>
           </div>
-          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+          <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
@@ -139,7 +139,7 @@ const OurAdvisor = () => {
             Meet the experts behind your financial success.
           </h3>
         </div>
-        <div className="w-full mx-auto flex justify-center items-center mt-20">
+        <div className="advisor-container w-full mx-auto flex justify-center items-center mt-20">
           <div
             className={`advisor-wrapper flex gap-6 ${
               isMobile

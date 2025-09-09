@@ -12,8 +12,8 @@ const Footer = () => {
     <footer className="text-white h-auto bg-[#343634] max-w-[150rem] mx-auto relative overflow-hidden border-t-[1px] border-[#d4d4d8]">
       <div className="top flex flex-col gap-10  items-start py-12 px-5 md:flex-wrap lg:flex-row lg:justify-evenly">
         <div className="footer-elem flex flex-col justify-start lg:h-[14rem] h-auto">
-          <div className="h-28 w-fit mb-5">
-            <img src="/PFL.png" alt="GGS Logo" className="h-full w-fit " />
+          <div className="logo lg:h-28 lg:w-36 h-24 w-30 mb-5">
+            <img src="/PFL.png" alt="GGS Logo" className="h-full w-full " />
           </div>
           <div>
             <h3 className="font-space-mono text-medium">
@@ -118,7 +118,7 @@ const Footer = () => {
               Address
             </h2>
           </div>
-          <div className="h-full w-full rounded-2xl">
+          <div className="map h-full w-full rounded-2xl">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13858.733577846511!2d31.070428!3d-29.728929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef705f16dfc5419%3A0xdfdef5d9cf610dc4!2sPran%20Boulevard!5e0!3m2!1sen!2ssa!4v1680349955595!5m2!1sen!2ssa"
               className="h-full w-full rounded-2xl border-0"

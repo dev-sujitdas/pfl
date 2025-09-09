@@ -9,63 +9,18 @@ const ReasonBlock = ({ number, title, points }) => (
     <h2 id="num2" className="text-6xl poppins-bold">
       {number}
     </h2>
-    <div>
+    <div id="risk-list">
       <h3 className="text-2xl poppins-semibold text-zinc-600 mb-2">{title}</h3>
       <ul className="list-disc list-inside poppins-regular text-zinc-600 space-y-2">
         {points.map((point, index) => (
-          <li key={index}>{point}</li>
+          <div key={index} className="flex">
+            <li ></li> <h4 className="">{point}</h4>
+          </div>
         ))}
       </ul>
     </div>
   </div>
 );
-
-// const riskReasons = [
-//   {
-//     number: "1",
-//     title: "High Underinsurance Rates",
-//     points: [
-//       "According to the Financial Planning Institute of Southern Africa (FPI), over 70% of South Africans are underinsured, leaving families exposed to significant financial risks.",
-//       "Without sufficient life cover, dependents may struggle to cover daily expenses, debts (e.g., home loans averaging R1.8M in 2025), or future goals like education.",
-//       "Disability and critical illness cover are often overlooked, yet 1 in 4 South Africans may face a disability before retirement, and chronic diseases like cancer are rising (Cancer Association of SA, 2025).",
-//     ],
-//   },
-//   {
-//     number: "2",
-//     title: "Economic Pressures",
-//     points: [
-//       "South Africa’s economy faces challenges like rand volatility, inflation (4-5% in 2025), and high unemployment (27% in Q1 2025). These pressures make it harder for families to recover from financial shocks without insurance.",
-//       "Rising costs—education (7-9% annual increase), healthcare (6-8% above CPI), and debt servicing—mean a loss of income can push families into poverty.",
-//       "Example: A family with R30,000 monthly expenses needs R5.4M in life cover to sustain 15 years of support, yet many have less than R1M",
-//     ],
-//   },
-//   {
-//     number: "3",
-//     title: "Prevalence of Debt",
-//     points: [
-//       "South Africans carry significant debt, with household debt-to-income ratios at 75% (SA Reserve Bank, 2025). Home loans, car loans, and credit card debt are common.",
-//       "Without life cover, dependents inherit debt, often forcing asset sales (e.g., family homes) or reliance on high-interest loans.",
-//       "Risk cover clears debts, preserving wealth and stability.",
-//     ],
-//   },
-//   {
-//     number: "4",
-//     title: "Limited Social Safety Nets",
-//     points: [
-//       "Unlike some developed countries, South Africa has minimal government support for disability or dependants. The Disability Grant (R2,180/month in 2025) is insufficient to replace income.",
-//       "Private risk cover bridges this gap, ensuring families maintain their lifestyle and meet obligations.",
-//     ],
-//   },
-//   {
-//     number: "5",
-//     title: "Health Risks and Medical Costs",
-//     points: [
-//       "Chronic illnesses like diabetes, hypertension, and cancer are prevalent, with 100,000 new cancer cases annually (CANSA, 2025).",
-//       "Medical aid often doesn’t cover non-medical costs (e.g., home modifications, lost income) during illness. Critical illness cover provides a lump sum to ease these burdens.",
-//       "Example: A cancer diagnosis could cost R500,000–R1M in ancillary expenses over 5 years.",
-//     ],
-//   },
-// ];
 
 const adviceReasons = [
   {
@@ -222,7 +177,7 @@ const RiskCover = () => {
                 Financial Advice
               </h2>
             </div>
-            <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+            <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
               <div className="hidden lg:w-28 md:block">
                 <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
               </div>
@@ -243,7 +198,7 @@ const RiskCover = () => {
           <div className="mt-10">      
             <div id="graph-cta" className="flex justify-center lg:flex-row flex-col items-center mb-10">
               <div className="left lg:w-1/2 w-full flex justify-center items-center">
-                <div className="mt-12 h-[30rem] w-[30rem] rounded-xl shadow-md">
+                <div className=" mt-5 lg:mt-12 h-20rem w-auto lg:h-[30rem] lg:w-[30rem] rounded-xl shadow-md">
                   <img
                     className="h-full w-full object-contain"
                     src="/Images/graph.png"
@@ -252,7 +207,7 @@ const RiskCover = () => {
                 </div>
               </div>
 
-              <div className="mt-10 flex justify-center items-center flex-col lg:w-1/2 w-full">
+              <div id="take-action" className="mt-10 flex justify-center items-center flex-col lg:w-1/2 w-full">
                 <div className="lg:w-1/2 w-full ">
                   <h3 className="text-2xl poppins-semibold text-gray-800 mb-4">
                     Take Action Now
@@ -264,7 +219,7 @@ const RiskCover = () => {
                   </p>
                   <Link
                     to="/FinancialNeedsAnalysis"
-                    className="inline-block bg-[#2C2B2B] w-fit text-amber-50 px-6 py-3 rounded-full poppins-semibold hover:bg-[#BA8748] transition"
+                    className="fna inline-block bg-[#2C2B2B] w-fit text-amber-50 px-6 py-3 rounded-full poppins-semibold hover:bg-[#BA8748] transition"
                   >
                     Start Your FNA Now
                   </Link>

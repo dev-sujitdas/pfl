@@ -93,7 +93,7 @@ const News = () => {
               News Updates
             </h2>
           </div>
-          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+          <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#d4d4d8]"></div>
             </div>

@@ -56,7 +56,7 @@ const OurApp = () => {
         end: "top 50%",
       },
       y: 60,
-      delay: 0.5,
+      delay: 0.2,
       opacity: 0,
       stagger: 0.3,
       ease: "power3.out",
@@ -68,7 +68,7 @@ const OurApp = () => {
 
 
   return (
-    <section id="app" className="w-full sticky top-0 bg-[#004F3B]">
+    <section id="app" className="w-full h-full bg-emerald-900">
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd] relative ">
         <div className="app-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">
@@ -76,7 +76,7 @@ const OurApp = () => {
               Our App
             </h2>
           </div>
-          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+          <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>

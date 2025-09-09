@@ -173,7 +173,7 @@ const About = () => {
     },
     {
       quote:
-        "Plan For Life helped me get my financial planning on track. They are always willing to help and go the extra mile, when assisting their clients.",
+        "Plan For Life helped me get my financial planning on track. They are always willing to help and go the extra mile for their clients.",
       name: "Dominic",
     },
     {
@@ -188,11 +188,11 @@ const About = () => {
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative ">
         <div className="about-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden">
-            <h2 className="text-2xl md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#2C2B2B]">
+            <h2 className="md:text-3xl xl:text-5xl 2xl:text-6xl poppins-semibold text-[#2C2B2B]">
               About Us
             </h2>
           </div>
-          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+          <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
@@ -205,37 +205,16 @@ const About = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row justify-between items-center gap-10 mb-5 md:mb-16 mt-5 md:mt-16 relative">
-          <div className="w-full lg:w-[40%] relative our-roots">
-            {/* <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
-              Our Roots
-            </h3>
-            <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
-              Plan For Life is a financial service provider that has been
-              operating since 1998. We are primarily focused on the creation and
-              management of wealth assets for our clients. We are passionate
-              about providing a holistic tailor made financial plan for each of
-              clients. Client relationships are at the core of our business and
-              we realise that each client requires a different plan depending on
-              their life stage, We currently operate throughout the country with
-              our HQ located in Umhlanga.
-            </p> */}
-
-            <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
+          <div id="content-container" className="w-full lg:w-[40%] relative our-roots">
+            <h3 className="text-lg md:text-2xl font-bold mb-4 poppins-semibold text-zinc-600">
               Who We Are
             </h3>
-            <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
+            <p className="md:text-base 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
               PFL Financial Advisors is an independent, boutique financial
               planning firm with offices in Durban, Cape Town, and Richards Bay.
               We specialise in long-term, client-centred strategies that are
               tailored to South African realities.
             </p>
-
-            {/* <h3 className="text-2xl font-bold mb-4 poppins-semibold text-zinc-600 mt-5">
-              Our Mission
-            </h3>
-            <p className="text-md 2xl:text-lg poppins-regular text-zinc-700 leading-relaxed z-20 select-none">
-              To give South Africans the confidence and clarity to build financial futures through personalised advice, smart tools, and a trusted relationship.
-            </p> */}
             <h4 className="flex items-center text-lg poppins-semibold mt-5">
               <FaCaretRight />
               25 years of experience
@@ -250,7 +229,7 @@ const About = () => {
           <img
             src={sapling}
             alt="Growing Sapling"
-            className="sapling w-full lg:w-[40%] h-[20rem]"
+            className="sapling w-auto lg:w-[40%] h-auto"
           />
 
           <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] top-[70%] right-1/3 -translate-x-1/2 -translate-y-[70%] z-10 rounded-full"></div>
@@ -279,14 +258,14 @@ const About = () => {
           ))}
         </div>
 
-        <div>
-          <h3 className="text-2xl poppins-semibold text-center mb-10 text-[#2C2B2B]">
+        <div>          
+          <h3 className="testimonial-title text-2xl poppins-semibold text-center mb-10 text-[#2C2B2B]">
             What Our Clients Say
           </h3>
           <div
             className={`flex gap-6 ${
               isMobile
-                ? "flex-nowrap overflow-x-auto overflow-y-hidden hide-scrollbar h-[18rem] snap-x snap-mandatory"
+                ? "flex-nowrap overflow-x-auto overflow-y-hidden hide-scrollbar  snap-x snap-mandatory"
                 : "flex-wrap justify-center"
             }`}
           >
@@ -294,19 +273,24 @@ const About = () => {
               <div
                 key={i}
                 className={`testimonial-card snap-start shrink-0 z-50 ${
-                  isMobile && i === 0 ? "pl-4" : ""
+                  isMobile && i === 0 ? "pl-2" : ""
                 }`}
               >
-                <div className="max-w-72 h-fit  bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
-                  <p className="poppins-semibold text-left text-lg">
+                <div className="card-content max-w-72 h-fit  bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
+                  <p className="poppins-semibold text-left md:text-lg">
                     <RiDoubleQuotesL />
                   </p>
                   <p className="poppins-light-italic mb-4">{quote}</p>
                   <p className="font-semibold text-right">— {name}</p>
                 </div>
               </div>
-            ))}
+            ))}            
           </div>
+          {/* <div className="flex justify-between items-center mt-2">
+            <button className="text-2xl h-10 w-10 flex justify-center items-center rounded-full bg-black/20 text-white">←</button>
+            <button className="text-2xl h-10 w-10 flex justify-center items-center rounded-full bg-black/20 text-white">→</button>
+          </div> */}
+          
         </div>
 
         <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] bottom-20 left-28 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>

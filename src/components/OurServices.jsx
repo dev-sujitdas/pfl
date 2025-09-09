@@ -22,7 +22,7 @@ const services = [
     id: 1,
     title: "Retirement Planning",
     icon: <BsBank className="text-3xl lg:text-5xl text-green-600" />,
-    intro: "Retire With Confidence—Not Guesswork",
+    intro: "Retire With Confidence, Not Guesswork",
     image: retirement,
     questions: [
       "How much do I need to retire comfortably?",
@@ -76,7 +76,7 @@ const services = [
       "Review policies annually to ensure coverage remains relevant.",
       "Offer independent product selection for cost-effective solutions."
     ],
-    different: "We don’t sell insurance— we design protection plans. Our independent status means we choose products that fit your needs, not a company’s agenda.backed by civil law expertise for handling contractual disputes and court appearances in Magistrate Courts to resolve any insurance-related issues."
+    different: "We don’t sell insurance, we design protection plans. Our independent status means we choose products that fit your needs, not a company’s agenda.backed by civil law expertise for handling contractual disputes and court appearances in Magistrate Courts to resolve any insurance-related issues."
   },
   {
     id: 4,
@@ -166,16 +166,16 @@ const services = [
     intro: "Secure Your Health, Secure Your Future",
     image: health,
     questions: [
-      "•	How do I plan for medical expenses in retirement?",
-      "•	What health coverage options are best for my family?",
-      "•	How do I prepare for unexpected healthcare costs?"
+      "How do I plan for medical expenses in retirement?",
+      "What health coverage options are best for my family?",
+      "How do I prepare for unexpected healthcare costs?"
     ],
     whatWeDo: [
-      "•	Assess your current and future healthcare needs.",
-      "•	Recommend medical aid and gap cover plans tailored to your lifestyle.",
-      "•	Plan for long-term care costs, including retirement and critical illness.",
-      "•	Integrate health planning with your broader financial strategy.",
-      "•	Review health coverage annually to adapt to changing needs.",
+      "Assess your current and future healthcare needs.",
+      "Recommend medical aid and gap cover plans tailored to your lifestyle.",
+      "Plan for long-term care costs, including retirement and critical illness.",
+      "Integrate health planning with your broader financial strategy.",
+      "Review health coverage annually to adapt to changing needs.",
     ],
     different: "Our independent advisors design health plans that complement your financial goals, ensuring comprehensive coverage without unnecessary costs. We partner with trusted providers to secure the best options for you and your family."
   },
@@ -241,7 +241,7 @@ const OurServices = () => {
               Our Services
             </h2>
           </div>
-          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+          <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#d4d4d8]"></div>
             </div>

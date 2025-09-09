@@ -155,8 +155,10 @@ const ServiceCard = ({ service, isOpen, toggle }) => {
             <div>
               <h4 className="poppins-semibold mt-4">What Clients Ask:</h4>
               <ul className="list-disc list-inside text-sm md:text-base">
-                {service.questions.map((q, i) => (
-                  <li key={i}>{q}</li>
+                {service.questions.map((q, i) => (                  
+                  <div key={i} className="flex">
+                    <li ></li>{q}
+                  </div>
                 ))}
               </ul>
             </div>
@@ -165,7 +167,9 @@ const ServiceCard = ({ service, isOpen, toggle }) => {
               <h4 className="poppins-semibold">What We Do:</h4>
               <ul className="list-disc list-inside text-sm md:text-base">
                 {service.whatWeDo.map((w, i) => (
-                  <li key={i}>{w}</li>
+                  <div key={i} className="flex">
+                    <li ></li>{w}
+                  </div>
                 ))}
               </ul>
             </div>

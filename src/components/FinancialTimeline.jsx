@@ -375,7 +375,7 @@ const FinancialTimeline = () => {
               Financial Timeline
             </h2>
           </div>
-          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+          <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
@@ -417,11 +417,11 @@ const FinancialTimeline = () => {
           <div className={`w-1/2 h-full  flex items-center justify-center`}>
             <div
               ref={contentRef}
-              className="max-w-lg p-3 space-y-4 flex flex-col justify-center items-center"
+              className="timeline-content max-w-lg p-3 space-y-3 flex flex-col justify-center items-center"
             >
               {ageGroups[selectedAge].content.map((item, index) => (
                 <div key={index}>
-                  <div className="timeline-item flex justify-center items-center gap-5">
+                  <div className="timeline-item flex justify-center items-center gap-4">
                     <h2                      
                       className={`lg:h-16 lg:w-16 h-10 w-10 lg:text-4xl text-xl poppins-semibold rounded-full flex justify-center items-center shadow-md`}
                       style={{ 
@@ -444,7 +444,7 @@ const FinancialTimeline = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-5 xl:bottom-12 left-0 w-full flex justify-center gap-4 z-50">
+        <div className={`age-group absolute bottom-5 xl:bottom-12 left-0 w-full flex justify-center ${isDesktop ? "gap-4" : "gap-2"} z-50`}>
           {Object.keys(ageGroups).map((range) => (
             <button
               key={range}

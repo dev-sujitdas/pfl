@@ -132,20 +132,20 @@ const ClientProp = () => {
   return () => ctx.revert();
 }, []);
 
-useEffect(() => {
-  ScrollTrigger.create({
-    trigger: "#proposition",
-    start: "bottom bottom", 
-    end: "+=100%", 
-    pin: "#client-proposition",
-    pinSpacing: false,
-    scrub: true,    
-  });
-}, []);
+// useEffect(() => {
+//   ScrollTrigger.create({
+//     trigger: "#proposition",
+//     start: "bottom bottom", 
+//     end: "+=100%", 
+//     pin: "#client-proposition",
+//     pinSpacing: false,
+//     scrub: true,    
+//   });
+// }, []);
 
 
   return (
-    <section id="proposition" className=" w-full  bg-[#fdfdfd] relative">
+    <section id="proposition" className=" w-full h-full bg-[#fdfdfd] relative">
       <div
         id="client-proposition"
         className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] "
@@ -157,7 +157,7 @@ useEffect(() => {
               Client Value Proposition
             </h2>
           </div>
-          <div className="flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
+          <div className="slogan flex w-[10rem] md:w-[20rem] md:gap-6 items-center justify-end md:justify-between">
             <div className="hidden lg:w-28 md:block">
               <div className="line w-5 lg:w-28 h-1 bg-[#52525c]"></div>
             </div>
@@ -182,7 +182,7 @@ useEffect(() => {
                 <h2 id="num2" className="text-5xl poppins-semibold">
                   {num}
                 </h2>
-                <div className="p-5 lg:w-[25rem] w-[22rem] bg-[#FDFDFD] mt-3 rounded-2xl shadow-md hover:scale-105 transition-all select-none">
+                <div className="client-card p-5 lg:w-[25rem] w-[20rem] bg-[#FDFDFD] mt-3 rounded-2xl shadow-md hover:scale-105 transition-all select-none">
                   <div className=" flex flex-col justify-center items-center gap-3">
                     <h2 className="h-16 w-16">
                       <img
