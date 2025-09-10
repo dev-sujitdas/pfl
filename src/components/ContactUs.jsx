@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ContactUs = () => {
   const services = [
-    "Our contact",
+    "Our App",
     "Our Services",
     "Schedule an apointment",
   ];
