@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import face1 from "/Images/face1.jpg";
 import face2 from "/Images/face2.jpg";
 import face3 from "/Images/face3.jpg";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,9 +35,57 @@ const advisorData = [
   },
 ];
 
+const AdvisorMarquee = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const container = containerRef.current;
+    const cards = container.querySelectorAll(".advisor-card");
+    const cardWidth = cards[0].offsetWidth + 24;
+    const totalWidth = cardWidth * cards.length;
+
+    gsap.to(container, {
+      x: -totalWidth,
+      duration: 50,
+      ease: "linear",
+      repeat: -1,
+      modifiers: {
+        x: (x) => `${parseFloat(x) % totalWidth}px`,
+      },
+    });
+
+    return () => gsap.killTweensOf(container);
+  }, []);
+
+  const loopedAdvisors = [...advisorData, ...advisorData];
+
+  return (
+    <div className="overflow-hidden">
+      <div
+        ref={containerRef}
+        className="flex gap-6 w-max"
+      >
+        {loopedAdvisors.map((data, index) => (
+          <div key={index} className="advisor-card w-80 rounded-xl bg-[#fdfdfd] p-4 shadow-md shrink-0 z-50">
+            <div className="p-4 rounded-xl bg-emerald-900">
+              <h2 className="text-zinc-100 text-xl poppins-semibold">{data.name}</h2>
+            </div>
+            <p className="text-base mt-3 poppins-regular-italic">
+              {data.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const OurAdvisor = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const mobileView = 1280;
+  const containerRef = useRef(null);
+  const mobileView = 768;
   useEffect(() => {
     const checkResize = () => {
       setIsMobile(window.innerWidth <= mobileView);
@@ -113,7 +161,7 @@ const OurAdvisor = () => {
 
   return (
     <section id="advisors" className="w-full h-full bg-[#FDFDFD]">
-      <div        
+      <div
         className="w-full h-auto max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#EEF4EA] relative "
       >
         <div className="advisor-top flex justify-between items-center">
@@ -140,23 +188,22 @@ const OurAdvisor = () => {
           </h3>
         </div>
         <div className="advisor-container w-full mx-auto flex justify-center items-center mt-20">
-          <div
-            className={`advisor-wrapper flex gap-6 ${
-              isMobile
-                ? "flex-nowrap overflow-x-auto overflow-y-hidden hide-scrollbar snap-x snap-mandatory"
-                : "flex-wrap justify-center"
-            }`}>
-            {advisorData.map((data, index)=>(
-              <div key={index} className="advisor-card w-80 rounded-xl bg-[#fdfdfd] p-4 shadow-md snap-start shrink-0 z-50">
-              <div className="p-4 rounded-xl bg-emerald-900">
-                <h2 className="text-zinc-100 text-xl poppins-semibold">{data.name}</h2>
-              </div>
-              <p className="text-base mt-3 poppins-regular-italic">
-                {data.description}
-              </p>
+          {isMobile ? (<AdvisorMarquee />) : (
+            <div
+              ref={containerRef}
+              className={`advisor-wrapper flex gap-6 flex-wrap justify-center`}>
+              {advisorData.map((data, index) => (
+                <div key={index} className="advisor-card w-80 rounded-xl bg-[#fdfdfd] p-4 shadow-md snap-start shrink-0 z-50">
+                  <div className="p-4 rounded-xl bg-emerald-900">
+                    <h2 className="text-zinc-100 text-xl poppins-semibold">{data.name}</h2>
+                  </div>
+                  <p className="text-base mt-3 poppins-regular-italic">
+                    {data.description}
+                  </p>
+                </div>
+              ))}
             </div>
-            ))}
-          </div>
+          )}
         </div>
       </div>
     </section>

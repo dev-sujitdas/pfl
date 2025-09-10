@@ -9,16 +9,134 @@ import { FaCaretRight } from "react-icons/fa";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"; // ✅ import
 
 import { FaBullseye, FaMapMarkerAlt, FaHandshake, FaLaptop } from "react-icons/fa";
 
-gsap.registerPlugin(ScrollTrigger);
+// ✅ register GSAP plugins
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+const cardData = [
+  {
+    icon: trust,
+    title: "Trust",
+    para: "Trust is the foundation of every lasting partnership we nurture.",
+  },
+  {
+    icon: mirror,
+    title: "Honesty",
+    para: "We foster honest conversations that create meaningful, enduring bonds.",
+  },
+  {
+    icon: leaf,
+    title: "Sustainability",
+    para: "Our commitment to sustainable values ensures lasting impact.",
+  },
+  {
+    icon: growth,
+    title: "Growth",
+    para: "We guide steady, purpose-driven growth that endures over time.",
+  },
+];
+
+const testimonial = [
+  {
+    quote:
+      "Amazing service and always available to help with any financial questions I have. Helped identify all aspects I should plan for.",
+    name: "Monique",
+  },
+  {
+    quote:
+      "Plan For Life helped me get my financial planning on track. They are always willing to help and go the extra mile for their clients.",
+    name: "Dominic",
+  },
+  {
+    quote:
+      "This is a great company to work with. We've trusted them for years with our entire family's financial planning and success.",
+    name: "Jared",
+  },
+];
+
+const features = [
+  {
+    icon: <FaBullseye className="text-3xl text-[#1F2023]" />,
+    title: "Personalised Strategies",
+    desc: "Driven by your goals, not products.",
+  },
+  {
+    icon: <FaMapMarkerAlt className="text-3xl text-[#1F2023]" />,
+    title: "Local Expertise",
+    desc: "South African specialists who understand volatility, tax laws, and regulation.",
+  },
+  {
+    icon: <FaHandshake className="text-3xl text-[#1F2023]" />,
+    title: "Long-Term Relationships",
+    desc: "Annual reviews and life-stage planning for lasting success.",
+  },
+  {
+    icon: <FaLaptop className="text-3xl text-[#1F2023]" />,
+    title: "Modern Platforms",
+    desc: "Stay informed and engaged with digital tools tailored to you.",
+  },
+];
+
+const TestimonialMarquee = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const container = containerRef.current;
+    const cards = container.querySelectorAll(".testimonial-card");
+    const cardWidth = cards[0].offsetWidth + 24; 
+    const totalWidth = cardWidth * cards.length;
+
+    gsap.to(container, {
+      x: -totalWidth,
+      duration: 50,
+      ease: "linear",
+      repeat: -1,
+      modifiers: {
+        x: (x) => `${parseFloat(x) % totalWidth}px`,
+      },
+    });
+
+    return () => gsap.killTweensOf(container);
+  }, [testimonial]);
+
+  const loopedTestimonials = [...testimonial, ...testimonial];
+
+  return (
+    <div className="overflow-hidden">
+      <div
+        ref={containerRef}
+        className="flex gap-6 w-max"
+      >
+        {loopedTestimonials.map(({ quote, name }, i) => (
+          <div
+            key={i}
+            className="testimonial-card shrink-0"
+          >
+            <div className="card-content max-w-72 h-fit bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between">
+              <p className="poppins-semibold text-left md:text-lg">
+                <RiDoubleQuotesL />
+              </p>
+              <p className="poppins-light-italic mb-4">{quote}</p>
+              <p className="font-semibold text-right">— {name}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const About = () => {
   const [isMobile, setIsMobile] = useState(false);
-
+  const containerRef = useRef(null);
   const mobileView = 768;
 
+  // ✅ check screen size
   useEffect(() => {
     const checkResize = () => {
       setIsMobile(window.innerWidth < mobileView);
@@ -29,30 +147,7 @@ const About = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-
-  const features = [
-    {
-      icon: <FaBullseye className="text-3xl text-[#1F2023]" />,
-      title: "Personalised Strategies",
-      desc: "Driven by your goals, not products.",
-    },
-    {
-      icon: <FaMapMarkerAlt className="text-3xl text-[#1F2023]" />,
-      title: "Local Expertise",
-      desc: "South African specialists who understand volatility, tax laws, and regulation.",
-    },
-    {
-      icon: <FaHandshake className="text-3xl text-[#1F2023]" />,
-      title: "Long-Term Relationships",
-      desc: "Annual reviews and life-stage planning for lasting success.",
-    },
-    {
-      icon: <FaLaptop className="text-3xl text-[#1F2023]" />,
-      title: "Modern Platforms",
-      desc: "Stay informed and engaged with digital tools tailored to you.",
-    },
-  ];
-
+  // ✅ scroll-based animations
   useGSAP(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -142,46 +237,7 @@ const About = () => {
     return () => ctx.revert();
   }, []);
 
-  const cardData = [
-    {
-      icon: trust,
-      title: "Trust",
-      para: "Trust is the foundation of every lasting partnership we nurture.",
-    },
-    {
-      icon: mirror,
-      title: "Honesty",
-      para: "We foster honest conversations that create meaningful, enduring bonds.",
-    },
-    {
-      icon: leaf,
-      title: "Sustainability",
-      para: "Our commitment to sustainable values ensures lasting impact.",
-    },
-    {
-      icon: growth,
-      title: "Growth",
-      para: "We guide steady, purpose-driven growth that endures over time.",
-    },
-  ];
 
-  const testimonial = [
-    {
-      quote:
-        "Amazing service and always available to help with any financial questions I have. Helped identify all aspects I should plan for.",
-      name: "Monique",
-    },
-    {
-      quote:
-        "Plan For Life helped me get my financial planning on track. They are always willing to help and go the extra mile for their clients.",
-      name: "Dominic",
-    },
-    {
-      quote:
-        "This is a great company to work with. We've trusted them for years with our entire family's financial planning and success.",
-      name: "Jared",
-    },
-  ];
 
   return (
     <section id="about" className="w-full bg-[#FDFDFD] relative overflow-hidden">
@@ -235,40 +291,29 @@ const About = () => {
           <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] top-[70%] right-1/3 -translate-x-1/2 -translate-y-[70%] z-10 rounded-full"></div>
         </div>
 
-        <div className="w-full  mx-auto flex flex-wrap justify-center items-center gap-6 mb-16 text-center">
+        <div className="w-full mx-auto flex flex-wrap justify-center items-center gap-6 mb-16 text-center">
           {cardData.map(({ icon, title, para }, index) => (
-            <div
-              key={index}
-              className="core-value-card-wrapper p-0 z-50 max-w-[20rem]"
-            >
+            <div key={index} className="core-value-card-wrapper p-0 z-50 max-w-[20rem]">
               <div className="core-value-card p-5 shadow-md rounded-xl bg-[#FDFDFD] flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300 select-none z-50">
                 <div className="mb-3 h-14 w-14">
-                  <img
-                    src={icon}
-                    className="h-full w-full object-cover"
-                    alt={title}
-                  />
+                  <img src={icon} className="h-full w-full object-cover" alt={title} />
                 </div>
-                <h4 className="text-xl poppins-semibold text-[#2C2B2B]">
-                  {title}
-                </h4>
+                <h4 className="text-xl poppins-semibold text-[#2C2B2B]">{title}</h4>
                 <p className="text-sm mt-1 poppins-light">{para}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div>          
+        <div>
           <h3 className="testimonial-title text-2xl poppins-semibold text-center mb-10 text-[#2C2B2B]">
             What Our Clients Say
           </h3>
-          <div
-            className={`flex gap-6 ${
-              isMobile
-                ? "flex-nowrap overflow-x-auto overflow-y-hidden hide-scrollbar  snap-x snap-mandatory"
-                : "flex-wrap justify-center"
-            }`}
-          >
+          {isMobile ? (<TestimonialMarquee/>) : (
+            <div
+            ref={containerRef}
+            className={`flex gap-6 flex-wrap justify-center`}
+          >            
             {testimonial.map(({ quote, name }, i) => (
               <div
                 key={i}
@@ -276,7 +321,7 @@ const About = () => {
                   isMobile && i === 0 ? "pl-2" : ""
                 }`}
               >
-                <div className="card-content max-w-72 h-fit  bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
+                <div className="card-content max-w-72 h-fit bg-[#FDFDFD] rounded-xl shadow-md p-6 flex flex-col justify-between hover:scale-105 transition select-none">
                   <p className="poppins-semibold text-left md:text-lg">
                     <RiDoubleQuotesL />
                   </p>
@@ -284,17 +329,13 @@ const About = () => {
                   <p className="font-semibold text-right">— {name}</p>
                 </div>
               </div>
-            ))}            
+            ))}
           </div>
-          {/* <div className="flex justify-between items-center mt-2">
-            <button className="text-2xl h-10 w-10 flex justify-center items-center rounded-full bg-black/20 text-white">←</button>
-            <button className="text-2xl h-10 w-10 flex justify-center items-center rounded-full bg-black/20 text-white">→</button>
-          </div> */}
-          
+          )}
         </div>
 
         <div className="absolute w-52 h-52 blur-[150px] bg-[#50aa35d0] bottom-20 left-28 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
-      </div>       
+      </div>
     </section>
   );
 };
