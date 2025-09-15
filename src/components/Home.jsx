@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import video from "/Video/tree.mp4";
+import video2 from "/Video/tree.webm";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -65,6 +66,11 @@ const Home = () => {
 
       return ()=> tl.kill();
   }, []);
+
+  const videoURL = [
+    {src: video2, type:"video/webm"},
+    {src: video, type:"video/mp4"},
+  ];
 
 
   useEffect(() => {
@@ -143,13 +149,13 @@ const Home = () => {
             <div ref={paraRef} className="para w-full 2xl:w-[80%] 2xl:mt-5 z-50">
               <h4 className="text-zinc-600 poppins-semibold text-[1rem] md:text-[1.2rem]">More Than Just Algorithms</h4>
               <p
-                className={`para-1  md:text-[1.2rem] text-zinc-600`}
+                className={`para-1  md:text-base 2xl:text-lg text-zinc-600`}
               >
                 Digital tools can track your money-but they can’t understand your goals, your fears, or your vision.
                 At PFL, we combine human insight with smart technology to give you real advice, in real time, tailored to your life.
               </p>              
               <p
-                className={`para-2 md:text-[1.2rem] text-zinc-600 mt-1 `}
+                className={`para-2 md:text-base 2xl:text-lg text-zinc-600 mt-1 `}
               >
                 While AI and robo-advisors can automate tasks, they can’t truly understand your unique story.
                 We believe that meaningful financial planning requires both insight and empathy-qualities that only come from a personal relationship with a trusted advisor.
@@ -174,11 +180,15 @@ const Home = () => {
           >
             <video
               ref={videoRef}
-              className="h-full w-full object-contain"
-              src={video}
+              className="h-full w-full object-contain"              
               autoPlay
               muted
-            ></video>
+              playsInline
+            >
+              {videoURL.map((video, i)=>(
+                <source key={i} src={video.src} type={video.type} />
+              ))}
+            </video>
           </div>
         </div>
       </div>

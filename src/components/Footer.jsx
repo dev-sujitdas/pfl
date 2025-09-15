@@ -1,7 +1,5 @@
 import React from "react";
-import { FaFacebookSquare } from "react-icons/fa";
-import { RiInstagramFill } from "react-icons/ri";
-import { FaLinkedin } from "react-icons/fa";
+import { FaFacebookSquare, FaInstagram, FaLinkedin  } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { IoIosCall } from "react-icons/io";
@@ -9,7 +7,7 @@ import { IoIosCall } from "react-icons/io";
 const Footer = () => {
   const url = ["https://www.moneyweb.co.za/moneyweb-insider/newsletters/", "http://pfl-newsletter.s3-website-eu-west-1.amazonaws.com/"];
   return (
-    <footer className="text-white h-auto bg-[#343634] max-w-[150rem] mx-auto relative overflow-hidden border-t-[1px] border-[#d4d4d8]">
+    <footer className="text-black h-auto bg-zinc-100 max-w-[150rem] mx-auto relative overflow-hidden border-t-[1px] border-[#d4d4d8]">
       <div className="top flex flex-col gap-10  items-start py-12 px-5 md:flex-wrap lg:flex-row lg:justify-evenly">
         <div className="footer-elem flex flex-col justify-start lg:h-[14rem] h-auto">
           <div className="logo lg:h-28 lg:w-36 h-24 w-30 mb-5">
@@ -29,7 +27,7 @@ const Footer = () => {
             </li>
             <li>
               <a href="https://www.instagram.com/">
-                <RiInstagramFill />
+                <FaInstagram />
               </a>
             </li>
             <li>
@@ -118,7 +116,7 @@ const Footer = () => {
               Address
             </h2>
           </div>
-          <div className="map h-full w-full rounded-2xl">
+          <div className="map h-full w-full rounded-2xl shadow-md">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13858.733577846511!2d31.070428!3d-29.728929!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef705f16dfc5419%3A0xdfdef5d9cf610dc4!2sPran%20Boulevard!5e0!3m2!1sen!2ssa!4v1680349955595!5m2!1sen!2ssa"
               className="h-full w-full rounded-2xl border-0"
@@ -133,7 +131,7 @@ const Footer = () => {
       <div className="bottom bg-[#2D2D2C] w-full py-1  bg-section-linear absolute bottom-0 z-20 flex justify-center items-center">
         <div className="font-space-mono flex gap-1 justify-center items-center">
           <div>
-            <h2 className="text-center">
+            <h2 className="text-center text-white">
               &copy; Plan for Life is a Registered Financial Services Provider,
               FSP No: 170912
             </h2>

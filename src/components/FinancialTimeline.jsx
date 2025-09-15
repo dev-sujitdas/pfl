@@ -3,6 +3,10 @@ import video40 from "/Video/40-50.mp4";
 import video60 from "/Video/60+.mp4";
 import video20 from "/Video/20-40.mp4";
 import video50 from "/Video/50-60.mp4";
+import videoW20 from "/Video/20-40.webm";
+import videoW40 from "/Video/40-50.webm";
+import videoW50 from "/Video/50-60.webm";
+import videoW60 from "/Video/60+.webm";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,7 +15,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ageGroups = {
   "20-40": {
-    video: video20,
+    video: [
+      { src: videoW20, type: "video/webm" },
+      { src: video20, type: "video/mp4" }
+    ],
     content: [
       {
         num: "01",
@@ -69,7 +76,10 @@ const ageGroups = {
     sub: { subtitle: "Starting To Grow" },
   },
   "40-50": {
-    video: video40,
+     video: [
+      { src: videoW40, type: "video/webm" },
+      { src: video40, type: "video/mp4" }
+    ],
     content: [
       {
         num: "01",
@@ -127,7 +137,10 @@ const ageGroups = {
     sub: { subtitle: "Establishing Roots" },
   },
   "50-60": {
-    video: video50,
+     video: [
+      { src: videoW50, type: "video/webm" },
+      { src: video50, type: "video/mp4" }
+    ],
     content: [
       {
         num: "01",
@@ -185,7 +198,10 @@ const ageGroups = {
     sub: { subtitle: "Pre-Retirement" },
   },
   "60+": {
-    video: video60,
+     video: [
+      { src: videoW60, type: "video/webm" },
+      { src: video60, type: "video/mp4" }
+    ],
     content: [
       {
         num: "01",
@@ -279,19 +295,13 @@ const FinancialTimeline = () => {
     return () => window.removeEventListener("resize", checkResize);
   }, []);
 
-  useGSAP(() => {
-  gsap.fromTo(
-    ".timeline-item",
-    { opacity: 0, x: -30 },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 0.6,
-      stagger: 0.2,
-      ease: "power2.out",
-    }
+ useEffect(() => {
+  gsap.fromTo(".timeline-item",
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, stagger: 0.2, duration: 0.5, ease: "power2.out" }
   );
 }, [selectedAge]);
+
 
 
   useGSAP(() => {
@@ -388,7 +398,7 @@ const FinancialTimeline = () => {
         </div>
 
         <div className="timeline-subtitle">
-          <h3 className="subtitle mt-6 text-lg lg:text-2xl poppins-regular-italic w-full xl:w-[30%] text-zinc-400">
+          <h3 className="subtitle mt-6 text-lg lg:text-xl 2xl:text-2xl poppins-regular-italic w-full xl:w-[40%] 2xl:w-[30%] text-zinc-400">
             Tailored financial strategies for every chapter of your life, backed
             by trusted expertise.
           </h3>
@@ -406,13 +416,18 @@ const FinancialTimeline = () => {
           >
             <video
               key={selectedAge}
-              ref={videoRef}
-              src={ageGroups[selectedAge].video}
+              ref={videoRef}              
               autoPlay
               muted
               loop
+              playsInline
+              loading="lazy"
               className="w-full h-full object-cover z-50 rounded-2xl"
-            />
+            >
+              {ageGroups[selectedAge].video.map((video, i)=>(
+                <source key={i} src={video.src} type={video.type} />
+              ))}
+            </video>
           </div>
           <div className={`w-1/2 h-full  flex items-center justify-center`}>
             <div
@@ -423,7 +438,7 @@ const FinancialTimeline = () => {
                 <div key={index}>
                   <div className="timeline-item flex justify-center items-center gap-4">
                     <h2                      
-                      className={`lg:h-16 lg:w-16 h-10 w-10 lg:text-4xl text-xl poppins-semibold rounded-full flex justify-center items-center shadow-md`}
+                      className={`lg:h-14 lg:w-14 2xl:h-16 2xl:w-16 h-10 w-10 lg:text-3xl 2xl:text-4xl text-xl poppins-semibold rounded-full flex justify-center items-center shadow-md`}
                       style={{ 
                           backgroundColor: item.numColor, 
                           color: "transparent", 

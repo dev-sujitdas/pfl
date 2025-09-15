@@ -137,7 +137,7 @@ const ContactUs = () => {
           </div>
         </div>
         <div className="contact-subtitle">
-          <h3 className="subtitle mt-6 text-lg lg:text-2xl poppins-regular-italic w-full xl:w-[30%] text-zinc-400">
+          <h3 className="subtitle mt-6 text-lg lg:text-xl 2xl:text-2xl poppins-regular-italic w-full xl:w-[40%] 2xl:w-[30%] text-zinc-500">
             Get in Touch for Trusted Financial Guidance.
           </h3>
         </div>

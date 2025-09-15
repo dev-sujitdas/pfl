@@ -16,9 +16,6 @@ const OurApp = React.lazy(() => import("./components/OurApp"));
 const ContactUs = React.lazy(() => import("./components/ContactUs"));
 const Footer = React.lazy(() => import("./components/Footer"));
 const Fincalc = React.lazy(() => import("./components/FinCalc"));
-const FinancialNeedsAnalysis = React.lazy(()=> import("./components/FinancialNeedsAnalysis"));
-
-
 
 
 const App = () => {
@@ -77,11 +74,7 @@ const App = () => {
                     <Fincalc />
                   </>
                 }
-              />
-              <Route
-                path="/FinancialNeedsAnalysis"
-                element={<FinancialNeedsAnalysis />}
-              />          
+              />             
             </Routes>
             <Footer />
           </Suspense>

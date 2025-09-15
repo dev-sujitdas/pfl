@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -189,44 +188,12 @@ const RiskCover = () => {
             </div>
           </div>
           <div className="risk-subtitle">
-            <h3 className="subtitle mt-6 text-lg lg:text-2xl poppins-regular-italic w-full xl:w-[30%] text-zinc-400">
+            <h3 className="subtitle mt-6 text-lg lg:text-xl 2xl:text-2xl poppins-regular-italic w-full xl:w-[40%] 2xl:w-[30%] text-zinc-400">
               Navigating finances can be complex. We make it simple and
               strategic.
             </h3>
           </div>
 
-          <div className="mt-10">      
-            <div id="graph-cta" className="flex justify-center lg:flex-row flex-col items-center mb-10">
-              <div className="left lg:w-1/2 w-full flex justify-center items-center">
-                <div className=" mt-5 lg:mt-12 h-20rem w-auto lg:h-[30rem] lg:w-[30rem] rounded-xl shadow-md">
-                  <img
-                    className="h-full w-full object-contain"
-                    src="/Images/graph.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-
-              <div id="take-action" className="mt-10 flex justify-center items-center flex-col lg:w-1/2 w-full">
-                <div className="lg:w-1/2 w-full ">
-                  <h3 className="text-2xl poppins-semibold text-gray-800 mb-4">
-                    Take Action Now
-                  </h3>
-                  <p className="text-gray-600 mb-4 poppins-regular">
-                    Use our free Financial Needs Analysis (FNA) tool to
-                    calculate your risk cover gap and protect your family’s
-                    future.
-                  </p>
-                  <Link
-                    to="/FinancialNeedsAnalysis"
-                    className="fna inline-block bg-[#2C2B2B] w-fit text-amber-50 px-6 py-3 rounded-full poppins-semibold hover:bg-[#BA8748] transition"
-                  >
-                    Start Your FNA Now
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="advice-sub-subtitle mt-10">
             <h2 className="text-2xl md:text-4xl poppins-bold text-[#2C2B2B] mb-4">
               Why Independent Financial Advice Matters in South Africa?

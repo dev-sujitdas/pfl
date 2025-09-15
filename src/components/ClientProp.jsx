@@ -170,7 +170,7 @@ const ClientProp = () => {
         </div>
 
         <div className="client-subtitle">
-          <h3 className="subtitle mt-6 text-lg lg:text-2xl poppins-regular-italic w-full xl:w-[30%] text-zinc-500">
+          <h3 className="subtitle mt-6 text-lg lg:text-xl 2xl:text-2xl poppins-regular-italic w-full xl:w-[40%] 2xl:w-[30%] text-zinc-500">
             A personalized, step-by-step approach to securing your financial
             future with expert guidance at every stage
           </h3>
