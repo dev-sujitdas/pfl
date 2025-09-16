@@ -68,7 +68,7 @@ const OurApp = () => {
 
 
   return (
-    <section id="app" className="w-full h-full bg-emerald-900">
+    <section id="app" className="w-full h-full bg-[#004F3B]">
       <div className="w-full max-w-[150rem] mx-auto xl:p-[7rem] md:p-[3rem] p-[2rem] rounded-t-[2rem] xl:rounded-t-[5rem] bg-[#fdfdfd] relative ">
         <div className="app-top flex justify-between items-center">
           <div className="h-[3.75rem] overflow-hidden flex items-center">
