@@ -97,7 +97,7 @@ const OurApp = () => {
             <h4 className="app-subtitle text-zinc-400 text-lg md:text-xl poppins-regular-italic">
               Find out more about our app:
             </h4>
-            <div className="app-para my-4 space-Y-4 text-base md:text-lg xl:w-[80%] poppins-regular text-zinc-700">
+            <div className="app-para my-4 space-y-4 text-base md:text-lg xl:w-[80%] poppins-regular text-zinc-700">
               <p>
                Not only does our app provide our clients with state of the art automated, customizable and consolidated reporting. It also advises our clients on matters such as cash flow as well as risks and returns with our built in business intelligence tool.
               </p>
