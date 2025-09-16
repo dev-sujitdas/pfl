@@ -97,19 +97,15 @@ const OurApp = () => {
             <h4 className="app-subtitle text-zinc-400 text-lg md:text-xl poppins-regular-italic">
               Find out more about our app:
             </h4>
-            <div className="app-para my-4 text-medium md:text-lg xl:w-[80%] poppins-regular text-zinc-700">
+            <div className="app-para my-4 space-Y-4 text-medium md:text-lg xl:w-[80%] poppins-regular text-zinc-700">
               <p>
-                Our app offers clients state-of-the-art, automated,
-                customizable, and consolidated reporting. In addition to robust
-                reporting, it provides intelligent advice on key financial
-                matters such as cash flow management, risk assessment, and
-                return analysis—powered by our built-in business intelligence
-                tool. With the Elite Wealth App, we curate tailored solutions to
-                meet your unique financial needs, making everyday financial
-                tasks effortless.
+               Not only does our app provide our clients with state of the art automated, customizable and consolidated reporting. It also advises our clients on matters such as cash flow as well as risks and returns with our built in business intelligence tool.
+              </p>
+              <p>
+              With our elite wealth app we are able to curate a solution to fit your needs and financial requirements making everyday financial tasks a breeze.
               </p>
               <h3 className="poppins-semibold mt-4"> Want to learn more? </h3>
-              <p>Don't hesitate to get in touch—we're here to help.</p>
+              <p>If you would like to find out more regarding our app don't hesitate to get in touch.</p>
             </div>
           </div>
           <div className="absolute w-30 h-30 blur-[120px] bg-[#3d742b] top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 z-10 rounded-full"></div>
