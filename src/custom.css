@@ -492,6 +492,9 @@
   footer .bottom h2{
     font-size: 0.85rem;
   }
+  .nsltr{
+    font-size: small;
+  }
 }
 
 .loader-container {

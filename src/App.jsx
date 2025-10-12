@@ -15,7 +15,7 @@ const News = React.lazy(() => import("./components/News"));
 const OurApp = React.lazy(() => import("./components/OurApp"));
 const ContactUs = React.lazy(() => import("./components/ContactUs"));
 const Footer = React.lazy(() => import("./components/Footer"));
-const Fincalc = React.lazy(() => import("./components/FinCalc"));
+// const Fincalc = React.lazy(() => import("./components/FinCalc"));
 
 
 const App = () => {
@@ -71,7 +71,7 @@ const App = () => {
                     <News />
                     <OurApp />
                     <ContactUs />
-                    <Fincalc />
+                    {/* <Fincalc /> */}
                   </>
                 }
               />             

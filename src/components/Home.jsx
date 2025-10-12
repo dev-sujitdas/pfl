@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import video from "/Video/tree.mp4";
+import mobVid from "/Video/tree-mob.webm";
 import video2 from "/Video/tree.webm";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 import gsap from "gsap";
@@ -7,30 +8,28 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
+const videoURL = [
+    {src: video2, type:"video/webm"},
+    {src: video, type:"video/mp4"},
+    {srcmob: mobVid, type:"video/webm"},
+  ];
+
 const Home = () => {
   const paraRef = useRef();
   const buttonRef = useRef();
   const homeRef = useRef();
   const scrollRef = useRef();
   const videoRef = useRef();
-  const timerRef = useRef(null);
-  const [toggle, setToggle] = useState(false);
-  // const [islarge, setIsLarge] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(()=>{
+    const handleResize = ()=> setIsMobile(window.innerWidth < 768);  
+    window.addEventListener('resize', handleResize);
+    handleResize();
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.innerWidth >= 768) {
-  //       setIsLarge(true);
-  //     } else {
-  //       setIsLarge(false);
-  //     }
-  //   };
-  //   handleResize();
-
-  //   window.addEventListener('resize', handleResize);
-
-  //   return () => window.removeEventListener('resize', handleResize);
-  // }, [])
+    return()=> window.removeEventListener('resize', handleResize);
+  },[])
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -67,11 +66,6 @@ const Home = () => {
       return ()=> tl.kill();
   }, []);
 
-  const videoURL = [
-    {src: video2, type:"video/webm"},
-    {src: video, type:"video/mp4"},
-  ];
-
 
   useEffect(() => {
     let mm = gsap.matchMedia();
@@ -97,21 +91,6 @@ const Home = () => {
       videoRef.current.playbackRate = 1.5;
     }
   }, []);
-
-  const handleClick = () => {
-    setToggle((prev) => !prev);
-
-    if (timerRef.current) {
-      clearTimeout(timerRef.current)
-    }
-    timerRef.current = setTimeout(() => {
-      setToggle(false);
-    }, 3000)
-  };
-
-  useEffect(() => {
-    return () => clearTimeout(timerRef.current);
-  }, [])
 
 
   return (
@@ -180,14 +159,18 @@ const Home = () => {
           >
             <video
               ref={videoRef}
-              className="h-full w-full object-contain"              
+              className="h-full w-full object-contain"
               autoPlay
               muted
               playsInline
             >
-              {videoURL.map((video, i)=>(
-                <source key={i} src={video.src} type={video.type} />
-              ))}
+              {videoURL.map((video, i) => {
+               return isMobile ?
+                  (<source key={i} src={video.srcmob} type={video.type} />)
+                  :
+                  (<source key={i} src={video.src} type={video.type} />)
+              }
+              )}
             </video>
           </div>
         </div>

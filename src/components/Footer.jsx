@@ -10,8 +10,8 @@ const Footer = () => {
     <footer className="text-black h-auto bg-zinc-100 max-w-[150rem] mx-auto relative overflow-hidden border-t-[1px] border-[#d4d4d8]">
       <div className="top flex flex-col gap-10  items-start py-12 px-5 md:flex-wrap lg:flex-row lg:justify-evenly">
         <div className="footer-elem flex flex-col justify-start lg:h-[14rem] h-auto">
-          <div className="logo lg:h-28 lg:w-36 h-24 w-30 mb-5">
-            <img src="/PFL.png" alt="GGS Logo" className="h-full w-full " />
+          <div className="logo lg:h-32 lg:w-40 h-28 w-32 mb-5">
+            <img src="/pfl-removebg.png" alt="GGS Logo" className="h-full w-full " />
           </div>
           <div>
             <h3 className="font-space-mono text-medium">
