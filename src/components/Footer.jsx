@@ -21,12 +21,12 @@ const Footer = () => {
 
           <ul className="flex gap-5 mt-4 text-2xl">
             <li>
-              <a href="https://www.facebook.com/">
+              <a href="https://www.facebook.com/profile.php?id=61571900317553">
                 <FaFacebookSquare />
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/">
+              <a href="https://www.instagram.com/planforlife_financialadvisors?igsh=MWdydHZlYXBzMHdpbQ==">
                 <FaInstagram />
               </a>
             </li>

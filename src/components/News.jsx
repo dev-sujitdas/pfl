@@ -101,7 +101,7 @@ const News = () => {
           </h3>
         </div> 
 
-        <div className="news-card-wrapper flex gap-4 mt-5 items-center">
+        <div className="news-card-wrapper flex gap-4 mt-5 justify-center md:justify-start items-center">
           <i className="h-16 w-16"><img src="/Icons/newsletter.png" alt="" /></i>
           <a target="_blank" href={url[1]}>
           <button className="nsltr px-5 py-2 rounded-full bg-[#fdfdfd] text-base md:text-xl lg:text-2xl poppins-semibold cursor-pointer hover:bg-[#BA8748] hover:text-white">            
