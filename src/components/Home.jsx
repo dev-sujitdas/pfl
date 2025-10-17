@@ -1,17 +1,17 @@
 import { useState, useEffect, useRef } from "react";
-import video from "/Video/tree.mp4";
+import video from "/Video/tree.webm";
+// import video2 from "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/tree.mp4";
 import mobVid from "/Video/tree-mob.webm";
-import video2 from "/Video/tree.webm";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
+const tree = "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/tree.mp4"
 const videoURL = [
-    {src: video2, type:"video/webm"},
-    {src: video, type:"video/mp4"},
+    {src: video, type:"video/webm"},
+    {src: tree, type:"video/mp4"},
     {srcmob: mobVid, type:"video/webm"},
   ];
 
@@ -163,7 +163,6 @@ const Home = () => {
               autoPlay
               muted
               playsInline
-              
             >
               {videoURL.map((video, i) => {
                return isMobile ?

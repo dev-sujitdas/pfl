@@ -1,8 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import video40 from "/Video/40-50.mp4";
-import video60 from "/Video/60+.mp4";
-import video20 from "/Video/20-40.mp4";
-import video50 from "/Video/50-60.mp4";
 import videoW20 from "/Video/20-40.webm";
 import videoW40 from "/Video/40-50.webm";
 import videoW50 from "/Video/50-60.webm";
@@ -12,6 +8,11 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const video20 = "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/20-40.mp4";
+const video40 = "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/40-50.mp4";
+const video50 = "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/50-60.mp4";
+const video60 = "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/60%2B.mp4";
 
 const ageGroups = {
   "20-40": {
