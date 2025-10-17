@@ -448,7 +448,7 @@ const FinancialTimeline = () => {
                       {item.num}
                     </h2>
                     <h3
-                      className="w-52 lg:w-64 text-lg lg:text-xl font-bold lg:px-6 px-3 py-2 rounded-r-full shadow-md"
+                      className="w-52 lg:w-64 text-base md:text-lg lg:text-xl font-bold lg:px-6 px-3 py-2 rounded-r-full shadow-md"
                       style={{ backgroundColor: item.titleColor, color: item.titleText }}
                     >
                       {item.title}

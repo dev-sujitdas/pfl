@@ -163,6 +163,7 @@ const Home = () => {
               autoPlay
               muted
               playsInline
+              
             >
               {videoURL.map((video, i) => {
                return isMobile ?
