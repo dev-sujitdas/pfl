@@ -1,7 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import face1 from "/Images/face1.jpg";
-import face2 from "/Images/face2.jpg";
-import face3 from "/Images/face3.jpg";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -10,25 +7,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const advisorData = [
   {
-    image: face1,
+    
     name: "Gerrit Bezuidenhout",
     description:
       "Gerrit joined Sanlam in 1989 as a Legal Adviser and moved into management roles at Sanlam and Momentum from 1992 to 1998. In 1998, he co-founded PFL with Craig Shillaw. He holds an LLB from UNISA, a Postgraduate Diploma in Financial Planning from UFS, and is a CFP® professional.",
   },
   {
-    image: face2,
+    
     name: "Tihan Bezuidenhout",
     description:
       "Tihan began his career in 2012 as a Paraplanner at PFL, gaining broad experience in financial planning with a focus on personal finance and investment management. He holds a BCom and a Postgraduate Diploma in Financial Planning from the University of Stellenbosch, and is a CFP® professional.",
   },
   {
-    image: face3,
+    
     name: "Micky Alborough",
     description:
       "Micky began her career in financial services in 1976 with NBS Bank and achieved Executive Financial Planner status in 1984. She joined Plan for Life in 2000 and specializes in personal financial planning, serving a well-established client base in Durban.",
   },
   {
-    image: face3,
+    
     name: "Aleisha Bezuidenhout",
     description:
       "Aleisha, a Durban native, holds degrees in Social Dynamics (Stellenbosch, 2013) and Law (Free State, 2017). After completing her articles in Paarl, she was admitted as a legal practitioner in 2020 and later as a Conveyancer and Notary. She prides herself on delivering affordable, quality legal services.",
