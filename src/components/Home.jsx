@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import video from "/Video/tree.webm";
+// import video from "/Video/tree.webm";
 // import video2 from "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/tree.mp4";
-import mobVid from "/Video/tree-mob.webm";
+// import mobVid from "/Video/tree-mob.webm";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -9,11 +9,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const tree = "https://pub-21039477711c4bd09b37f0bf09a2e51b.r2.dev/tree.mp4"
-const videoURL = [
-    {src: video, type:"video/webm"},
-    {src: tree, type:"video/mp4"},
-    {srcmob: mobVid, type:"video/webm"},
-  ];
+// const videoURL = [
+//     {src: video, type:"video/webm"},
+//     {src: tree, type:"video/mp4"},
+//     {srcmob: mobVid, type:"video/webm"},
+//   ];
 
 const Home = () => {
   const paraRef = useRef();
@@ -22,19 +22,23 @@ const Home = () => {
   const scrollRef = useRef();
   const videoRef = useRef();
   const [isMobile, setIsMobile] = useState(false);
-  
-  useEffect(()=>{
-    const handleResize = ()=> setIsMobile(window.innerWidth < 768);  
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    return()=> window.removeEventListener('resize', handleResize);
-  },[])
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
 
   useEffect(() => {
     const tl = gsap.timeline();
 
-    tl.from("#title span", {
+    tl.fromTo("#home",
+      { opacity: 0}, 
+      {opacity: 1}
+    )
+    .from("#title span", {
       y: 100,
       opacity: 0,
       stagger: 0.2,
@@ -63,7 +67,15 @@ const Home = () => {
         "-=0.3"
       );
 
-      return ()=> tl.kill();
+    gsap.from('#right img', {
+      opacity: 0,
+      duration: 1.4,
+      ease: "power2.inOut",
+      delay: 0.5
+    })
+
+
+    return () => tl.kill();
   }, []);
 
 
@@ -86,11 +98,11 @@ const Home = () => {
     return () => mm.revert();
   }, []);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.5;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (videoRef.current) {
+  //     videoRef.current.playbackRate = 1.5;
+  //   }
+  // }, []);
 
 
   return (
@@ -132,7 +144,7 @@ const Home = () => {
               >
                 Digital tools can track your money-but they can’t understand your goals, your fears, or your vision.
                 At PFL, we combine human insight with smart technology to give you real advice, in real time, tailored to your life.
-              </p>              
+              </p>
               <p
                 className={`para-2 md:text-base 2xl:text-lg text-zinc-600 mt-1 `}
               >
@@ -157,7 +169,7 @@ const Home = () => {
             id="right"
             className="h-full w-1/2 flex flex-col items-center justify-center md:pt-4 xl:pt-0"
           >
-            <video
+            {/* <video
               ref={videoRef}
               className="h-full w-full object-contain"
               autoPlay
@@ -171,7 +183,8 @@ const Home = () => {
                   (<source key={i} src={video.src} type={video.type} />)
               }
               )}
-            </video>
+            </video> */}
+            <img className="h-full w-full object-contain" src="/Images/tree2.png" alt="" />
           </div>
         </div>
       </div>

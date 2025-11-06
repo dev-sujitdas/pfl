@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./custom.css";
 import Lenis from "@studio-freight/lenis";
+import { gsap } from "gsap";
 const Loader = React.lazy(() => import("./components/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar"));
 const Home = React.lazy(() => import("./components/Home"));
@@ -21,6 +22,8 @@ const Footer = React.lazy(() => import("./components/Footer"));
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const lenisRef = useRef(null);
+  const defaultRef = useRef(null);
+ 
 
   useEffect(() => {
     const appLoad = async () => {
@@ -48,6 +51,16 @@ const App = () => {
     return () => lenis.destroy();
   }, []);
 
+
+  // useEffect(()=>{    
+  //   const tl = gsap.timeline();
+  //   tl.from(defaultRef.current,{
+  //     opacity: 0,
+  //     duration: 0.2,
+  //     ease: "power2.inOut"
+  //   })
+  // },[])
+
   return (
     <>
       {isLoading ? (
@@ -55,13 +68,13 @@ const App = () => {
       ) : (
         <>
           <Suspense fallback={<Loader isLoading={isLoading} />}>
-            <Navbar lenis={lenisRef} />
+            <Navbar lenis={lenisRef} ref={defaultRef} />
             <Routes>
               <Route
                 path="/"
                 element={
                   <>
-                    <Home />
+                    <Home ref={defaultRef} />
                     <About />                     
                     <OurServices />                                        
                     <FinancialTimeline />

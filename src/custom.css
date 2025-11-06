@@ -187,6 +187,10 @@
   -webkit-text-stroke-color: #5b5b61;
 }
 
+#home, .nav-container{
+  opacity: 0;
+}
+
 
 @media (max-width: 1078px) {
   #home-container {

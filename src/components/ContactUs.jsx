@@ -11,7 +11,7 @@ const ContactUs = () => {
   const services = [
     "Our App",
     "Our Services",
-    "Schedule an apointment",
+    "Schedule an appointment",
   ];
   const [formData, setFormData] = useState({
     name: "",

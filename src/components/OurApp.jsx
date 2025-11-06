@@ -99,7 +99,7 @@ const OurApp = () => {
             </h4>
             <div className="app-para my-4 space-y-4 text-base md:text-lg xl:w-[80%] poppins-regular text-zinc-700">
               <p>
-               Not only does our app provide our clients with state of the art automated, customizable and consolidated reporting. It also advises our clients on matters such as cash flow as well as risks and returns with our built in business intelligence tool.
+               Not only does our app provide our clients with state-of-the-art automated, customizable and consolidated reporting. It also advises our clients on matters such as cash flow as well as risks and returns with our built in business intelligence tool.
               </p>
               <p>
               With our elite wealth app we are able to curate a solution to fit your needs and financial requirements making everyday financial tasks a breeze.

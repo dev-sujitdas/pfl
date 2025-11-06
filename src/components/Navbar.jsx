@@ -59,11 +59,14 @@ const Navbar = ({ lenis }) => {
   }, [isMobileOpen]);
 
    useEffect(() => {
+    const tl = gsap.timeline();
       if (navRef.current) {
-        gsap.from(navRef.current.querySelectorAll("button, .desk-menu, img"), {
+        tl.fromTo(navRef.current,{opacity: 0}, {opacity: 1})
+        .from(navRef.current.querySelectorAll("button, .desk-menu, img"), {
+          opacity: 0,
           y: -30,
           duration: 0.6,
-          delay: 0.5,
+          delay: 0.1,
           opacity: 0,
           stagger: 0.1,
         });
