@@ -1,12 +1,25 @@
-# React + Vite
+# 🌱 Plan for Life
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, smooth, and interactive life planning web application designed to help users organize goals, track progress, and stay focused — all within a visually engaging experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- React — Component-based UI
+- Tailwind CSS — Utility-first styling
+- Lenis — Smooth scrolling
+- GSAP — High-performance animations
+- EmailJS — Client-side email service
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features
+
+- Intuitive goal planning interface  
+- Goal and milestone tracking  
+- Smooth scrolling experience  
+- Advanced animations and transitions  
+- Contact / feedback via email  
+- Fully responsive design  
+
